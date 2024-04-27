@@ -1,10 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="assest/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="assest/css/8.0.1_normalize.css">
+    <link rel="stylesheet" href="assest/css/style.css">
+    <link rel="stylesheet" href="assest/font-awesome-pro-5/css/all.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+
 </head>
-<body>
-$END$
+<body class="home">
+<header>
+    <nav class="navbar   shadow-sm p-3 mb-5 bg-body-tertiary " >
+
+        <div class="container-fluid ">
+            <a class="navbar-brand " href="#">°ShoeShop°</a>
+
+            <button class="btn btn-sm btn-outline-secondary text-black" id="loginBtn" type="button">Login</button>
+        </div>
+    </nav>
+</header>
+<main>
+    <section id="first">
+        <div class="row g-2 justify-content-around">
+            <div class="col-md-6 d-flex justify-content-center align-items-center order-sm-2">
+            <div class="imgDiv">
+                <img src="assest/img/Untitled design copy.png" class="rounded d-block float-end" />
+            </div>
+            </div>
+
+            <div class="col-md-6 d-flex justify-content-center align-items-center order-sm-1">
+            <div class=" description1 p-3">
+                <h1 class="txt-1 ">°Shoe</h1>
+                <h1 class="txt-2 ">Shop°</h1>
+                <h1 class ="h1-text">Walk with Confidence...</h1>
+                <p class="p-text">Discover footwear elegance and comfort in every step. From casual kicks to statement heels, find your perfect pair effortlessly.</p>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="form-container">
+            <i class="uil uil-times from_close"></i>
+            <div class="form login-form">
+                <form action="#">
+                    <h2>Login</h2>
+                    <div class="mainBtnDiv d-flex justify-content-between">
+                        <button class="btn" id="adminBtn">Admin</button>
+                        <button class="btn" id="cashierBtn">Cashier</button>
+                    </div>
+
+                    <!--------------admin---------------->
+                    <div class="input_box adminInputBox">
+                        <input type="email" placeholder="Enter Your Email" >
+                        <i class="uil uil-envelope-alt email"></i>
+                    </div>
+
+                    <div class="input_box adminInputBox">
+                        <input type="password" placeholder="Enter Your Password" >
+                        <i class="uil uil-lock password"></i>
+                        <i class="uil uil-eye-slash pw_hide"></i>
+                    </div>
+
+                    <!--------------cashier---------------->
+                    <div class="input_box  cashierInputBox">
+                        <input type="email" placeholder="Enter Your Email" >
+                        <i class="uil uil-envelope-alt email"></i>
+                    </div>
+
+                    <div class="input_box  cashierInputBox">
+                        <input type="password" placeholder="Enter Your Password" >
+                        <i class="uil uil-lock password"></i>
+                        <i class="uil uil-eye-slash pw_hide"></i>
+                    </div>
+
+                    <!--                    <div class="option_field">-->
+                    <!--                        <span class="checkBox">-->
+                    <!--                            <input type="checkbox">-->
+                    <!--                            <label for="check">Reme</label>-->
+                    <!--                        </span>-->
+                    <!--                    </div>-->
+                    <button class="button" id="loginNow">
+                        Login Now
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+</main>
+<script src="assest/js/code.jquery.com_jquery-3.7.1.min.js"></script>
+<script src="assest/js/scrypt.js"></script>
+
+
 </body>
+
 </html>

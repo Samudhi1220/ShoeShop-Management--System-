@@ -11,7 +11,7 @@ const formOpenBtn = $('#loginBtn'),
 
 formOpenBtn.click(function () {
     home.addClass('show')
-    adminBtn.css("background", "#1F5F9F").css("color", "#fff");
+    adminBtn.css("background", "#ea868f").css("color", "#fff");
     adminInputBox.css("display", "block");
     cashierInputBox.css("display", "none");
 })
@@ -24,12 +24,12 @@ form_close.click(function () {
 })
 cashierBtn.click(function () {
     adminBtn.css("background", "white").css("color", "#000");
-    cashierBtn.css("background", "#1F5F9F").css("color", "#fff");
+    cashierBtn.css("background", "#ea868f").css("color", "#fff");
     adminInputBox.css("display", "none");
     cashierInputBox.css("display", "block");
 })
 adminBtn.click(function () {
-    adminBtn.css("background", "#1F5F9F").css("color", "#fff");
+    adminBtn.css("background", "#ea868f").css("color", "#fff");
     cashierBtn.css("background", "white").css("color", "#000");
     adminInputBox.css("display", "block");
     cashierInputBox.css("display", "none");

@@ -1,6 +1,186 @@
 
+.navbar-brand{
+    font-style: italic;
+    font-family: "Arial Unicode MS";
+    color: #b02a37;
+}
 
-.txtspan{
-    color: red;
-    font-size: 12px;
+.btn{
+    background-color: #ea868f;
+}
+.description1{
+
+    margin-left:90px;
+    margin-top:90px;
+
+}
+
+.txt-1{
+    display: inline-block;
+    font-size: 6rem;
+    font-family:Charter, sans-serif;
+    font-weight: 450;
+    font-style: italic;
+    color: #dc3545;
+    margin-bottom: 0;
+
+}
+.txt-2{
+    display: inline-block;
+    font-size: 7rem;
+    font-family: Charter, sans-serif;
+    font-weight: 450;
+    font-style: italic;
+    color:#b02a37;
+    margin-bottom: 0;
+}
+
+.h1-text{
+    font-size: 2.5rem;
+    font-family: "Arial Unicode MS", sans-serif;
+    font-weight: 60;
+    font-style: italic;
+    margin-left: 28px;
+    margin-top: 0;
+}
+.p-text{
+    font-size: 1.2rem;
+    font-family: Sana, sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 1;
+    font-style: normal;
+    margin-left: 28px;
+}
+.rounded{
+
+    width: 92%;
+    height: 100%;
+
+}
+
+
+
+
+.form-container {
+    position: fixed;
+    max-width: 320px;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.2);
+    z-index: 101;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: rgb(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease-out;
+}
+
+.from_close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: black;
+    font-size: 22px;
+    opacity: 0.7;
+    cursor: pointer;
+
+}
+
+.form-container h2 {
+    font-size: 22px;
+    color: #0b0217;
+    text-align: center;
+}
+
+.input_box {
+    position: relative;
+    margin-top: 30px;
+    width: 100%;
+    height: 40px;
+}
+
+.input_box input {
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0 30px;
+    color: #333;
+    transition: all 0.2s ease;
+    border-bottom: 1.5px solid #aaaa;
+}
+
+.input_box input:focus {
+    border-color: #ea868f;
+}
+
+.input_box i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.input_box i.email,
+.input_box i.password {
+    left: 0;
+    color: #707070;
+}
+
+.input_box input:focus ~ i.email,
+.input_box input:focus ~ i.password {
+    color: #ea868f;
+}
+
+.input_box i.pw_hide {
+    right: 0;
+    font-size: 18px;
+}
+
+.form-container .button {
+    background: #ea868f;
+    color: #fff;
+    margin-top: 30px;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 10px;
+    border-color: white;
+}
+
+.form-container .btn {
+    /*background: #0a53be;*/
+    margin-top: 15px;
+    width: 48%;
+    border-radius: 10px;
+    border-color: black;
+    border: 1px solid #ea868f;
+}
+
+.home{
+    z-index: 1002;
+}
+
+.home.show .form-container {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.home::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease-out ;
+}
+.home.show::before{
+    opacity: 1;
+    pointer-events: auto;
 }
