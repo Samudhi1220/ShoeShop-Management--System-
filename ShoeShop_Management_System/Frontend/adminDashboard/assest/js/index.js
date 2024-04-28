@@ -1,3 +1,10 @@
+const dashboardBtn = $('#dashboard-btn');
+const employeeBtn = $('#employee-btn');
+const supplierBtn = $('#supplier-btn');
+const inventoryBtn = $('#inventory-btn');
+const userBtn = $('#users-btn');
+
+
 const sideLinks = document.querySelectorAll('.sidebar .side-menu li a:not(.logout)');
 
 sideLinks.forEach(item => {
@@ -54,3 +61,73 @@ toggler.addEventListener('change', function () {
         document.body.classList.remove('dark');
     }
 });
+
+dashboardBtn.click(function () {
+    $('#dashboard').css("display","block");
+    $('#employee').css("display","none");
+    $('#supplier').css("display","none");
+    $('#inventory').css("display","none");
+    $('#user').css("display","none");
+
+    dashboardBtn.addClass('active')
+    employeeBtn.removeClass('active')
+    supplierBtn.removeClass('active')
+    inventoryBtn.removeClass('active')
+    userBtn.removeClass('active')
+})
+
+employeeBtn.click(function () {
+    $('#employee').css("display","block");
+    $('#dashboard').css("display","none");
+    $('#supplier').css("display","none");
+    $('#inventory').css("display","none");
+    $('#user').css("display","none");
+
+    employeeBtn.addClass('active')
+    dashboardBtn.removeClass('active')
+    supplierBtn.removeClass('active')
+    inventoryBtn.removeClass('active')
+    userBtn.removeClass('active')
+})
+
+supplierBtn.click(function () {
+    $('#supplier').css("display","block");
+    $('#employee').css("display","none");
+    $('#dashboard').css("display","none");
+    $('#inventory').css("display","none");
+    $('#user').css("display","none");
+
+    supplierBtn.addClass('active')
+    dashboardBtn.removeClass('active')
+    employeeBtn.removeClass('active')
+    inventoryBtn.removeClass('active')
+    userBtn.removeClass('active')
+})
+
+inventoryBtn.click(function () {
+    $('#inventory').css("display","block");
+    $('#dashboard').css("display","none");
+    $('#supplier').css("display","none");
+    $('#employee').css("display","none");
+    $('#user').css("display","none");
+
+    inventoryBtn.addClass('active')
+    dashboardBtn.removeClass('active')
+    supplierBtn.removeClass('active')
+    employeeBtn.removeClass('active')
+    userBtn.removeClass('active')
+})
+
+userBtn.click(function () {
+    $('#user').css("display","block");
+    $('#dashboard').css("display","none");
+    $('#supplier').css("display","none");
+    $('#inventory').css("display","none");
+    $('#employee').css("display","none");
+
+    userBtn.addClass('active')
+    dashboardBtn.removeClass('active')
+    supplierBtn.removeClass('active')
+    inventoryBtn.removeClass('active')
+    employeeBtn.removeClass('active')
+})
