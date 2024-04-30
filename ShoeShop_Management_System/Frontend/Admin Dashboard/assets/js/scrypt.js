@@ -7,6 +7,14 @@ const addEmployee = $('#addEmployee');
     updateEmployee = $('#updateEmployee'),
     deleteEmployee = $('#deleteEmployee'),
     showDetails = $('#showDetails'),
+        addSupplier= $('#addSupplier'),
+        updateSupplier=$('#updateSupplier'),
+        deleteSupplier=$('#deleteSupplier'),
+        showSupplierDetails=$('#showSupplierDetails'),
+        addItem=$('#addInventory'),
+        updateItem= $('#updateInventory'),
+        deleteItem=$('#deleteInventory'),
+        showItem=$('#showInventoryDetails')
     form_close = $('.from_close'),
         cancelBtn = $('#cancelBtn'),
         home = $('.home');
@@ -112,7 +120,63 @@ showDetails.click(function () {
     home.addClass('show')
 
 })
+addSupplier.click(function () {
+    $('#supplierLabel').text('Add Supplier')
+    home.addClass('show')
+    $('#saveSupplierbtn').text("Save")
 
+})
+updateSupplier.click(function () {
+    $('#supplierLabel').text('Update Supplier')
+    home.addClass('show')
+    $('#saveSupplierbtn').text("Update")
+
+})
+deleteSupplier.click(function () {
+    $('#supplierLabel').text('Delete Supplier')
+    $('#saveSupplierbtn').text("Delete")
+
+    home.addClass('show')
+})
+showSupplierDetails.click(function () {
+    $('#supplierLabel').text('All Supplier Details')
+    $('#saveSupplierbtn').text("Close")
+    $('#saveSupplierbtn').click(function () {
+        home.removeClass('show');
+    })
+
+    home.addClass('show')
+
+})
+
+addItem.click(function () {
+    $('#inventoryLabel').text('Add Item')
+    home.addClass('show')
+    $('#saveItembtn').text("Save")
+
+})
+updateItem.click(function () {
+    $('#inventoryLabel').text('Update Item')
+    home.addClass('show')
+    $('#saveItembtn').text("Update")
+
+})
+deleteItem.click(function () {
+    $('#inventoryLabel').text('Delete Item')
+    $('#saveItembtn').text("Delete")
+
+    home.addClass('show')
+})
+showItem.click(function () {
+    $('#inventoryLabel').text('All Item Details')
+    $('#saveItembtn').text("Close")
+    $('#saveItembtn').click(function () {
+        home.removeClass('show');
+    })
+
+    home.addClass('show')
+
+})
 form_close.click(function () {
     home.removeClass('show');
     form_container.css('max-width','800px')
