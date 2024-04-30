@@ -2,6 +2,7 @@
     padding-left: 2rem;
     padding-right: 3rem;
 }
+
 .cardDiv{
     border-radius: 15px;
     width: 1060px;
@@ -13,8 +14,9 @@
     margin-top: 20px;
 }
 
+
 .table-container{
- margin-top: 20px;
+
 }
 .btn{
     border-radius: 17px;
@@ -57,10 +59,10 @@ display: flex;
 }
 
 .form-container h2 {
-    font-size: 22px;
+    font-size: 10px;
     color: #ea868f;
     text-align: center;
-    font-weight: 450;
+    font-weight: 200;
 }
 
 .input_box {
@@ -129,15 +131,26 @@ display: flex;
     background: #ea868f;
     color: #fff;
     margin-top: 30px;
-    margin-right: 30px;
-    margin-left: 150px;
-    width: 50%;
+    width: 40%;
     padding: 10px 0;
     border-radius: 10px;
-    border-color: white;
-    ;
+    border-color: #ea868f;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 45px;
+}
 
-
+.form-container .cancelBtn {
+    background: #ffffff;
+    color: #888787;
+    margin-top: 30px;
+    width: 40%;
+    padding: 10px 0;
+    border-radius: 10px;
+    border: #ea868f solid 1px;
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 15px;
 }
 
 .form-container .btn {
@@ -149,8 +162,16 @@ display: flex;
     border: 1px solid #ea868f;
 }
 input[type="date"]::before {
+
     color: #888585;
     content: attr(placeholder);
+}
+.form-floating > .bi-calendar-date + .datepicker_input + label {
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    padding-left: 3.5rem;
+    z-index: 3;
 }
 
 .home{

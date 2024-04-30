@@ -92,7 +92,8 @@
     </a>
 </section>
 <main>
-    <section id="dashboard" class="mainSection d-none">
+    <!--------------DashBoard---------------->
+    <section id="dashboard" class="mainSection d-none ">
         <div class="data">
             <div class="row analyse">
                 <div class="shadow-lg col ">
@@ -262,13 +263,14 @@
 
         </div>
     </section>
-    <section id="employee">
+    <!--------------Employee---------------->
+    <section id="employee" class="mainSection  "  >
         <div class="employeeDiv">
             <div class="cardDiv">
 
                 <div class="card">
-                    <div class="card-header">
-                        <h2>Employee</h2>
+                    <div class="card-header shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                        <h2>Employee Management</h2>
                     </div>
                     <div class="card-body">
                         <div class="btnGroup float-end">
@@ -350,15 +352,17 @@
 
             </div>
 
-
         </div>
+
+        <!--------------Add Employee Form---------------->
         <div class="form-container">
-            <i class="uil uil-times from_close"></i>
+            <div class="from_close">
+                <span class="material-symbols-outlined">cancel_presentation</span>
+            </div>
             <div class="form add-employee">
                 <form action="#">
                     <h2 id="mainLabel">Add Employee</h2>
 
-                    <!--------------admin---------------->
                     <div class="row">
                         <div class="col">
                             <div class="input_box adminInputBox">
@@ -480,17 +484,22 @@
                     <button class="button" id="addbtn">
                         Save Now
                     </button>
+                    <button class="cancelBtn" id="cancelBtn">Cancel</button>
                 </form>
             </div>
         </div>
+        <!--------------Update Employee Form---------------->
     </section>
-    <section id="supplier">
+    <!--------------Supplier---------------->
+    <section id="supplier" class="mainSection d-none " >
 
     </section>
-    <section id="inventory">
+    <!--------------Inventory---------------->
+    <section id="inventory" class="mainSection d-none ">
 
     </section>
-    <section id="users">
+    <!--------------Users---------------->
+    <section id="users" class="mainSection d-none " >
 
     </section>
 

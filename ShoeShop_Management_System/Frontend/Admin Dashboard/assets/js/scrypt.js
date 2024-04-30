@@ -8,6 +8,7 @@ const addEmployee = $('#addEmployee');
     deleteEmployee = $('#deleteEmployee'),
     showDetails = $('#showDetails'),
     form_close = $('.from_close'),
+        cancelBtn = $('#cancelBtn'),
         home = $('.home');
 
 dashboardBtn.click(function () {
@@ -111,4 +112,25 @@ showDetails.click(function () {
     home.addClass('show')
 
 })
+
+form_close.click(function () {
+    home.removeClass('show');
+    form_container.css('max-width','800px')
+
+})
+cancelBtn.click(function () {
+    home.removeClass('show');
+    form_container.css('max-width','800px')
+
+})
+$(document).ready(function(){
+    $("#employeeDOJ").datepicker({
+        dateFormat: 'yy-mm-dd',
+        maxDate: new Date()
+    });
+    $("#employeeDOB").datepicker({
+        dateFormat: 'yy-mm-dd',
+        maxDate: new Date()
+    });
+});
 
