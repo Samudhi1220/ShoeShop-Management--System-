@@ -3,6 +3,12 @@ const employeeBtn = $('#employeeBtn');
 const supplierBtn = $('#supplierBtn');
 const inventoryBtn = $('#inventoryBtn');
 const userBtn = $('#userBtn');
+const addEmployee = $('#addEmployee');
+    updateEmployee = $('#updateEmployee'),
+    deleteEmployee = $('#deleteEmployee'),
+    showDetails = $('#showDetails'),
+    form_close = $('.from_close'),
+        home = $('.home');
 
 dashboardBtn.click(function () {
     // $('#dashboard').css("display", "block");
@@ -68,3 +74,41 @@ userBtn.click(function () {
     userBtn.addClass('active')
 
 })
+addEmployee.click(function () {
+    home.addClass('show')
+    console.log('helloooo')
+
+})
+form_close.click(function () {
+    home.addClass('show')
+
+})
+addEmployee.click(function () {
+    $('#mainLabel').text('Add Employee')
+    home.addClass('show')
+    $('#addbtn').text("Save")
+
+})
+updateEmployee.click(function () {
+    $('#mainLabel').text('Update Employee')
+    home.addClass('show')
+    $('#addbtn').text("Update")
+
+})
+deleteEmployee.click(function () {
+    $('#mainLabel').text('Delete Employee')
+    $('#addbtn').text("Delete")
+
+    home.addClass('show')
+})
+showDetails.click(function () {
+    $('#mainLabel').text('All Employee Details')
+    $('#addbtn').text("Close")
+    $('#addbtn').click(function () {
+        home.removeClass('show');
+    })
+
+    home.addClass('show')
+
+})
+

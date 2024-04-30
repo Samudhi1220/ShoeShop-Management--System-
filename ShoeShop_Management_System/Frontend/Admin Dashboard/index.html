@@ -2,23 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../assest/boostrap/css/bootstrap.css">
+
     <link rel="stylesheet" href="../assest/font-awesome-pro-5/css/all.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
     <title>Shoe Shop</title>
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="../assest/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/employee.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+
 </head>
-<body>
+<body class="home">
 <header>
-    <div class="navBarPrimeryDiv container-fluid p-0 position-fixed">
+    <div class="navBarPrimeryDiv container-fluid p-0 position-fixed z-2 ">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <h2 class="shoes ms-5" href="#">Shoes.</h2>
                 <div class="profile">
                     <div class="info">
-                        <p class="m-0">Hey, <b>Reza</b></p>
+                        <p class="m-0">Hey, <b>Sithum</b></p>
                         <small class="text-muted">Admin</small>
                     </div>
                     <div class="profile-photo me-2">
@@ -86,33 +92,12 @@
     </a>
 </section>
 <main>
-    <section id="dashboard" class="mainSection">
+    <section id="dashboard" class="mainSection d-none">
         <div class="data">
             <div class="row analyse">
                 <div class="shadow-lg col ">
-<!--                    <img src="../Admin Dashboard/assets/images/Frame01.png" alt="">-->
-<!--                    <h2>100 <p>Employee Attendance</p></h2>-->
-                    <div class="sales">
-                        <div class="status">
-                            <div class="info">
-                                <h3>Total Sales</h3>
-                                <h1>$65,024</h1>
-                            </div>
-                            <div class="progresss">
-                                <svg>
-                                    <circle cx="38" cy="38" r="36"></circle>
-                                </svg>
-                                <div class="percentage">
-                                    <p>+81%</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="shadow-lg col">
-<!--                    <img src="../Admin Dashboard/assets/images/Frame02.png" alt="">-->
-<!--                    <h2>100 <p>Employee Attendance</p></h2>-->
+                    <!--                    <img src="../Admin Dashboard/assets/images/Frame01.png" alt="">-->
+                    <!--                    <h2>100 <p>Employee Attendance</p></h2>-->
                     <div class="sales">
                         <div class="status">
                             <div class="info">
@@ -131,9 +116,28 @@
                     </div>
                 </div>
                 <div class="shadow-lg col">
-<!--                    <img src="../Admin Dashboard/assets/images/Frame03.png" alt="">-->
-<!--                    <h2>100 <p>Employee Attendance</p></h2>-->
-
+                    <!--                    <img src="../Admin Dashboard/assets/images/Frame02.png" alt="">-->
+                    <!--                    <h2>100 <p>Employee Attendance</p></h2>-->
+                    <div class="sales">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Total Sales</h3>
+                                <h1>$65,024</h1>
+                            </div>
+                            <div class="progresss">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p>+81%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow-lg col">
+                    <!--                    <img src="../Admin Dashboard/assets/images/Frame03.png" alt="">-->
+                    <!--                    <h2>100 <p>Employee Attendance</p></h2>-->
                     <div class="visits">
                         <div class="status">
                             <div class="info">
@@ -151,7 +155,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="shadow-lg col">
+                <div class="shadow-lg col lastDiv">
                     <div class="searches">
                         <div class="status">
                             <div class="info">
@@ -168,15 +172,330 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
+        </div>
+        <div class="downMainDiv d-grid">
+            <div class="recent-order">
+                <div class="row mostSaleItem">
+                    <h1 class="mt-4">Recent Orders</h1>
+                    <div class="col shadow-lg">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Order Id</th>
+                                <th scope="col">Item Code</th>
+                                <th scope="col">Customer Id</th>
+                                <th scope="col">Customer Name</th>
+                                <th scope="col">Total Price</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>O001</td>
+                                <td>I001</td>
+                                <td>C001</td>
+                                <td>Sithum Perera</td>
+                                <td>2500</td>
+                            </tr>
+                            <tr>
+                                <td>O002</td>
+                                <td>I002</td>
+                                <td>C002</td>
+                                <td>Imesh Perera</td>
+                                <td>3500</td>
+                            </tr>
+                            <tr>
+                                <td>O003</td>
+                                <td>I003</td>
+                                <td>C003</td>
+                                <td>Sithum Imesh</td>
+                                <td>5500</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row mostSaleItem">
+                <h1>Most Sale Item</h1>
+                <div class="col shadow-lg ">
+                    <div class="text-center">
+                        <img class="me-5" src="../Admin Dashboard/assets/images/shoe01.png" width="260" alt="">
+                    </div>
+                    <div class="text-center ">
+                        <div class="d-inline-block itemDiv me-5 mt-3">
+                            <h6 class="text-center fs-6">Item Id</h6>
+                            <h1 class="text-center ">I001</h1>
+                        </div>
+                        <div class="d-inline-block itemDiv me-5 mt-3">
+                            <h6 class="text-center fs-6">Sold Qty</h6>
+                            <h1 class="text-center ">67</h1>
+                        </div>
+                        <div class="d-inline-block itemDiv mt-3">
+                            <h6 class="text-center">Shoe Size</h6>
+                            <h1 class="text-center ">08</h1>
+                        </div>
+                    </div>
 
+                </div>
+                <div class="col shadow-lg">
+                    <div class="qty">
+                        <div class="qtyStatus">
+                            <div class="qtyInfo">
+                                <h3>Quantity On Hand</h3>
+                                <h1 class="ms-2">254</h1>
+                            </div>
+                            <div class="qtyProgresses">
+                                <svg>
+                                    <circle cx="78" cy="78" r="76"></circle>
+                                </svg>
+                                <div class="qtyPercentage">
+                                    <p class="fs-2">+81%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
         </div>
     </section>
+    <section id="employee">
+        <div class="employeeDiv">
+            <div class="cardDiv">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Employee</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="btnGroup float-end">
+                            <button type="button" class="btn btn-outline-primary" id="addEmployee"><span
+                                    class="material-symbols-outlined">person_add</span> Add
+                            </button>
+                            <button type="button" class="btn btn-outline-success" id="updateEmployee"><span
+                                    class="material-symbols-outlined">edit_note</span>Update
+                            </button>
+                            <button type="button" class="btn btn-outline-danger" id="deleteEmployee"><span
+                                    class="material-symbols-outlined">person_remove</span>Delete
+                            </button>
+                            <button type="button" class="btn btn-outline-warning" id="showDetails"><span
+                                    class="material-symbols-outlined">manage_accounts</span>Details
+                            </button>
+                        </div>
+
+
+                        <div class="table-container">
+                            <table class="table">
+                                <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Contact</th>
+                                    <th scope="col">Salary</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+
+                                    <td>E001</td>
+                                    <td>Jacob</td>
+                                    <td>Hikkaduwa</td>
+                                    <td>0912274856</td>
+                                    <td>900000</td>
+
+
+                                </tr>
+                                <tr>
+
+                                    <td>E002</td>
+                                    <td>Thornton</td>
+                                    <td>Hikkaduwa</td>
+                                    <td>0912274856</td>
+                                    <td>900000</td>
+                                </tr>
+                                <tr>
+
+                                    <td>E003</td>
+                                    <td>Samu</td>
+                                    <td>Hikkaduwa</td>
+                                    <td>0912274856</td>
+                                    <td>900000</td>
+
+                                </tr>
+                                <tr>
+
+                                    <td>E003</td>
+                                    <td>Samu</td>
+                                    <td>Hikkaduwa</td>
+                                    <td>0912274856</td>
+                                    <td>900000</td>
+                                </tr>
+                                <tr>
+
+                                    <td>E003</td>
+                                    <td>Samu</td>
+                                    <td>Hikkaduwa</td>
+                                    <td>0912274856</td>
+                                    <td>900000</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="form-container">
+            <i class="uil uil-times from_close"></i>
+            <div class="form add-employee">
+                <form action="#">
+                    <h2 id="mainLabel">Add Employee</h2>
+
+                    <!--------------admin---------------->
+                    <div class="row">
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeeCode" placeholder="Employee Code">
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeeName" placeholder="Employee Name">
+                            </div>
+                        </div>   <div class="col">
+                        <div class="input_box adminInputBox ">
+
+                        <select class="form-select  border-black" aria-label="Default select example" id="employeeGender"
+                                required>
+                            <option selected disabled value="">Female</option>
+                            <option>Male</option>
+                        </select>
+                    </div></div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeeStatus" placeholder="Employee Status">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeeDesignation" placeholder="Employee Designation">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="date" id="employeeDOB" placeholder="Date Of Birth">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="date" id="employeeDOJ" placeholder="Date Of Join">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeeBranch" placeholder="Branch">
+                            </div>
+                        </div>
+
+                    <div class="col">
+                        <div class="input_box adminInputBox">
+                            <input type="text" id="employeeBuilding" placeholder="Building No. Or Name">
+                        </div>
+                    </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeeLane" placeholder="Lane">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeeCity" placeholder="City">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeeState" placeholder="State">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeePostalCode" placeholder="Postal Code">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="tel" id="employeeContactNumber" placeholder="Contact Number">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="email" id="employeeEmail" placeholder="email">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="input_box adminInputBox  ">
+                            <select class="form-select  border-black" aria-label="Default select example" id="employeeRole"
+                                    required>
+                                <option selected disabled value="">Admin</option>
+                                <option>Cashier</option>
+                                <option>cleaner</option>
+                            </select>
+                        </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="text" id="employeeGuardian" placeholder="Name of Guardian">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box adminInputBox">
+                                <input type="tel" id="employeeGuardianContact" placeholder="guardian Contact Details">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="button" id="addbtn">
+                        Save Now
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section id="supplier">
+
+    </section>
+    <section id="inventory">
+
+    </section>
+    <section id="users">
+
+    </section>
+
 </main>
 </body>
-<script src="../assest/code.jquery.com_jquery-3.7.1.min.js"></script>
+<script src="../assest/js/code.jquery.com_jquery-3.7.1.min.js"></script>
 <script src="assets/js/scrypt.js"></script>
 </html>

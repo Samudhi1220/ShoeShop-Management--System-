@@ -1,4 +1,4 @@
-const formOpenBtn = $('#loginBtn'),
+let formOpenBtn = $('#loginBtn'),
     home = $('.home'),
     form_container = $('.form-container'),
     form_close = $('.from_close'),
