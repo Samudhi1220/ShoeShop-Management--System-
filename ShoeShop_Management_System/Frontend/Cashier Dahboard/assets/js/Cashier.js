@@ -10,20 +10,8 @@ const addCustomer = $('#addCustomer');
     deleteCustomer = $('#deleteCustomer'),
     showCustomerDetails = $('#showCustomerDetails'),
 
-        employeeDeleteBox = $('#employeeDeleteBox'),
-        employeeMainInputDiv = $('#employeeMainInputDiv'),
-        addSupplier= $('#addSupplier'),
-        updateSupplier=$('#updateSupplier'),
-        deleteSupplier=$('#deleteSupplier'),
-        showSupplierDetails=$('#showSupplierDetails'),
-        addItem=$('#addInventory'),
-        updateItem= $('#updateInventory'),
-        deleteItem=$('#deleteInventory'),
-        showItem=$('#showInventoryDetails')
     form_close = $('.from_close'),
         cancelBtn = $('.cancelBtn'),
-        deleteUser=$('#deleteUser')
-        imgUploader = $('#imgUploader');
         home = $('.home');
 
 dashboardBtn.click(function () {
@@ -99,14 +87,20 @@ addCustomer.click(function () {
         $('#mainLabel').text('Add Customer')
     home.addClass('show')
     $('#addbtn').text("Save")
-    enableTxtField();
+    $("#customerGender").prop('disabled', false);
+    $("#customerDOB").prop('disabled', false);
+    $("#customerDOJ").prop('disabled', false);
+    enableTxtField()
 
 })
 updateCustomer.click(function () {
     $('#mainLabel').text('Update Customer')
     home.addClass('show')
     $('#addbtn').text("Update")
-    enableTxtField();
+    $("#customerGender").prop('disabled', false);
+    $("#customerDOB").prop('disabled', false);
+    $("#customerDOJ").prop('disabled', false);
+    enableTxtField()
 
 })
 
@@ -141,103 +135,14 @@ showCustomerDetails.click(function () {
     })
 
     home.addClass('show')
+    $("#customerGender").prop('disabled', false);
+    $("#customerDOB").prop('disabled', false);
+    $("#customerDOJ").prop('disabled', false);
+    disableTxtField();
 
 
 });
-addSupplier.click(function () {
-    $('#supplierLabel').text('Add Supplier')
-    home.addClass('show')
-    $('#saveSupplierbtn').text("Save")
-    enableTxtField()
 
-});
-updateSupplier.click(function () {
-    $('#supplierLabel').text('Update Supplier')
-    home.addClass('show')
-    $('#saveSupplierbtn').text("Update")
-    enableTxtField()
-
-});
-deleteSupplier.click(function () {
-    Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success"
-            });
-        }
-    });
-    // $('#supplierLabel').text('Delete Supplier')
-    // $('#saveSupplierbtn').text("Delete")
-    //
-    // home.addClass('show')
-});
-showSupplierDetails.click(function () {
-    $('#supplierLabel').text('All Supplier Details')
-    $('#saveSupplierbtn').text("Close")
-    $('#saveSupplierbtn').click(function () {
-        home.removeClass('show');
-    })
-
-    home.addClass('show')
-    disableTxtField()
-
-});
-
-addItem.click(function () {
-    $('#inventoryLabel').text('Add Item')
-    home.addClass('show')
-    $('#saveItembtn').text("Save")
-
-});
-updateItem.click(function () {
-    $('#inventoryLabel').text('Update Item')
-    home.addClass('show')
-    $('#saveItembtn').text("Update")
-
-})
-deleteItem.click(function () {
-    Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success"
-            });
-        }
-    });
-    // $('#inventoryLabel').text('Delete Item')
-    // $('#saveItembtn').text("Delete")
-    // home.addClass('show')
-});
-showItem.click(function () {
-    $('#inventoryLabel').text('All Item Details')
-    $('#saveItembtn').text("Close")
-    $('#saveItembtn').click(function () {
-        home.removeClass('show');
-    })
-
-    home.addClass('show')
-    disableTxtField()
-
-});
 form_close.click(function () {
     home.removeClass('show');
     form_container.css('max-width','800px')
@@ -249,11 +154,11 @@ cancelBtn.click(function () {
 
 })
 $(document).ready(function(){
-    $("#employeeDOJ").datepicker({
+    $("#customerDOJ").datepicker({
         dateFormat: 'yy-mm-dd',
         maxDate: new Date()
     });
-    $("#employeeDOB").datepicker({
+    $("#customerDOB").datepicker({
         dateFormat: 'yy-mm-dd',
         maxDate: new Date()
     });
