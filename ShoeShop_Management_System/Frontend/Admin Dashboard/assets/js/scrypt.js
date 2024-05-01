@@ -1,3 +1,5 @@
+
+
 const dashboardBtn = $('#dashboardBtn');
 const employeeBtn = $('#employeeBtn');
 const supplierBtn = $('#supplierBtn');
@@ -7,6 +9,8 @@ const addEmployee = $('#addEmployee');
     updateEmployee = $('#updateEmployee'),
     deleteEmployee = $('#deleteEmployee'),
     showDetails = $('#showDetails'),
+        employeeDeleteBox = $('#employeeDeleteBox'),
+        employeeMainInputDiv = $('#employeeMainInputDiv'),
         addSupplier= $('#addSupplier'),
         updateSupplier=$('#updateSupplier'),
         deleteSupplier=$('#deleteSupplier'),
@@ -105,10 +109,27 @@ updateEmployee.click(function () {
 
 })
 deleteEmployee.click(function () {
-    $('#mainLabel').text('Delete Employee')
-    $('#addbtn').text("Delete")
-
-    home.addClass('show')
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+            });
+        }
+    });
+    // $('#mainLabel').text('Delete Employee')
+    // $('#addbtn').text("Delete")
+    //
+    // home.addClass('show')
 })
 showDetails.click(function () {
     $('#mainLabel').text('All Employee Details')
@@ -133,10 +154,27 @@ updateSupplier.click(function () {
 
 })
 deleteSupplier.click(function () {
-    $('#supplierLabel').text('Delete Supplier')
-    $('#saveSupplierbtn').text("Delete")
-
-    home.addClass('show')
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+            });
+        }
+    });
+    // $('#supplierLabel').text('Delete Supplier')
+    // $('#saveSupplierbtn').text("Delete")
+    //
+    // home.addClass('show')
 })
 showSupplierDetails.click(function () {
     $('#supplierLabel').text('All Supplier Details')
@@ -162,10 +200,26 @@ updateItem.click(function () {
 
 })
 deleteItem.click(function () {
-    $('#inventoryLabel').text('Delete Item')
-    $('#saveItembtn').text("Delete")
-
-    home.addClass('show')
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+            });
+        }
+    });
+    // $('#inventoryLabel').text('Delete Item')
+    // $('#saveItembtn').text("Delete")
+    // home.addClass('show')
 })
 showItem.click(function () {
     $('#inventoryLabel').text('All Item Details')
@@ -197,4 +251,5 @@ $(document).ready(function(){
         maxDate: new Date()
     });
 });
+
 

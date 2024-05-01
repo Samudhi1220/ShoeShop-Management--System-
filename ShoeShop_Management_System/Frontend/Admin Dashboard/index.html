@@ -264,13 +264,18 @@
         </div>
     </section>
     <!--------------Employee---------------->
-    <section id="employee" class="mainSection d-none"  >
+    <section id="employee" class="mainSection "  >
         <div class="employeeDiv">
             <div class="cardDiv">
 
                 <div class="card">
-                    <div class="card-header shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-                        <h2>Employee Management</h2>
+                    <div class="card-header shadow-sm p-3 mb-5 bg-body-tertiary rounded ">
+                        <h2 class="d-flex float-start" >Employee Management</h2>
+                        <form class=" float-end d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+
                     </div>
                     <div class="card-body">
                         <div class="btnGroup float-end">
@@ -370,122 +375,125 @@
                 <form action="#">
                     <h2 id="mainLabel">Add Employee</h2>
 
-                    <div class="row">
-                        <div class="col">
-                            <div class="input_box adminInputBox">
-                                <input type="text" id="employeeCode" placeholder="Employee Code">
+                    <div class="mainInputDiv" id="employeeMainInputDiv">
+                        <div class="row">
+                            <div class="col">
+                                <div class="input_box adminInputBox">
+                                    <input type="text" id="employeeCode" placeholder="Employee Code">
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="input_box adminInputBox">
+                                    <input type="text" id="employeeName" placeholder="Employee Name">
+                                </div>
+                            </div>   <div class="col">
+                            <div class="input_box adminInputBox ">
+
+                                <select class="form-select  border-black" aria-label="Default select example" id="employeeGender"
+                                        required>
+                                    <option selected disabled value="">Female</option>
+                                    <option>Male</option>
+                                </select>
+                            </div></div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="input_box adminInputBox">
+                                    <input type="text" id="employeeStatus" placeholder="Employee Status">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input_box adminInputBox">
+                                    <input type="text" id="employeeDesignation" placeholder="Employee Designation">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input_box adminInputBox">
+                                    <input type="date" id="employeeDOB" placeholder="Date Of Birth">
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col">
-                            <div class="input_box adminInputBox">
-                                <input type="text" id="employeeName" placeholder="Employee Name">
-                            </div>
-                        </div>   <div class="col">
-                        <div class="input_box adminInputBox ">
+                        <div class="row">
 
-                        <select class="form-select  border-black" aria-label="Default select example" id="employeeGender"
-                                required>
-                            <option selected disabled value="">Female</option>
-                            <option>Male</option>
-                        </select>
-                    </div></div>
+                            <div class="col">
+                                <div class="input_box adminInputBox">
+                                    <input type="date" id="employeeDOJ" placeholder="Date Of Join">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input_box adminInputBox">
+                                    <input type="text" id="employeeBranch" placeholder="Branch">
+                                </div>
+                            </div>
 
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="input_box adminInputBox">
-                                <input type="text" id="employeeStatus" placeholder="Employee Status">
+                            <div class="col">
+                                <div class="input_box adminInputBox">
+                                    <input type="text" id="employeeBuilding" placeholder="Building No. Or Name">
+                                </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="input_box adminInputBox">
-                                <input type="text" id="employeeDesignation" placeholder="Employee Designation">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input_box adminInputBox">
-                                <input type="date" id="employeeDOB" placeholder="Date Of Birth">
-                            </div>
-                        </div>
-                    </div>
+                        <div class="row">
 
-                    <div class="row">
+                            <div class="col">
+                                <div class="input_box adminInputBox">
+                                    <input type="text" id="employeeLane" placeholder="Lane">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input_box adminInputBox">
+                                    <input type="text" id="employeeCity" placeholder="City">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input_box adminInputBox">
+                                    <input type="text" id="employeeState" placeholder="State">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="input_box adminInputBox">
+                                    <input type="text" id="employeePostalCode" placeholder="Postal Code">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input_box adminInputBox">
+                                    <input type="tel" id="employeeContactNumber" placeholder="Contact Number">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input_box adminInputBox">
+                                    <input type="email" id="employeeEmail" placeholder="email">
+                                </div>
+                            </div>
+                        </div>
 
-                        <div class="col">
-                            <div class="input_box adminInputBox">
-                                <input type="date" id="employeeDOJ" placeholder="Date Of Join">
+                        <div class="row">
+                            <div class="col">
+                                <div class="input_box adminInputBox  ">
+                                    <select class="form-select  border-black" aria-label="Default select example" id="employeeRole"
+                                            required>
+                                        <option selected disabled value="">Admin</option>
+                                        <option>Cashier</option>
+                                        <option>cleaner</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col">
-                            <div class="input_box adminInputBox">
-                                <input type="text" id="employeeBranch" placeholder="Branch">
+                            <div class="col">
+                                <div class="input_box adminInputBox">
+                                    <input type="text" id="employeeGuardian" placeholder="Name of Guardian">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input_box adminInputBox">
+                                    <input type="tel" id="employeeGuardianContact" placeholder="guardian Contact Details">
+                                </div>
                             </div>
                         </div>
 
-                    <div class="col">
-                        <div class="input_box adminInputBox">
-                            <input type="text" id="employeeBuilding" placeholder="Building No. Or Name">
-                        </div>
-                    </div>
-                    </div>
-                    <div class="row">
-
-                        <div class="col">
-                            <div class="input_box adminInputBox">
-                                <input type="text" id="employeeLane" placeholder="Lane">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input_box adminInputBox">
-                                <input type="text" id="employeeCity" placeholder="City">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input_box adminInputBox">
-                                <input type="text" id="employeeState" placeholder="State">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="input_box adminInputBox">
-                                <input type="text" id="employeePostalCode" placeholder="Postal Code">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input_box adminInputBox">
-                                <input type="tel" id="employeeContactNumber" placeholder="Contact Number">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input_box adminInputBox">
-                                <input type="email" id="employeeEmail" placeholder="email">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <div class="input_box adminInputBox  ">
-                            <select class="form-select  border-black" aria-label="Default select example" id="employeeRole"
-                                    required>
-                                <option selected disabled value="">Admin</option>
-                                <option>Cashier</option>
-                                <option>cleaner</option>
-                            </select>
-                        </div>
-                        </div>
-                        <div class="col">
-                            <div class="input_box adminInputBox">
-                                <input type="text" id="employeeGuardian" placeholder="Name of Guardian">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input_box adminInputBox">
-                                <input type="tel" id="employeeGuardianContact" placeholder="guardian Contact Details">
-                            </div>
-                        </div>
                     </div>
 
                     <button class="button" id="addbtn">
@@ -504,7 +512,11 @@
 
                 <div class="card">
                     <div class="card-header shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-                        <h2>Supplier Management</h2>
+                        <h2 class="d-flex float-start">Supplier Management</h2>
+                        <form class=" float-end d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
                     </div>
                     <div class="card-body">
                         <div class="btnGroup float-end">
@@ -692,13 +704,17 @@
         </div>
     </section>
     <!--------------Inventory---------------->
-    <section id="inventory" class="mainSection  ">
+    <section id="inventory" class="mainSection d-none  ">
         <div class="supplierDiv">
             <div class="cardDiv">
 
                 <div class="card">
                     <div class="card-header shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-                        <h2>Inventory Management</h2>
+                        <h2 class="d-flex float-start">Inventory Management</h2>
+                        <form class=" float-end d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
                     </div>
                     <div class="card-body">
                         <div class="btnGroup float-end">
@@ -726,6 +742,7 @@
                                     <th scope="col">Supplier name</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Category</th>
+                                    <th scope="col">Quantity</th>
                                     <th scope="col">Size</th>
                                     <th scope="col">Status</th>
                                 </tr>
@@ -737,6 +754,7 @@
                                     <td>Samudhi Randula</td>
                                     <td>Formal Shoes</td>
                                     <td>Shoe</td>
+                                    <td>5</td>
                                     <td>10</td>
                                     <td>Available</td>
 
@@ -750,6 +768,7 @@
                                     <td>Samudhi Randula</td>
                                     <td>Formal Shoes</td>
                                     <td>Shoe</td>
+                                    <td>5</td>
                                     <td>10</td>
                                     <td>Available</td>
                                 </tr>
@@ -760,6 +779,7 @@
                                     <td>Samudhi Randula</td>
                                     <td>Formal Shoes</td>
                                     <td>Shoe</td>
+                                    <td>5</td>
                                     <td>10</td>
                                     <td>Available</td>
 
@@ -770,6 +790,7 @@
                                     <td>Samudhi Randula</td>
                                     <td>Formal Shoes</td>
                                     <td>Shoe</td>
+                                    <td>5</td>
                                     <td>10</td>
                                     <td>Available</td>
                                 </tr>
@@ -779,6 +800,7 @@
                                     <td>Samudhi Randula</td>
                                     <td>Formal Shoes</td>
                                     <td>Shoe</td>
+                                    <td>5</td>
                                     <td>10</td>
                                     <td>Available</td>
                                 </tr>
@@ -812,77 +834,83 @@
                                 <input class="txt" type="text" id="itemCategory" placeholder="Category">
                             </div>
                         </div>
+                        </div>
+                    <div class="row">
+                    <div class="col">
+                        <div class="input_box">
+                            <input class="txt" type="text" id="itemQuatity" placeholder="Item Quantity">
+                        </div>
                     </div>
 
 
-                    <div class="row">
 
                         <div class="col">
                             <div class="input_box ">
                                 <input class="txt" type="text" id="supplierCodeItem" placeholder="Supplier Code">
                             </div>
                         </div>
+                        </div>
+                    <div class="row">
 
                         <div class="col">
                             <div class="input_box ">
                                 <input class="txt" type="text" readonly id="supplierNameItem" placeholder="Supplier Name">
                             </div>
                         </div>
-                    </div>
 
 
-                        <div class="col">
 
-                        </div>
-                    <div class="row">
+
+
                         <div class="col">
                             <div class="input_box">
                                 <input class="txt" type="text" id="itemDesc" placeholder="Item Description">
                             </div>
                         </div>
+                        </div>
 
+                    <div class="row">
                         <div class="col">
                             <div class="input_box">
                                 <input class="txt" type="number" id="itemSize" placeholder="Size">
                             </div>
                         </div>
-                        </div>
-                    <div class="row">
+
                         <div class="col">
                             <div class="input_box">
                                 <input class="txt" type="number" id="itemBuyPrice" placeholder="Unit price - Sale">
                             </div>
                         </div>
+                        </div>
 
 
-
+                    <div class="row">
                         <div class="col">
                             <div class="input_box">
                                 <input class="txt" type="number" id="itemSellPrice" placeholder="Unit price -Buy">
                             </div>
                         </div>
+                        <div class="col">
+                            <div class="input_box">
+                                <input class="txt" type="number" readonly id="supplierContactNumber01Item" placeholder="Expected Profit">
+                            </div>
                         </div>
+                        </div>
+
                     <div class="row">
                         <div class="col">
                             <div class="input_box">
-                                <input class="txt" type="number" readonly id="supplierContactNumber01Inventory" placeholder="Expected Profit">
+                                <input class="txt" type="tel" readonly id="supplierContactNumber02Item" placeholder="Profit margin">
                             </div>
                         </div>
 
+                        <div class="col">
+                            <div class="input_box">
+                                <input class="txt" type="text" readonly id="supplierEmailItem" placeholder="Status">
+                            </div>
+                        </div>
+                        </div>
 
-                        <div class="col">
-                            <div class="input_box">
-                                <input class="txt" type="tel" readonly id="supplierContactNumber02Inventory" placeholder="Profit margin">
-                            </div>
-                        </div>
-                        </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="input_box">
-                                <input class="txt" type="text" readonly id="supplierEmailInventory" placeholder="Status">
-                            </div>
-                        </div>
-                    </div>
                     <button class="button" id="saveItembtn">
                         Save Now
                     </button>
@@ -900,4 +928,5 @@
 </body>
 <script src="../assest/js/code.jquery.com_jquery-3.7.1.min.js"></script>
 <script src="assets/js/scrypt.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </html>
