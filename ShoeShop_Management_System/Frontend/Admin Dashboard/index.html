@@ -264,7 +264,7 @@
         </div>
     </section>
     <!--------------Employee---------------->
-    <section id="employee" class="mainSection "  >
+    <section id="employee" class="mainSection d-none"  >
         <div class="employeeDiv">
             <div class="cardDiv">
 
@@ -379,13 +379,13 @@
                         <div class="row">
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input type="text" id="employeeCode" placeholder="Employee Code">
+                                    <input class="txt" type="text" id="employeeCode" placeholder="Employee Code">
                                 </div>
                             </div>
 
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input type="text" id="employeeName" placeholder="Employee Name">
+                                    <input class="txt" type="text" id="employeeName" placeholder="Employee Name">
                                 </div>
                             </div>   <div class="col">
                             <div class="input_box adminInputBox ">
@@ -401,17 +401,17 @@
                         <div class="row">
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input type="text" id="employeeStatus" placeholder="Employee Status">
+                                    <input  class="txt" type="text" id="employeeStatus" placeholder="Employee Status">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input type="text" id="employeeDesignation" placeholder="Employee Designation">
+                                    <input class="txt" type="text" id="employeeDesignation" placeholder="Employee Designation">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input type="date" id="employeeDOB" placeholder="Date Of Birth">
+                                    <input class="txt" type="date" id="employeeDOB" placeholder="Date Of Birth">
                                 </div>
                             </div>
                         </div>
@@ -420,18 +420,18 @@
 
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input type="date" id="employeeDOJ" placeholder="Date Of Join">
+                                    <input class="txt" type="date" id="employeeDOJ" placeholder="Date Of Join">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input type="text" id="employeeBranch" placeholder="Branch">
+                                    <input class="txt" type="text" id="employeeBranch" placeholder="Branch">
                                 </div>
                             </div>
 
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input type="text" id="employeeBuilding" placeholder="Building No. Or Name">
+                                    <input  class="txt" type="text" id="employeeBuilding" placeholder="Building No. Or Name">
                                 </div>
                             </div>
                         </div>
@@ -439,34 +439,34 @@
 
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input type="text" id="employeeLane" placeholder="Lane">
+                                    <input  class="txt" type="text" id="employeeLane" placeholder="Lane">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input type="text" id="employeeCity" placeholder="City">
+                                    <input class="txt" type="text" id="employeeCity" placeholder="City">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input type="text" id="employeeState" placeholder="State">
+                                    <input class="txt" type="text" id="employeeState" placeholder="State">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input type="text" id="employeePostalCode" placeholder="Postal Code">
+                                    <input  class="txt" type="text" id="employeePostalCode" placeholder="Postal Code">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input type="tel" id="employeeContactNumber" placeholder="Contact Number">
+                                    <input class="txt" type="tel" id="employeeContactNumber" placeholder="Contact Number">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input type="email" id="employeeEmail" placeholder="email">
+                                    <input class="txt" type="email" id="employeeEmail" placeholder="email">
                                 </div>
                             </div>
                         </div>
@@ -484,12 +484,12 @@
                             </div>
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input type="text" id="employeeGuardian" placeholder="Name of Guardian">
+                                    <input class="txt" type="text" id="employeeGuardian" placeholder="Name of Guardian">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input type="tel" id="employeeGuardianContact" placeholder="guardian Contact Details">
+                                    <input class="txt" type="tel" id="employeeGuardianContact" placeholder="guardian Contact Details">
                                 </div>
                             </div>
                         </div>
@@ -704,7 +704,7 @@
         </div>
     </section>
     <!--------------Inventory---------------->
-    <section id="inventory" class="mainSection d-none  ">
+    <section id="inventory" class="mainSection">
         <div class="supplierDiv">
             <div class="cardDiv">
 
@@ -858,10 +858,6 @@
                             </div>
                         </div>
 
-
-
-
-
                         <div class="col">
                             <div class="input_box">
                                 <input class="txt" type="text" id="itemDesc" placeholder="Item Description">
@@ -910,17 +906,106 @@
                             </div>
                         </div>
                         </div>
+                    <div class="row">
+                        <div class="col d-flex align-items-center">
+                            <div class="input_box">
+                                <label for="imgUploader" class="file-label ms-1 mb-2 ">Select a image...</label>
+                                <input class="form-control imgUploader" type="file" id="imgUploader" placeholder="Select Item Image" multiple/>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="d-flex justify-content-center pt-3">
+                                <img id="imgViewer" alt="" width="200" src="assets/images/shoe01.png"/>
+                            </div>
+                        </div>
+                    </div>
 
                     <button class="button" id="saveItembtn">
                         Save Now
                     </button>
-                    <button class="cancelBtn" id="cancelItemrBtn">Cancel</button>
+                    <button class="cancelBtn" id="cancelItemeBtn">Cancel</button>
                 </form>
             </div>
         </div>
     </section>
     <!--------------Users---------------->
     <section id="users" class="mainSection d-none " >
+        <div class="supplierDiv">
+            <div class="cardDiv">
+
+                <div class="card">
+                    <div class="card-header shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                        <h2 class="d-flex float-start">User Management</h2>
+                        <form class=" float-end d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                    <div class="card-body">
+                        <div class="btnGroup float-end">
+                        <button type="button" class="btn btn-outline-danger" id="deleteUser"><span
+                                class="material-symbols-outlined">person_remove</span>Delete User
+                        </button>
+                            </div>
+
+
+                        <div class="table-container">
+                            <table class="table"  >
+                                <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Contact</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Role</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>E001</td>
+                                    <td>Samudhi Randula</td>
+                                    <td>Thiranagama, Hikkaduwa</td>
+                                    <td>0778903470</td>
+                                    <td>samudhirandu@gmail.com</td>
+                                    <td>Admin</td>
+
+                                </tr>
+                                <tr>
+                                    <td>E002</td>
+                                    <td>Sithum Perera</td>
+                                    <td>Wellawatte Hikkaduwa</td>
+                                    <td>0777938904</td>
+                                    <td>sithumperera@gmail.com</td>
+                                    <td>User</td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-------------- Delete User Form---------------->
+        <div class="form-container">
+            <div class="from_close">
+                <span class="material-symbols-outlined">cancel_presentation</span>
+            </div>
+            <div class="form ">
+                <form action="#">
+                    <h2 id="userLabel">Add Item</h2>
+
+
+                </form>
+            </div>
+        </div>
+
 
     </section>
 

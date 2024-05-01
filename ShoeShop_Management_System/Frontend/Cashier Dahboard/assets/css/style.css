@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+:root {
+    --color-primary: #f6afb6;
+    --color-danger: #FF0060;
+    --color-success: #1B9C85;
+    --color-warning: #F7D060;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F8F9FA;
+    font-family: 'Poppins', sans-serif;
+    /*font-size: 20px;*/
+}
+
+.shoes {
+    font-family: "Noto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+.profile .profile-photo {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.navBarPrimeryDiv .profile {
+    display: flex;
+    gap: 1.5rem;
+    text-align: right;
+}
+
+.profile .info p {
+    font-weight: 400;
+}
+
+.profile .info small {
+    font-weight: 600;
+}
+
+.sideBar {
+    border-radius: 15px;
+    width: 220px;
+    height: 91.8%;
+    position: fixed;
+    top: 4rem;
+    transition: all 0.3s ease;
+}
+
+.sideBar a {
+    display: flex;
+    align-items: center;
+    color: var(--color-info-dark);
+    height: 4rem;
+    gap: 1rem;
+    position: relative;
+    margin-left: 2rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.sideBar a span {
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.sideBar a:last-child {
+    position: absolute;
+    top: 90%;
+}
+
+.sideBar a.active {
+    width: 100%;
+    color: var(--color-primary);
+    background-color: var(--color-light);
+    margin-left: 0;
+}
+
+.sideBar a.active::before {
+    content: '';
+    width: 6px;
+    height: 18px;
+    background-color: var(--color-primary);
+}
+
+.sideBar a.active span {
+    color: var(--color-primary);
+    margin-left: calc(1rem - 3px);
+}
+
+.sideBar a:hover {
+    color: var(--color-primary);
+}
+
+.sideBar a:hover span {
+    margin-left: 0.6rem;
+}
+
+.sideBar h3 {
+    padding-top: 10.5px;
+}
+
+main {
+    width: 100%;
+    display: grid;
+}
+
+.mainSection {
+    margin-left: 16rem;
+    margin-top: 6rem;
+}
+
+.data {
+    padding-left: 4rem;
+    padding-right: 3rem;
+}
+
+.data .analyse {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+}
+
+main .analyse > div {
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+main .analyse > div:hover {
+    box-shadow: none;
+}
+
+main .analyse > div .status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main .analyse h3 {
+    margin-left: 0.6rem;
+    font-size: 1rem;
+}
+
+main .analyse .progresss {
+    position: relative;
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+}
+
+main .analyse svg {
+    width: 7rem;
+    height: 7rem;
+}
+
+main .analyse svg circle {
+    fill: none;
+    stroke-width: 10;
+    stroke-linecap: round;
+    transform: translate(5px, 5px);
+}
+
+main .analyse .sales svg circle {
+    stroke: var(--color-success);
+    stroke-dashoffset: -30;
+    stroke-dasharray: 200;
+}
+
+main .analyse .visits svg circle {
+    stroke: var(--color-danger);
+    stroke-dashoffset: -30;
+    stroke-dasharray: 200;
+}
+
+main .analyse .searches svg circle {
+    stroke: var(--color-primary);
+    stroke-dashoffset: -30;
+    stroke-dasharray: 200;
+}
+
+main .analyse .progresss .percentage {
+    position: absolute;
+    top: -3px;
+    left: -1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.downMainDiv {
+    margin-top: 0.5rem;
+    padding-left: 4rem;
+    padding-right: 3rem;
+}
+.mostSaleItem{
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+}
+.mostSaleItem .col{
+    /*width: 50%;*/
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mostSaleItem h1 {
+    font-weight: 550;
+    font-size: 25px;
+    margin-top: 30px;
+}
+
+.mostSaleItem img {
+    /*width: 15rem;*/
+
+}
+
+.mostSaleItem p {
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.qty .qtyStatus{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.qty h3 {
+    margin-left: 0.6rem;
+    font-size: 1.5rem;
+    opacity: 70%;
+}
+
+.qty .qtyProgresses {
+    position: relative;
+
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    /*background-color: #0a58ca;*/
+}
+.qty svg {
+    width: 12rem;
+    height: 12rem;
+    /*background-color: black;*/
+}
+.qty svg circle {
+    fill: none;
+    stroke-width: 10;
+    stroke-linecap: round;
+    transform: translate(25px, 25px);
+}
+.qty svg circle {
+    stroke: var(--color-success);
+    stroke-dashoffset: -70;
+    stroke-dasharray: 350;
+}
+.qtyProgresses .qtyPercentage {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.qty h1{
+    font-size: 75px;
+    opacity: 80%;
+}
+
+.itemDiv h1{
+font-size: 2rem;
+}
