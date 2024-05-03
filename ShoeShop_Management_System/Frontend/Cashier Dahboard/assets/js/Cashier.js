@@ -2,13 +2,17 @@
 
 const dashboardBtn = $('#dashboardBtn');
 const customerBtn = $('#customerBtn');
-const supplierBtn = $('#supplierBtn');
+const orderBtn = $('#orderBtn');
 const inventoryBtn = $('#inventoryBtn');
 const userBtn = $('#userBtn');
-const addCustomer = $('#addCustomer');
+const addCustomer = $('#addCustomer'),
     updateCustomer = $('#updateCustomer'),
     deleteCustomer = $('#deleteCustomer'),
     showCustomerDetails = $('#showCustomerDetails'),
+    showOrderDetails = $('#showOrderDetails'),
+        deleteOrder = $('#deleteCart')
+
+
 
     form_close = $('.from_close'),
         cancelBtn = $('.cancelBtn'),
@@ -39,7 +43,7 @@ customerBtn.click(function () {
     userBtn.removeClass('active')
     inventoryBtn.removeClass('active')
 })
-supplierBtn.click(function () {
+orderBtn.click(function () {
     // $('#employee').css("display", "none");
     // $('#dashboard').css("display", "none");
     // $('#supplier').css("display", "block");
@@ -47,11 +51,16 @@ supplierBtn.click(function () {
     // $('#users').css("display", "none");
     dashboardBtn.removeClass('active')
     customerBtn.removeClass('active')
-    supplierBtn.addClass('active')
-    userBtn.removeClass('active')
+    orderBtn.addClass('active')
     inventoryBtn.removeClass('active')
 
-})
+    // $('#employeSection').remove();
+    // $('#inventorySection').remove();
+    // $('#userSection').remove();
+    // $('#pages').load('supplier.html #supplierSection', function () {
+    //     pagination();
+    //     supplierFunction();
+     });
 inventoryBtn.click(function () {
     // $('#employee').css("display", "none");
     // $('#dashboard').css("display", "none");
