@@ -25,6 +25,17 @@ const addEmployee = $('#addEmployee');
         imgUploader = $('#imgUploader');
         home = $('.home');
 
+
+var base64String;
+
+function employeeControlFunction() {
+    saveEmployee();
+    imageUploader();
+    getAllEmployeeData();
+    clickTblRow();
+    setEmployeeImg();
+}
+
 dashboardBtn.click(function () {
     // $('#dashboard').css("display", "block");
     // $('#employee').css("display", "none");
@@ -89,12 +100,7 @@ userBtn.click(function () {
     userBtn.addClass('active')
 
 })
-addEmployee.click(function () {
-    home.addClass('show')
-    console.log('helloooo')
 
-
-})
 form_close.click(function () {
     home.addClass('show')
 
@@ -104,13 +110,34 @@ addEmployee.click(function () {
     home.addClass('show')
     $('#addbtn').text("Save")
     enableTxtField();
+    generateNewId();
+
 
 })
+function generateNewId() {
+    fetch("http://localhost:8080/api/v1/employees/id")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); // Read response as text
+        })
+        .then(data => {
+            console.log(data);
+            $('#employeeCode').val(data.data); // Assuming data is a string
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+
+}
 updateEmployee.click(function () {
     $('#mainLabel').text('Update Employee')
     home.addClass('show')
     $('#addbtn').text("Update")
     enableTxtField();
+
 
 })
 
@@ -301,6 +328,106 @@ function disableTxtField() {
 
 function enableTxtField() {
     $('.txt').removeAttr('readonly');
+}
+
+
+function saveEmployee() {
+
+
+    $('#addbtn').click(function () {
+        if ($('#addbtn').text().trim()==='Save'){
+
+
+            if ($('#employeeRole').val() === "Admin" || $('#employeeRole').val() === "User") {
+                var role = $('#employeeRole').val().toUpperCase();
+            }
+            if ($('#employeeGender').val() === "Male" || $('#employeeGender').val() === "Female") {
+                var gender = $('#employeeGender').val().toUpperCase();
+            }
+
+            const postData = {
+                employeeId: $('#employeeCode').val(),
+                gender: gender,
+                employeeName: $('#employeeName').val(),
+                employeeStatus: $('#employeeStatus').val(),
+                branch: $('#employeeBranch').val(),
+                designation: $('#employeeDesignation').val(),
+                proPic: base64String,
+                joinDate: $('#employeeDOJ').val(),
+                employeeDob: $('#employeeDOB').val(),
+                role: role,
+                address: {
+                    buildNo: $('#employeeBuilding').val(),
+                    city: $('#employeeCity').val(),
+                    lane: $('#employeeLane').val(),
+                    state: $('#employeeState').val(),
+                    postalCode: $('#employeePostalCode').val()
+                },
+                email: $('#employeeEmail').val(),
+                guardianName: $('#employeeGuardian').val(),
+                contactNo: $('#employeeContactNumber').val(),
+                emergencyContact: $('#employeeGuardianContact').val(),
+            };
+            console.log(base64String);
+
+            $.ajax({
+                url: "http://localhost:8080/api/v1/employees",
+                method: "POST",
+                data: JSON.stringify(postData),
+                contentType: "application/json",
+                success: function (resp) {
+                    if (resp.state == 200) {
+                        console.log(resp);
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Employee has been saved",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                },
+                error: function (resp) {
+                    console.log(resp)
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: resp.responseJSON.message,
+                        footer: '<a href="#"></a>'
+                    });
+                }
+            })
+
+        }
+
+
+    })
+
+}
+function getAllEmployeeData() {
+    $.ajax({
+        url: "http://localhost:8080/api/v1/employees",
+        method: "GET",
+        success: function (resp) {
+            console.log("Success: ", resp);
+            for (const employee of resp.data) {
+                const row = `<tr>
+                         
+                                <td>${employee.employeeId}</td>
+                                <td>${employee.employeeName}</td>
+                                <td>${employee.address.buildNo + ", " + employee.address.lane + ", " + employee.address.state + ", " + employee.address.city + ", " + employee.address.postalCode}</td>
+                                <td>${employee.contactNo}</td>
+                                <td>${employee.joinDate}</td>
+                                <td>${employee.branch}</td>
+                                
+                            </tr>`;
+                $('#tblEmployee').append(row);
+            }
+        },
+        error: function (error) {
+            console.log("error: ", error);
+        }
+    })
 }
 
 

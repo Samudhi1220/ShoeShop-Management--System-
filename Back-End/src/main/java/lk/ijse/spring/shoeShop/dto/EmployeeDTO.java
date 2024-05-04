@@ -4,10 +4,15 @@ import jakarta.persistence.*;
 import lk.ijse.spring.shoeShop.embedded.Address;
 import lk.ijse.spring.shoeShop.embedded.Gender;
 import lk.ijse.spring.shoeShop.util.Role;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class EmployeeDTO {
 
     private String employeeId;
