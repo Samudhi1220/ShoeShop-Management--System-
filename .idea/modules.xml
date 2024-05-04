@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Frontend/Frontend.iml" filepath="$PROJECT_DIR$/Frontend/Frontend.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ShoeShop_Management_System.iml" filepath="$PROJECT_DIR$/ShoeShop_Management_System.iml" />
+      <module fileurl="file://$PROJECT_DIR$/helloShoe-Shop-Management-System.iml" filepath="$PROJECT_DIR$/helloShoe-Shop-Management-System.iml" />
     </modules>
   </component>
 </project>
