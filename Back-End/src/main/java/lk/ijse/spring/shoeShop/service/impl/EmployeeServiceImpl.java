@@ -36,16 +36,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 
                         employee.setAddress(employeeDTo.getAddress());
                         employeeRepository.save(employee);
-                    }else {
+                    } else {
                         throw new EntityExistsException("Emergency Contact Number already exists!");
                     }
-                }else {
+                } else {
                     throw new EntityExistsException("Employee Contact Number already exists!");
                 }
-            }else {
+            } else {
                 throw new EntityExistsException("Email Address already exists!");
             }
-        }else {
+        } else {
             throw new EntityExistsException("Employee already exists!");
         }
     }
@@ -53,7 +53,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void updateEmployee(EmployeeDTO employee) {
         if (employeeRepository.existsById(employee.getEmployeeId())) {
-            if (employeeRepository.existsById(employee.getEmployeeId())) {}
+            if (employeeRepository.existsById(employee.getEmployeeId())) {
+            }
             employeeRepository.save(modelMapper.map(employee, Employee.class));
         } else {
             throw new EntityExistsException("Employee Not Found!");
@@ -83,10 +84,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     }
 
+
     @Override
     public String lastId() {
         return employeeRepository.getLastIndex();
     }
 
-
+    @Override
+    public List<EmployeeDTO> searchEmployeesById(String idOrName) {
+        return modelMapper.map(employeeRepository.findByEmployeeIdStartingWithOrEmployeeNameStartingWith(idOrName, idOrName), new TypeToken<List<EmployeeDTO>>() {
+        }.getType());
+    }
 }

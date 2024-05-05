@@ -19,15 +19,20 @@
 
 }
 .btn{
-    border-radius: 17px;
-    margin-left: 7px;
-display: flex;
+    border-radius: 15px;
+    margin-left: 5px;
+    display: flex;
+    font-size: small;
+
+
+
 
 }
 .btnGroup{
     margin-bottom: 10px;
     display: flex;
 }
+
 
 
 .form-container {

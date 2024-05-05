@@ -279,31 +279,23 @@
                     </div>
                     <div class="card-body">
                         <div class="btnGroup float-end">
-                            <button type="button" class="btn btn-outline-primary" id="addEmployee"><span
+                            <button type="button" class="btn btn-outline-primary  " id="addEmployee"><span
                                     class="material-symbols-outlined">person_add</span> Add
                             </button>
-                            <button type="button" class="btn btn-outline-success" id="updateEmployee"><span
-                                    class="material-symbols-outlined">edit_note</span>Update
-                            </button>
-                            <button type="button" class="btn btn-outline-danger" id="deleteEmployee"><span
-                                    class="material-symbols-outlined">person_remove</span>Delete
-                            </button>
-                            <button type="button" class="btn btn-outline-warning" id="showDetails"><span
-                                    class="material-symbols-outlined">manage_accounts</span>Details
-                            </button>
-                        </div>
 
+                        </div>
 
                         <div class="table-container">
                             <table class="table" id="tblEmployee">
-                                <thead class="table-dark">
+                                <thead class="table-dark  " >
                                 <tr>
-                                    <th scope="col">Id</th>
+                                    <th scope="col" >Id</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Address</th>
                                     <th scope="col">Contact</th>
                                     <th scope="col">Date</th>
                                     <th scope="col">Branch</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -346,8 +338,8 @@
 
                                 <select class="form-select  border-black" aria-label="Default select example" id="employeeGender"
                                         required>
-                                    <option selected disabled value="">Female</option>
-                                    <option>Male</option>
+                                    <option value="">FEMALE</option>
+                                    <option>MALE</option>
                                 </select>
                             </div></div>
 
@@ -430,8 +422,8 @@
                                 <div class="input_box adminInputBox  ">
                                     <select class="form-select  border-black" aria-label="Default select example" id="employeeRole"
                                             required>
-                                        <option selected disabled value="">Admin</option>
-                                        <option>Cashier</option>
+                                        <option   value="">Admin</option>
+                                        <option>User</option>
                                         <option>cleaner</option>
                                     </select>
                                 </div>

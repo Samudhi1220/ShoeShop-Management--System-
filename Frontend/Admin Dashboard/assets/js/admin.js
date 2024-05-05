@@ -1,39 +1,38 @@
-
-
 const dashboardBtn = $('#dashboardBtn');
 const employeeBtn = $('#employeeBtn');
 const supplierBtn = $('#supplierBtn');
 const inventoryBtn = $('#inventoryBtn');
 const userBtn = $('#userBtn');
 const addEmployee = $('#addEmployee');
-    updateEmployee = $('#updateEmployee'),
+updateEmployee = $('#updateEmployee'),
     deleteEmployee = $('#deleteEmployee'),
     showDetails = $('#showDetails'),
-        employeeDeleteBox = $('#employeeDeleteBox'),
-        employeeMainInputDiv = $('#employeeMainInputDiv'),
-        addSupplier= $('#addSupplier'),
-        updateSupplier=$('#updateSupplier'),
-        deleteSupplier=$('#deleteSupplier'),
-        showSupplierDetails=$('#showSupplierDetails'),
-        addItem=$('#addInventory'),
-        updateItem= $('#updateInventory'),
-        deleteItem=$('#deleteInventory'),
-        showItem=$('#showInventoryDetails')
+    employeeDeleteBox = $('#employeeDeleteBox'),
+    employeeMainInputDiv = $('#employeeMainInputDiv'),
+    addSupplier = $('#addSupplier'),
+    updateSupplier = $('#updateSupplier'),
+    deleteSupplier = $('#deleteSupplier'),
+    showSupplierDetails = $('#showSupplierDetails'),
+    addItem = $('#addInventory'),
+    updateItem = $('#updateInventory'),
+    deleteItem = $('#deleteInventory'),
+    showItem = $('#showInventoryDetails')
     form_close = $('.from_close'),
-        cancelBtn = $('.cancelBtn'),
-        deleteUser=$('#deleteUser')
-        imgUploader = $('#imgUploader');
-        home = $('.home');
+    cancelBtn = $('.cancelBtn'),
+    deleteUser = $('#deleteUser')
+    imgUploader = $('#imgUploader');
+    home = $('.home');
 
 
 var base64String;
 
 
-    saveEmployee();
+saveEmployee();
 imageUploaderEmployee();
-    getAllEmployeeData();
-    clickTblRow();
-
+getAllEmployeeData()
+clickTblRow();
+updateEmployeeBtn()
+deleteEmployeeBtn();
 
 
 dashboardBtn.click(function () {
@@ -114,6 +113,7 @@ addEmployee.click(function () {
 
 
 })
+
 function generateNewId() {
     fetch("http://localhost:8080/api/v1/employees/id")
         .then(response => {
@@ -132,38 +132,16 @@ function generateNewId() {
 
 
 }
+
 updateEmployee.click(function () {
     $('#mainLabel').text('Update Employee')
     home.addClass('show')
     $('#addbtn').text("Update")
     enableTxtField();
 
-
 })
 
-    deleteEmployee.click(function () {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
-                });
-            }
-        });
-    // $('#mainLabel').text('Delete Employee')
-    // $('#addbtn').text("Delete")
-    //
-    // home.addClass('show')
-})
+
 showDetails.click(function () {
     $('#mainLabel').text('All Employee Details')
     $('#addbtn').text("Close")
@@ -269,24 +247,24 @@ showItem.click(function () {
 });
 form_close.click(function () {
     home.removeClass('show');
-    form_container.css('max-width','800px')
+    form_container.css('max-width', '800px')
 
 })
 cancelBtn.click(function () {
     home.removeClass('show');
-    form_container.css('max-width','800px')
+    form_container.css('max-width', '800px')
 
 })
-$(document).ready(function(){
-    $("#employeeDOJ").datepicker({
-        dateFormat: 'yy-mm-dd',
-        maxDate: new Date()
-    });
-    $("#employeeDOB").datepicker({
-        dateFormat: 'yy-mm-dd',
-        maxDate: new Date()
-    });
-});
+// $(document).ready(function(){
+//     $("#employeeDOJ").datepicker({
+//         dateFormat: 'yy-mm-dd',
+//         maxDate: new Date()
+//     });
+//     $("#employeeDOB").datepicker({
+//         dateFormat: 'yy-mm-dd',
+//         maxDate: new Date()
+//     });
+// });
 imgUploader.change(function () {
     var file = $(this)[0].files[0];
     if (file) {
@@ -315,6 +293,7 @@ deleteUser.click(function () {
         }
     })
 });
+
 function disableTxtField() {
     $('.txt').attr('readonly', "");
 
@@ -326,10 +305,8 @@ function enableTxtField() {
 
 
 function saveEmployee() {
-
-
     $('#addbtn').click(function () {
-        if ($('#addbtn').text().trim()==='Save'){
+        if ($('#addbtn').text().trim() === 'Save') {
 
 
             if ($('#employeeRole').val() === "Admin" || $('#employeeRole').val() === "User") {
@@ -407,6 +384,7 @@ updateSupplier.click(function () {
     enableTxtField()
 
 });
+
 function getAllEmployeeData() {
     $.ajax({
         url: "http://localhost:8080/api/v1/employees",
@@ -422,6 +400,10 @@ function getAllEmployeeData() {
                                 <td>${employee.contactNo}</td>
                                 <td>${employee.joinDate}</td>
                                 <td>${employee.branch}</td>
+                                <td>          <img src="assets/images/action-btn.png" id="updateEmployee" height="35" width="35"/>
+                                         <img src="assets/images/action-delete-btn.png" id="deleteEmployee"  height="35" width="35"/>
+                                         <img src="assets/images/action-btn (1) (1).png" id="showDetails" height="35" width="35"/>
+                            </td>
                                 
                             </tr>`;
                 $('#tblEmployee').append(row);
@@ -433,16 +415,6 @@ function getAllEmployeeData() {
     })
 }
 
-function clickTblRow() {
-
-    $('#tblEmployee').on('click', 'tr', function(event) {
-        console.log('click');
-
-
-
-    });
-
-}
 
 function imageUploaderEmployee() {
     const imgUploader = $('#imgUploaderEmployee');
@@ -466,6 +438,185 @@ function imageUploaderEmployee() {
         }
     })
 }
+
+function setDataToTextField(response) {
+
+    $('#employeeCode').val(response.employeeId);
+    $('#employeeName').val(response.employeeName);
+    $('#employeeStatus').val(response.employeeStatus);
+    $('#employeeBranch').val(response.branch);
+    $('#employeeDesignation').val(response.designation);
+    $('#employeeDOJ').val(response.joinDate);
+    $('#employeeDOB').val(response.employeeDob);
+    $('#employeeBuilding').val(response.address.buildNo);
+    $('#employeeCity').val(response.address.city);
+    $('#employeeLane').val(response.address.lane);
+    $('#employeeState').val(response.address.state);
+    $('#employeePostalCode').val(response.address.postalCode);
+    $('#employeeEmail').val(response.email);
+    $('#employeeGuardian').val(response.guardianName);
+    $('#employeeContactNumber').val(response.contactNo);
+    $('#employeeGuardianContact').val(response.emergencyContact);
+    $('#employeeGender').val(response.gender);
+    $('#employeeRole').val(response.role);
+
+    console.log(response.role)
+
+    base64String = response.proPic;
+    $('#imgViewer').attr('src', 'data:image/jpeg;base64,' + response.proPic)
+}
+
+function clickTblRow() {
+
+    $('#tblEmployee').on('click', 'tr', function (event) {
+
+
+    });
+    $('#tblEmployee').on('click', '#updateEmployee', function (event) {
+
+        $('#mainLabel').text('Update Employee')
+        home.addClass('show')
+        $('#addbtn').text("Update")
+        enableTxtField();
+        var row = $(this).closest('tr');
+        var id = row.find('td:eq(0)').text()
+        $.ajax({
+            url: "http://localhost:8080/api/v1/employees/" + id,
+            type: "GET",
+            dataType: "json",
+            success: function (response) {
+
+                console.log(response);
+                setDataToTextField(response)
+
+            },
+            error: function (xhr, status, error) {
+                console.error('Failed to fetch image:', error);
+            }
+        });
+        console.log(id)
+    });
+
+}
+
+function updateEmployeeBtn() {
+    $('#addbtn').click(function () {
+        if ($(this).text().trim() === 'Update') {
+            var role;
+            var gender;
+            if ('none' !== $('#employeeRole').val()) {
+                role = $('#employeeRole').val().toUpperCase();
+            }
+            if ('Select Gender' !== $('#employeeGender').val()) {
+                gender = $('#employeeGender').val().toUpperCase();
+            }
+
+
+            const postData = {
+                employeeId: $('#employeeCode').val(),
+                gender: gender,
+                employeeName: $('#employeeName').val(),
+                employeeStatus: $('#employeeStatus').val(),
+                branch: $('#employeeBranch').val(),
+                designation: $('#employeeDesignation').val(),
+                proPic: base64String,
+                joinDate: $('#employeeDOJ').val(),
+                employeeDob: $('#employeeDOB').val(),
+                role: role,
+                address: {
+                    buildNo: $('#employeeBuilding').val(),
+                    city: $('#employeeCity').val(),
+                    lane: $('#employeeLane').val(),
+                    state: $('#employeeState').val(),
+                    postalCode: $('#employeePostalCode').val()
+                },
+                email: $('#employeeEmail').val(),
+                guardianName: $('#employeeGuardian').val(),
+                contactNo: $('#employeeContactNumber').val(),
+                emergencyContact: $('#employeeGuardianContact').val(),
+            };
+            console.log(base64String);
+
+            $.ajax({
+                url: "http://localhost:8080/api/v1/employees",
+                method: "PATCH",
+                data: JSON.stringify(postData),
+                contentType: "application/json",
+                success: function (resp) {
+                    if (resp.state == 200) {
+                        getAllEmployeeData()
+                        console.log(resp);
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Employee has been Updated",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+
+
+                        $('#tblEmployee tr').each(function () {
+
+
+                            // Update data of checked row
+                            var row = $(this);
+
+                            // Example: Update first name to 'New First Name' and last name to 'New Last Name'
+                            row.find('td:eq(0)').text($('#employeeCode').val());
+                            row.find('td:eq(1)').text($('#employeeName').val());
+                            row.find('td:eq(2)').text($('#employeeBuilding').val() + " " +
+                                $('#employeeLane').val() + " " + $('#employeeState').val() + " " + $('#employeeCity').val()
+                                + " " + $('#employeePostalCode').val());
+                            row.find('td:eq(3)').text($('#employeeContactNumber').val());
+                            row.find('td:eq(4)').text($('#employeeDOJ').val());
+                            row.find('td:eq(5)').text($('#employeeBranch').val());
+
+                        });
+                    }
+                },
+                error: function (resp) {
+                    console.log(resp)
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: resp.responseJSON.message,
+                        footer: '<a href="#"></a>'
+                    });
+                }
+            })
+
+        }
+    });
+}
+
+function deleteEmployeeBtn(id) {
+    $('#deleteEmployee').click(function () {
+        $.ajax({
+            url: "http://localhost:8080/api/v1/employees/" + id,
+            type: "DELETE",
+            success: function (response) {
+                getAllEmployeeData();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Employee has been Deleted",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            },
+            error: function (resp) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: resp.responseJSON.message,
+                    footer: '<a href="#"></a>'
+                });
+            }
+        });
+    })
+}
+
+
 
 
 

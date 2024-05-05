@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -28,7 +29,7 @@ public class EmployeeController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public ResponseUtil saveCustomer(@RequestBody EmployeeDTO employee) {
+    public ResponseUtil saveEmployee(@RequestBody EmployeeDTO employee) {
         System.out.println("hellow");
         System.out.println(employee.toString());
         employeeService.saveEmployee(employee);
@@ -47,11 +48,36 @@ public class EmployeeController {
 //        return new ResponseUtil("200", "Successfully Fetched Employee Count", employeeService.countEmployee());
 //    }
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @PatchMapping
+    public ResponseUtil updateEmployee(@RequestBody EmployeeDTO employee) {
+        employeeService.updateEmployee(employee);
+        return new ResponseUtil("200", "Successfully Updated!", null);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
     @GetMapping("/{id}")
-    public ResponseEntity<EmployeeDTO> getImageById(@PathVariable("id") String id) {
+    public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable("id") String id) {
         Optional<EmployeeDTO> optionalImageEntity = Optional.ofNullable(employeeService.getEmployee(id));
         return optionalImageEntity.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public ResponseUtil deleteEmployee(@PathVariable("id") String id) {
+        employeeService.deleteEmployee(id);
+        return new ResponseUtil("200", "Successfully Deleted!", null);
+    }
+
+    @GetMapping(params = "idOrName",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchEmployees(@RequestParam("idOrName") String idOrName) {
+        List<EmployeeDTO> employeeDTOS = employeeService.searchEmployeesById(idOrName);
+        System.out.println("idOrName : " + idOrName);
+        for (EmployeeDTO employeeDTO : employeeDTOS) {
+            System.out.println(employeeDTO.getEmployeeId());
+        }
+        return new ResponseUtil("200", "Successfully Fetched Employees", employeeService.searchEmployeesById(idOrName));
+
     }
 
 
