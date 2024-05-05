@@ -28,13 +28,13 @@ const addEmployee = $('#addEmployee');
 
 var base64String;
 
-function employeeControlFunction() {
+
     saveEmployee();
-    imageUploader();
+imageUploaderEmployee();
     getAllEmployeeData();
     clickTblRow();
-    setEmployeeImg();
-}
+
+
 
 dashboardBtn.click(function () {
     // $('#dashboard').css("display", "block");
@@ -186,13 +186,7 @@ addSupplier.click(function () {
     enableTxtField()
 
 });
-updateSupplier.click(function () {
-    $('#supplierLabel').text('Update Supplier')
-    home.addClass('show')
-    $('#saveSupplierbtn').text("Update")
-    enableTxtField()
 
-});
 deleteSupplier.click(function () {
     Swal.fire({
         title: "Are you sure?",
@@ -404,6 +398,15 @@ function saveEmployee() {
     })
 
 }
+
+
+updateSupplier.click(function () {
+    $('#supplierLabel').text('Update Supplier')
+    home.addClass('show')
+    $('#saveSupplierbtn').text("Update")
+    enableTxtField()
+
+});
 function getAllEmployeeData() {
     $.ajax({
         url: "http://localhost:8080/api/v1/employees",
@@ -426,6 +429,40 @@ function getAllEmployeeData() {
         },
         error: function (error) {
             console.log("error: ", error);
+        }
+    })
+}
+
+function clickTblRow() {
+
+    $('#tblEmployee').on('click', 'tr', function(event) {
+        console.log('click');
+
+
+
+    });
+
+}
+
+function imageUploaderEmployee() {
+    const imgUploader = $('#imgUploaderEmployee');
+    const imgViewer = $('#imgViewerEmployee');
+
+    imgUploader.change(function () {
+
+        var file = this.files[0];
+
+        if (file) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                imgViewer.attr('src', e.target.result);
+                base64String = reader.result.split(',')[1];
+            };
+
+            reader.readAsDataURL(file);
+        } else {
+            imgViewer.attr('src', '#');
         }
     })
 }
