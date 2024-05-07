@@ -472,4 +472,13 @@ showDetails.click(function () {
     $("#employeeRole").prop('disabled', true);
 
 });
+addEmployee.click(function () {
+    $('#mainLabel').text('Add Employee')
+    home.addClass('show')
+    $('#addbtn').text("Save")
+    enableTxtField();
+    generateNewId();
+
+
+})
 

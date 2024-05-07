@@ -16,6 +16,7 @@
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
 
 
+
 </head>
 <body class="home">
 <header>
@@ -265,7 +266,7 @@
         </div>
     </section>
     <!--------------Employee---------------->
-    <section id="employee" class="mainSection "  >
+    <section id="employee" class="mainSection d-none "  >
         <div class="employeeDiv">
             <div class="cardDiv">
 
@@ -482,7 +483,7 @@
 
     </section>
     <!--------------Supplier---------------->
-    <section id="supplier" class="mainSection d-none" >
+    <section id="supplier" class="mainSection " >
         <div class="supplierDiv">
             <div class="cardDiv">
 
@@ -491,7 +492,7 @@
                         <h2 class="d-flex float-start">Supplier Management</h2>
                         <form class=" float-end d-flex" role="search">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
+                            <button class="btn btn-outline-success" type="submit" id="searchSuppliers">Search</button>
                         </form>
                     </div>
                     <div class="card-body">
@@ -938,6 +939,7 @@
 <script src="../assest/js/code.jquery.com_jquery-3.7.1.min.js"></script>
 <script src="assets/js/admin.js"></script>
 <script src="assets/js/employeeController.js"></script>
+<script src="assets/js/supplier.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </html>

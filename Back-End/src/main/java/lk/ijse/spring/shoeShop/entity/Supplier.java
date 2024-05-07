@@ -25,8 +25,10 @@ public class Supplier {
     private Category category;
     @Embedded
     private InAddress address;
-
-    private Contact contact;
+    @Column(unique = true)
+    private String mobileNo;
+    @Column(unique = true)
+    private String landNo;
     @NotNull
     @Column(unique = true)
     private String email;
