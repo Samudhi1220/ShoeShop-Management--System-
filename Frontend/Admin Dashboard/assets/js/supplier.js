@@ -101,8 +101,8 @@
              type: "GET",
              dataType: "json",
              success: function (response) {
-                 console.log(response);
-                 setSupplierDataToTextField(response)
+                 setSupplierDataToTextField(response);
+                 updateSuppliers();
 
              },
              error: function (xhr, status, error) {
@@ -116,7 +116,6 @@
          $('#supplierLabel').text('Supplier Details')
          home.addClass('show')
          $('#saveSupplierbtn').text("Details")
-
 
          disableTxtField();
          var row = $(this).closest('tr');
@@ -293,9 +292,10 @@
                              showConfirmButton: false,
                              timer: 1500
                          });
-                         getAllSuppliers();                        // $('#supplierFormContainer').modal('hide');
-                         console.log("resp");
+
                      }
+                     getAllSuppliers();                        // $('#supplierFormContainer').modal('hide');
+                     console.log("resp");
                  },
                  error: function (resp) {
                      console.log(resp)
@@ -349,11 +349,7 @@
                  $('#tblSupplier tbody').empty()
                  for (const supplier of response.data) {
                      const row = `<tr>
-                                <th scope="row">
-                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""/>
-                                </div>
-                                </th>
+                       
                                 <td>${supplier.supplierCode}</td>
                                 <td>${supplier.supplierName}</td>
                                 <td>${supplier.category}</td>

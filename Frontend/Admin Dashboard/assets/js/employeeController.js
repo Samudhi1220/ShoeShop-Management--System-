@@ -21,6 +21,7 @@ imageUploaderEmployee();
 clickTblRow();
 updateEmployeeBtn()
 getAllEmployeeData()
+searchEmployee()
 
 
 function getAllEmployeeData() {
@@ -481,4 +482,41 @@ addEmployee.click(function () {
 
 
 })
+function searchEmployee() {
+    $('#search_employee').keyup(function (event) {
+        var idOrName = $(this).val();
+
+            $.ajax({
+                url: "http://localhost:8080/api/v1/employees?idOrName=" + idOrName+"&activeStatus=" + true,
+                type: "GET",
+                dataType: "json",
+                success: function (response) {
+                    $('#tblEmployee tbody').empty()
+                    for (const employee of response.data) {
+                        const row = `<tr>
+                             
+                                <td>${employee.employeeId}</td>
+                                <td>${employee.employeeName}</td>
+                                <td>${employee.address.buildNo + " " + employee.address.lane + " " + employee.address.state + " " + employee.address.city + " " + employee.address.postalCode}</td>
+                                <td>${employee.contactNo}</td>
+                                <td>${employee.joinDate}</td>
+                                <td>${employee.branch}</td>
+                                
+                            </tr>`;
+                        $('#tblEmployee').append(row);
+                    }
+                },
+                error: function (resp) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: resp.responseJSON.message,
+                        footer: '<a href="#"></a>'
+                    });
+                }
+            });
+
+
+    })
+}
 

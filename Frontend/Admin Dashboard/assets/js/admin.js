@@ -154,13 +154,7 @@ deleteUser.click(function () {
 
 
 
-updateSupplier.click(function () {
-    $('#supplierLabel').text('Update Supplier')
-    home.addClass('show')
-    $('#saveSupplierbtn').text("Update")
-    enableTxtField()
 
-});
 
 function disableTxtField() {
     $('.txt').attr('readonly', "");

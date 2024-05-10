@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="assets/css/cashier.css">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <link rel="stylesheet" href="assets/css/Customer.css">
+
 
 </head>
 <body class="home">
@@ -250,7 +252,7 @@
 
         </div>
     </section>
-    <section id="customer" class="mainSection d-none "  >
+    <section id="customer" class="mainSection  "  >
         <div class="customerDiv">
             <div class="cardDiv">
 
@@ -258,7 +260,7 @@
                     <div class="card-header shadow-sm p-3 mb-5 bg-body-tertiary rounded ">
                         <h2 class="d-flex float-start" >Customer Management</h2>
                         <form class=" float-end d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchCustomer">
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
 
@@ -268,20 +270,11 @@
                             <button type="button" class="btn btn-outline-primary" id="addCustomer"><span
                                     class="material-symbols-outlined">person_add</span> Add
                             </button>
-                            <button type="button" class="btn btn-outline-success" id="updateCustomer"><span
-                                    class="material-symbols-outlined">edit_note</span>Update
-                            </button>
-                            <button type="button" class="btn btn-outline-danger" id="deleteCustomer"><span
-                                    class="material-symbols-outlined">person_remove</span>Delete
-                            </button>
-                            <button type="button" class="btn btn-outline-warning" id="showCustomerDetails"><span
-                                    class="material-symbols-outlined">manage_accounts</span>Details
-                            </button>
                         </div>
 
 
                         <div class="table-container">
-                            <table class="table">
+                            <table class="table" id="tblCustomer">
                                 <thead class="table-dark">
                                 <tr>
                                     <th scope="col">Id</th>
@@ -294,52 +287,6 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-
-                                    <td>C001</td>
-                                    <td>Samudhi Randula</td>
-                                    <td>Thiranagama Hikkaduwa</td>
-                                    <td>2024.04.01</td>
-                                    <td>567</td>
-                                    <td>New</td>
-
-
-                                </tr>
-                                <tr>
-
-                                    <td>C001</td>
-                                    <td>Samudhi Randula</td>
-                                    <td>Thiranagama Hikkaduwa</td>
-                                    <td>2024.04.01</td>
-                                    <td>567</td>
-                                    <td>New</td>
-
-                                </tr>
-                                <tr>
-                                    <td>C001</td>
-                                    <td>Samudhi Randula</td>
-                                    <td>Thiranagama Hikkaduwa</td>
-                                    <td>2024.04.01</td>
-                                    <td>567</td>
-                                    <td>New</td>
-
-                                </tr>
-                                <tr>
-
-                                    <td>C001</td>
-                                    <td>Samudhi Randula</td>
-                                    <td>Thiranagama Hikkaduwa</td>
-                                    <td>2024.04.01</td>
-                                    <td>567</td>
-                                    <td>New</td>
-                                </tr>
-                                <tr>
-
-                                    <td>C001</td>
-                                    <td>Samudhi Randula</td>
-                                    <td>Thiranagama Hikkaduwa</td>
-                                    <td>2024.04.01</td>
-                                    <td>567</td>
-                                    <td>New</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -367,38 +314,35 @@
                                     <input type="text" class="txt" id="customerCode" placeholder="Customer Code">
                                 </div>
                             </div>
-                            <div class="col p-0">
-                                <div class="input_box">
-                                    <select class="select form-select opacity-75 txt"
-                                            aria-label="Default select example"
-                                            id="customerGender">
-                                        <option selected>Select Gender</option>
-                                        <option value="1">Male</option>
-                                        <option value="2">Female</option>
-                                        <option value="3">Other</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-
                             <div class="col">
                                 <div class="input_box">
                                     <input type="text" class="txt" id="customerName" placeholder="Customer Name">
                                 </div>
                             </div>
 
-                            <div class="col">
+                            <div class="col ">
                                 <div class="input_box">
-                                    <input type="text" id="customerDOB" class="form-control txt"
-                                           placeholder="Date Of Birth">
+                                    <select class="select form-select opacity-75  txt"
+                                            aria-label="Default select example"
+                                            id="customerGender">
+                                        <option disabled selected>Select Gender</option>
+                                        <option value="MALE">Male</option>
+                                        <option value="FEMALE">Female</option>
+                                    </select>
                                 </div>
                             </div>
+
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="input_box">
-                                    <input type="text" id="customerDOJ" class="form-control txt"
+                                    <input type="date" id="customerDOB" class="form-control txt"
+                                           placeholder="Date Of Birth">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input_box">
+                                    <input type="date" id="customerDOJ" class="form-control txt"
                                            placeholder="Date Of Join">
                                 </div>
                             </div>
@@ -420,16 +364,45 @@
                                     <input type="text" class="txt" id="customerCity" placeholder="City">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
+
                             <div class="col">
                                 <div class="input_box">
                                     <input type="text" class="txt" id="customerState" placeholder="State">
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col">
                                 <div class="input_box">
                                     <input type="text" class="txt" id="customerPostalCode" placeholder="Postal Code">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input_box">
+                                    <input type="text" class="txt" id="customerContactNo" placeholder="Contact Number">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input_box">
+                                    <input type="text" class="txt" id="customerEmail" placeholder="Email">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row hideTxt">
+                            <div class="col">
+                                <div class="input_box">
+                                    <input type="text" class="txt " id="customerLevels" placeholder="Level">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input_box">
+                                    <input type="text" class="txt " id="customerPoint" placeholder="Total Point">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input_box">
+                                    <input type="text" class="txt" id="customerRecentPurchaseDate" placeholder="Recent Purchase Date">
                                 </div>
                             </div>
                         </div>
@@ -462,7 +435,7 @@
                     <div class="card-body">
 
                         <div class="table-container">
-                            <table class="table">
+                            <table class="table" id="tblItem">
                                 <thead class="table-dark">
                                 <tr>
                                     <th scope="col">Id</th>
@@ -476,40 +449,6 @@
                                 <tbody>
                                 <tr>
 
-                                    <td>I001</td>
-                                    <td>05</td>
-                                    <td>Shoe</td>
-                                    <td>2500</td>
-                                    <td>Formal Shoes</td>
-                                    <td>Available</td>
-
-                                </tr>
-                                <tr>
-                                    <td>I001</td>
-                                    <td>05</td>
-                                    <td>Shoe</td>
-                                    <td>2500</td>
-                                    <td>Formal Shoes</td>
-                                    <td>Available</td>
-
-                                </tr>
-                                <tr>
-
-                                    <td>I001</td>
-                                    <td>05</td>
-                                    <td>Shoe</td>
-                                    <td>2500</td>
-                                    <td>Formal Shoes</td>
-                                    <td>Available</td>
-                                </tr>
-                                <tr>
-
-                                    <td>I001</td>
-                                    <td>05</td>
-                                    <td>Shoe</td>
-                                    <td>2500</td>
-                                    <td>Formal Shoes</td>
-                                    <td>Available</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -524,7 +463,7 @@
 
 
     </section>
-    <section id="customerOrder" class="mainSection">
+    <section id="customerOrder" class="mainSection d-none">
         <div class="customerOrderDiv">
             <section class="row orderRow mb-5 mt-4 justify-content-center">
                 <div class="col-xl-6 col-lg-12 col-xxl-4 orderBox">
@@ -735,6 +674,7 @@
 </body>
 <script src="../assest/js/code.jquery.com_jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="assets/js/Customer.js"></script>
 <script src="assets/js/Cashier.js"></script>
 
 </html>
