@@ -201,5 +201,9 @@ input[type="date"]::before {
 .imgUploader{
     padding-top: 11px;
 }
+.lblinput{
+    opacity: 2;
+    color: #9a9a9a;
+}
 
 

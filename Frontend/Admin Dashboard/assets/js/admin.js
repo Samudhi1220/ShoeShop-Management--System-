@@ -4,10 +4,7 @@ const supplierBtn = $('#supplierBtn');
 const inventoryBtn = $('#inventoryBtn');
 const userBtn = $('#userBtn'),
 
-    addItem = $('#addInventory'),
-    updateItem = $('#updateInventory'),
-    deleteItem = $('#deleteInventory'),
-    showItem = $('#showInventoryDetails')
+
     form_close = $('.from_close'),
     cancelBtn = $('.cancelBtn'),
     deleteUser = $('#deleteUser')
@@ -85,52 +82,6 @@ userBtn.click(function () {
 })
 
 
-
-addItem.click(function () {
-    $('#inventoryLabel').text('Add Item')
-    home.addClass('show')
-    $('#saveItembtn').text("Save")
-
-});
-updateItem.click(function () {
-    $('#inventoryLabel').text('Update Item')
-    home.addClass('show')
-    $('#saveItembtn').text("Update")
-
-})
-deleteItem.click(function () {
-    Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success"
-            });
-        }
-    });
-    // $('#inventoryLabel').text('Delete Item')
-    // $('#saveItembtn').text("Delete")
-    // home.addClass('show')
-});
-showItem.click(function () {
-    $('#inventoryLabel').text('All Item Details')
-    $('#saveItembtn').text("Close")
-    $('#saveItembtn').click(function () {
-        home.removeClass('show');
-    })
-
-    home.addClass('show')
-    disableTxtField()
-
-});
 
 deleteUser.click(function () {
     Swal.fire({

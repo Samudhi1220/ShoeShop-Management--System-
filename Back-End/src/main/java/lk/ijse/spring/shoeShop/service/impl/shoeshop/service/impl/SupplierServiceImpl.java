@@ -1,10 +1,10 @@
-package lk.ijse.spring.shoeShop.service.impl;
+package lk.ijse.spring.shoeShop.service.impl.shoeshop.service.impl;
 
 import jakarta.persistence.EntityExistsException;
-import lk.ijse.spring.shoeShop.dto.SupplierDTO;
-import lk.ijse.spring.shoeShop.entity.Supplier;
-import lk.ijse.spring.shoeShop.repository.SupplierRepository;
-import lk.ijse.spring.shoeShop.service.SupplierService;
+import lk.ijse.spring.shoeshop.dto.SupplierDTO;
+import lk.ijse.spring.shoeshop.entity.Supplier;
+import lk.ijse.spring.shoeshop.repository.SupplierRepository;
+import lk.ijse.spring.shoeshop.service.SupplierService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.dao.DuplicateKeyException;
@@ -71,7 +71,6 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public SupplierDTO getSupplier(String id) {
-        System.out.println("supplier id :"+id);
         return modelMapper.map(supplierRepository.findById(id).get(), SupplierDTO.class);
 
     }

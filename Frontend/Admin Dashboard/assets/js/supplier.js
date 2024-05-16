@@ -1,12 +1,10 @@
- const addSupplier = $('#addSupplier'),
-    updateSupplier = $('#updateSupplier'),
-    deleteSupplier = $('#deleteSupplier'),
-    showSupplierDetails = $('#showSupplierDetails')
+ const addSupplier = $('#addSupplier');
+
 
  saveSupplier();
- getAllSuppliers()
  clickTblRow();
- updateSuppliers();
+ updateSuppliers()
+ getAllSuppliers()
  searchSupplier();
  function generateNewSupplierId() {
      fetch("http://localhost:8080/api/v1/supplier/id")
@@ -30,9 +28,16 @@
      $('#saveSupplierbtn').text("Save")
      enableTxtField()
     generateNewSupplierId();
+     saveSupplier()
+
+
 
 
  });
+
+ $('#showSupplierDetails').click(function () {
+     disableTxtField()
+ })
 
 
  function getAllSuppliers() {
@@ -96,8 +101,9 @@
          enableTxtField();
          var row = $(this).closest('tr');
          var id = row.find('td:eq(0)').text()
+         console.log("supplier id: "+id)
          $.ajax({
-             url: "http://localhost:8080/api/v1/supplier" + id,
+             url: "http://localhost:8080/api/v1/supplier/" + id,
              type: "GET",
              dataType: "json",
              success: function (response) {
@@ -116,18 +122,18 @@
          $('#supplierLabel').text('Supplier Details')
          home.addClass('show')
          $('#saveSupplierbtn').text("Details")
-
-         disableTxtField();
          var row = $(this).closest('tr');
          var id = row.find('td:eq(0)').text()
+
          $.ajax({
-             url: "http://localhost:8080/api/v1/supplier" + id,
+             url: "http://localhost:8080/api/v1/supplier/" + id,
              type: "GET",
              dataType: "json",
              success: function (response) {
 
                  console.log(response);
                  setSupplierDataToTextField(response)
+                 disableTxtField()
                  getAllSuppliers();
 
              },
@@ -294,8 +300,9 @@
                          });
 
                      }
-                     getAllSuppliers();                        // $('#supplierFormContainer').modal('hide');
+                                  // $('#supplierFormContainer').modal('hide');
                      console.log("resp");
+                     getAllSuppliers();
                  },
                  error: function (resp) {
                      console.log(resp)
