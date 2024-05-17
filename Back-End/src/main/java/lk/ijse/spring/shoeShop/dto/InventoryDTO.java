@@ -30,6 +30,6 @@ public class InventoryDTO {
     private Double expectedProfit;
     private Double profitMargin;
     private String status;
-    @JsonProperty("sizeList")
-    private List<SizeDTO> sizeList;
+
+
 }

@@ -5,7 +5,9 @@ addItem = $('#addInventory'),
     btnCancel = $('.cancelBtn'),
     imgUploader = $('#imgUploader');
 
-
+checkSupplier();
+checkItem();
+itemImageUploader();
 
 
 addItem.click(function () {
@@ -88,20 +90,37 @@ function checkLowInventory(items) {
 
 
 function checkSupplier() {
-    $('#supplierCode').keyup(function () {
-        const supplierCode = $(this).val();
+    $('#supplierCodeItem').keyup(function () {
+        const code = {
+            supplier: {
+                supplierCode: $(this).val()
+            }
+        }
         $.ajax({
-            url: `http://localhost:8080/api/v1/suppliers/${supplierCode}`,
-            method: "GET",
+            url: "http://localhost:8080/api/v1/inventory/supplier",
+            method: "POST",
+            data: JSON.stringify(code),
+            contentType: "application/json",
             success: function (resp) {
                 if (resp.state == 200) {
-                    $('#supplierName').val(resp.data.supplierName);
-                } else {
-                    $('#supplierName').val('');
+                    console.log(resp);
+                    if ($('#supplierCodeItem').val() === '') {
+                        $('#supplierNameItem').val('');
+                    } else {
+                        if (resp.data === 'Supplier Not Found') {
+                            $('#supplierNameItem').css('color', 'red');
+                            $('#supplierNameItem').val(resp.data);
+                        } else {
+                            $('#supplierNameItem').css('color', 'green');
+                            $('#supplierNameItem').val(resp.data);
+                        }
+
+                    }
+
                 }
             },
             error: function (resp) {
-                $('#supplierName').val('');
+                console.log(resp)
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
@@ -109,8 +128,30 @@ function checkSupplier() {
                     footer: '<a href="#"></a>'
                 });
             }
-        });
-    });
+        })
+    })
+}
+function itemImageUploader() {
+    const itemImageUploader = $('#itemImgUploader');
+    const itemImageViewer = $('#itemImgViewer');
+
+    itemImageUploader.change(function () {
+
+        var file = this.files[0];
+
+        if (file) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                itemImageViewer.attr('src', e.target.result);
+                base64String = reader.result.split(',')[1];
+            };
+
+            reader.readAsDataURL(file);
+        } else {
+            itemImageViewer.attr('src', '#');
+        }
+    })
 }
 
 function checkItem() {
@@ -125,11 +166,14 @@ function checkItem() {
             contentType: "application/json",
             success: function (resp) {
                 if (resp.state == 200) {
+                    console.log(resp);
                     if ($('#itemCode').val() === '') {
                         $('#itemStatus').text('');
                     } else {
                         $('#itemStatus').text(resp.data.status);
                         if (resp.data.status !== "No Item Found") {
+
+                            console.log(resp);
                             $('#itemImgViewer').attr('src', 'data:image/jpeg;base64,' + resp.data.itemPicture);
                             $('#itemBuyPrice').val(resp.data.buyPrice);
                             $('#itemSellPrice').val(resp.data.salePrice);
@@ -138,7 +182,9 @@ function checkItem() {
                             $('#supplierCode').val(resp.data.supplier.supplierCode);
                             $('#supplierName').text(resp.data.supplierName);
                             base64String = resp.data.itemPicture;
+
                             $('.inputBox').not(':first').remove();
+
                             inputData = resp.data.sizeList;
                             resp.data.sizeList.forEach(function (item, index) {
                                 if (index > 0) {
@@ -148,10 +194,22 @@ function checkItem() {
                                 var inputBox = $('.inputBox');
                                 inputBox.eq(index).find('input[id="itemColor"]').val(item.color);
                                 inputBox.eq(index).find('input[id="itemSize"]').val(item.size);
-                                inputBox.eq(index).find('input[id="itemQty"]').val(item.qty);
+                                inputBox.eq(index).find('input[id="itemQty"]').val(0);
+                                inputBox.eq(index).find('input[id="itemQty"]').on('focus', function(){
+                                    if ($(this).val() === '0') {
+                                        $(this).val('');
+                                    }
+                                });
+
+                                inputBox.eq(index).find('input[id="itemQty"]').on('blur', function(){
+                                    if ($(this).val() === '') {
+                                        $(this).val('0');
+                                    }
+                                });
                             });
                             $('#itemStatus').css('color', 'green');
                             $('.dis').prop('disabled', true);
+
                         } else {
                             $('#itemImgViewer').attr('src', '#');
                             $('#itemBuyPrice').val('');
@@ -164,11 +222,14 @@ function checkItem() {
                             $('#inputContainer .inputBox:not(:first)').remove();
                             $('#itemColor, #itemSize, #itemQty').val('');
                             $('.dis').prop('disabled', false);
+
                         }
                     }
+
                 }
             },
             error: function (resp) {
+                console.log(resp)
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
@@ -176,6 +237,6 @@ function checkItem() {
                     footer: '<a href="#"></a>'
                 });
             }
-        });
-    });
+        })
+    })
 }

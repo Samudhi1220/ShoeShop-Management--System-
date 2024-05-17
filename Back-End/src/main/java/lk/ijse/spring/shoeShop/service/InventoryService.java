@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public interface InventoryService {
 
     void saveInventory(InventoryDTO inventoryDTO);
@@ -19,5 +19,4 @@ public interface InventoryService {
     List<InventoryDTO> getAllInventory();
 
     InventoryDTO getInventory(String id);
-
 }
