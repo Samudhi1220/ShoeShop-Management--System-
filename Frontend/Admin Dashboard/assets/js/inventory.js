@@ -3,10 +3,26 @@ addItem = $('#addInventory'),
     deleteItem = $('#deleteInventory'),
     showItem = $('#showInventoryDetails')
     btnCancel = $('.cancelBtn'),
-    imgUploader = $('#imgUploader');
+    imgUploader = $('#imgUploader'),
+itemCode = $('#itemCode').val(),
+    itemDesc= $('#itemDesc').val(),
+    category= $('#itemCategory').val(),
+salePrice= $('#itemSellPrice').val(),
+    buyPrice= $('#itemBuyPrice').val(),
+    supplierName= $('#supplierNameItem').text()
 
-checkSupplier();
+
+// Base URL for the API
+const apiBaseUrl = "http://localhost:8080/api/v1/inventory";
+
+// Variable to store the base64 string of the uploaded image
+var base64String;
+var inputData = [];
+
+
 checkItem();
+checkSupplier();
+saveItem();
 itemImageUploader();
 
 
@@ -56,6 +72,90 @@ showItem.click(function () {
 
 });
 
+function  saveItem () {
+    // Send the data to the server
+    if ($(this).text().trim() === 'Save') {
+        // Collect input data
+        const inventoryData = {
+            itemCode: $('#itemCode').val(),
+            itemDesc: $('#itemDesc').val(),
+            itemPicture: base64String,
+            qty: parseInt($('#itemQty').val()),
+            category: $('#itemCategory').val(),
+            supplier: {
+                supplierCode: $('#supplierCodeItem').val()
+            },
+            supplierName: $('#supplierNameItem').val(),
+            salePrice: parseFloat($('#itemSellPrice').val()),
+            buyPrice: parseFloat($('#itemBuyPrice').val()),
+            expectedProfit: parseFloat($('#supplierContactNumber01Item').val()),
+            profitMargin: parseFloat($('#supplierContactNumber02Item').val()),
+            status: $('#supplierEmailItem').val(),
+            size: $('#itemSize').val()
+        };
+
+        console.log(inventoryData);
+        $.ajax({
+            url: "http://localhost:8080/api/v1/inventory",
+            method: "POST",
+            data: JSON.stringify(inventoryData),
+            contentType: "application/json",
+            success: function (resp) {
+                if (resp.state == 200) {
+                    console.log(resp);
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Item has been saved",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    // getAllEmployeeData();
+                }
+            },
+            error: function (resp) {
+                console.log(resp)
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: resp.responseJSON.message,
+                    footer: '<a href="#"></a>'
+                });
+            }
+        })
+    } else {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Password do not match",
+            footer: '<a href="#"></a>'
+        });
+    }
+
+
+        }
+
+
+
+// Function to reset the form
+function resetForm() {
+    $('#itemCode').val('');
+    $('#itemDesc').val('');
+    $('#itemQty').val('');
+    $('#itemCategory').val('');
+    $('#supplierCodeItem').val('');
+    $('#supplierNameItem').val('');
+    $('#itemSellPrice').val('');
+    $('#itemBuyPrice').val('');
+    $('#supplierContactNumber01Item').val('');
+    $('#supplierContactNumber02Item').val('');
+    $('#supplierEmailItem').val('');
+    $('#itemSize').val('');
+    $('#imgUploader').val('');
+    $('#imgViewer').attr('src', ''); // Reset image viewer
+}
+
+
 imgUploader.change(function () {
     var file = $(this)[0].files[0];
     if (file) {
@@ -75,18 +175,6 @@ function enableTxtField() {
     $('.txt').removeAttr('readonly');
 }
 
-function checkLowInventory(items) {
-    const lowInventoryItems = [];
-
-    items.forEach(item => {
-        const lowerLevel = item.stock / 2; // 50% of one stock
-        if (item.quantity <= lowerLevel) {
-            lowInventoryItems.push(item);
-        }
-    });
-
-    return lowInventoryItems;
-}
 
 
 function checkSupplier() {
@@ -174,14 +262,7 @@ function checkItem() {
                         if (resp.data.status !== "No Item Found") {
 
                             console.log(resp);
-                            $('#itemImgViewer').attr('src', 'data:image/jpeg;base64,' + resp.data.itemPicture);
-                            $('#itemBuyPrice').val(resp.data.buyPrice);
-                            $('#itemSellPrice').val(resp.data.salePrice);
-                            $('#itemDesc').val(resp.data.itemDesc);
-                            $('#itemCategory').val(resp.data.category);
-                            $('#supplierCode').val(resp.data.supplier.supplierCode);
-                            $('#supplierName').text(resp.data.supplierName);
-                            base64String = resp.data.itemPicture;
+
 
                             $('.inputBox').not(':first').remove();
 
@@ -216,7 +297,7 @@ function checkItem() {
                             $('#itemSellPrice').val('');
                             $('#itemSize').val('');
                             $('#itemDesc').val('');
-                            $('#supplierCode').val('');
+                            $('#supplierCodeItem').val('');
                             $('#itemCategory').val('');
                             $('#itemStatus').css('color', 'red');
                             $('#inputContainer .inputBox:not(:first)').remove();

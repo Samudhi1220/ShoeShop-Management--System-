@@ -1,6 +1,8 @@
 package lk.ijse.spring.shoeShop.service.impl;
 
+import jakarta.persistence.EntityExistsException;
 import lk.ijse.spring.shoeShop.dto.InventoryDTO;
+import lk.ijse.spring.shoeShop.entity.Inventory;
 import lk.ijse.spring.shoeShop.repository.InventoryRepository;
 
 import lk.ijse.spring.shoeShop.repository.SupplierRepository;
@@ -29,12 +31,44 @@ public class InventoryServiceImpl implements InventoryService {
     }
     @Override
     public void saveInventory(InventoryDTO inventoryDTO) {
+        if (supplierRepository.existsById(inventoryDTO.getSupplier().getSupplierCode())) {
+            if (inventoryDTO.getQty() == 10 || inventoryDTO.getQty() < 10){
+                if (inventoryDTO.getSalePrice() > inventoryDTO.getBuyPrice()) {
+
+                    double profit = inventoryDTO.getSalePrice() - inventoryDTO.getBuyPrice();
+                    double profitPercentage = (profit / inventoryDTO.getSalePrice()) * 100;
+                    inventoryDTO.setExpectedProfit(profit);
+                    inventoryDTO.setProfitMargin(profitPercentage);
+
+                } else {
+                    throw new EntityExistsException("please Check Prices!");
+                }
+
+            }
+
+        }  else {
+        throw new EntityExistsException("Supplier Not Found!");
+    }
 
     }
 
     @Override
     public InventoryDTO checkStatus(InventoryDTO inventoryDTO) {
-        return null;
+        try {
+            if (inventoryDTO == null || inventoryDTO.getItemCode() == null) {
+                throw new IllegalArgumentException("InventoryDTO or ItemCode cannot be null.");
+            }
+
+            if (inventoryRepository.existsById(inventoryDTO.getItemCode())) {
+                Inventory byItemCode = inventoryRepository.findByItemCode(inventoryDTO.getItemCode());
+                return modelMapper.map(byItemCode, InventoryDTO.class);
+            } else {
+                inventoryDTO.setStatus("No Item Found");
+                return inventoryDTO;
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("An error occurred while checking inventory status.");
+        }
     }
 
     @Override
@@ -63,6 +97,6 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public InventoryDTO getInventory(String id) {
-        return null;
+        return modelMapper.map(inventoryRepository.findById(id), InventoryDTO.class);
     }
 }

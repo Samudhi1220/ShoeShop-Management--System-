@@ -35,7 +35,8 @@ public class InventoryController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveInventory(@RequestBody InventoryDTO inventoryDTO) {
-  return null;
+        inventoryService.saveInventory(inventoryDTO);
+        return new ResponseUtil("200", "Successfully Saved!", null);
     }
 
     @ResponseStatus(HttpStatus.CREATED)

@@ -7,9 +7,9 @@ const addEmployee=$('#addEmployee')
     showDetails = $('#showDetails'),
     employeeDeleteBox = $('#employeeDeleteBox'),
     employeeMainInputDiv = $('#employeeMainInputDiv'),
-form_close = $('.from_close'),
-    cancelBtn = $('.cancelBtn'),
-    deleteUser = $('#deleteUser')
+formClose = $('.from_close'),
+    btnCancel = $('.cancelBtn'),
+    userDelete = $('#deleteUser')
 imgUploader = $('#imgUploader');
 home = $('.home');
 
@@ -398,12 +398,12 @@ function saveEmployee() {
     })
 
 }
-form_close.click(function () {
+formClose.click(function () {
     home.removeClass('show');
     form_container.css('max-width', '800px')
 
 })
-cancelBtn.click(function () {
+btnCancel.click(function () {
     home.removeClass('show');
     form_container.css('max-width', '800px')
 

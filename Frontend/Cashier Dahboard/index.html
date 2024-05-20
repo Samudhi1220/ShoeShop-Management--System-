@@ -286,8 +286,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                </tr>
+
                                 </tbody>
                             </table>
                         </div>
@@ -308,107 +307,90 @@
                     <h2 id="mainLabel">Add Customer</h2>
 
                     <div class="mainInputDiv" id="customerMainInputDiv">
-                        <div class="row">
-                            <div class="col">
-                                <div class="input_box ">
-                                    <input type="text" class="txt" id="customerCode" placeholder="Customer Code">
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="input_box">
-                                    <input type="text" class="txt" id="customerName" placeholder="Customer Name">
-                                </div>
-                            </div>
 
-                            <div class="col ">
-                                <div class="input_box">
-                                    <select class="select form-select opacity-75  txt"
+
+                            <form class="row g-3">
+                                <div class="col-md-4">
+                                    <label for="customerCode" class="form-label lbl">Customer Code</label>
+                                    <input type="text" class="form-control txt" id="customerCode" required>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="customerName" class="form-label lbl">Customer Name</label>
+                                    <input type="text" class="form-control txt" id="customerName" required>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="customerGender" class="form-label lbl">Select Gender</label>
+                                    <select class="select form-select  opacity-75 txt"
                                             aria-label="Default select example"
                                             id="customerGender">
-                                        <option disabled selected>Select Gender</option>
+                                        <option disabled value="null" selected></option>
                                         <option value="MALE">Male</option>
                                         <option value="FEMALE">Female</option>
                                     </select>
+                                    <!--                                <input type="text" class="form-control dis" id="supplierCode" required>-->
                                 </div>
-                            </div>
+                                <div class="col-md-4">
+                                    <label for="customerDOB" class="form-label lbl">Date Of Birth</label>
+                                    <input type="date" id="customerDOB" class="form-control txt" required>
+                                </div>
 
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="input_box">
-                                    <input type="date" id="customerDOB" class="form-control txt"
-                                           placeholder="Date Of Birth">
+                                <div class="col-md-4">
+                                    <label for="customerDOJ" class="form-label lbl">Date Of Join</label>
+                                    <input type="date" id="customerDOJ" class="form-control txt" required>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class="input_box">
-                                    <input type="date" id="customerDOJ" class="form-control txt"
-                                           placeholder="Date Of Join">
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="input_box">
-                                    <input type="text" class="txt" id="customerBuilding"
-                                           placeholder="Building No. Or Name">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="input_box">
-                                    <input type="text" class="txt" id="customerLane" placeholder="Lane">
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="input_box">
-                                    <input type="text" class="txt" id="customerCity" placeholder="City">
-                                </div>
-                            </div>
 
-                            <div class="col">
-                                <div class="input_box">
-                                    <input type="text" class="txt" id="customerState" placeholder="State">
+                                <div class="col-md-4">
+                                    <label for="customerBuilding" class="form-label lbl">Building No.</label>
+                                    <input type="text" class="form-control txt" id="customerBuilding">
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="input_box">
-                                    <input type="text" class="txt" id="customerPostalCode" placeholder="Postal Code">
+                                <div class="col-md-4">
+                                    <label for="customerLane" class="form-label lbl">Lane</label>
+                                    <input type="text" class="form-control txt" id="customerLane">
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class="input_box">
-                                    <input type="text" class="txt" id="customerContactNo" placeholder="Contact Number">
+                                <div class="col-md-4">
+                                    <label for="customerCity" class="form-label lbl">City</label>
+                                    <input type="text" class="form-control txt" id="customerCity">
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class="input_box">
-                                    <input type="text" class="txt" id="customerEmail" placeholder="Email">
+                                <div class="col-md-4">
+                                    <label for="customerState" class="form-label lbl">State</label>
+                                    <input type="text" class="form-control txt" id="customerState">
                                 </div>
-                            </div>
+                                <div class="col-md-4">
+                                    <label for="customerPostalCode" class="form-label lbl">Postal Code</label>
+                                    <input type="text" class="form-control txt" id="customerPostalCode">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="customerContactNo" class="form-label lbl">Contact Number</label>
+                                    <input type="tel" class="form-control txt" id="customerContactNo">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="customerEmail" class="form-label lbl">Email</label>
+                                    <input type="email" class="form-control txt" id="customerEmail">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="customerLevel" class="form-label lbl">Level</label>
+                                    <input type="text" class="form-control txt" id="customerLevel" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="customerPoint" class="form-label lbl">Total Point</label>
+                                    <input type="text" class="form-control txt" id="customerPoint" required>
+                                </div>
 
-                        </div>
-                        <div class="row hideTxt">
-                            <div class="col">
-                                <div class="input_box">
-                                    <input type="text" class="txt " id="customerLevels" placeholder="Level">
+                                <div class="col-md-4">
+                                    <label for="customerRecentPurchaseDate" class="form-label lbl">Recent
+                                        Purchase Date</label>
+                                    <input type="date" id="customerRecentPurchaseDate" class="form-control txt" required>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class="input_box">
-                                    <input type="text" class="txt " id="customerPoint" placeholder="Total Point">
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="input_box">
-                                    <input type="text" class="txt" id="customerRecentPurchaseDate" placeholder="Recent Purchase Date">
-                                </div>
-                            </div>
+
+                            </form>
+
+
                         </div>
 
 
-                    </div>
+
 
                     <button class="button" id="addbtn">
                         Save Now
@@ -494,7 +476,7 @@
                         </div>
                         <div class="col">
                             <div class="input_box">
-                                <input type="text" class="txt" id="customerLevel" placeholder="Customer Level">
+                                <input type="text" class="txt" id="customerLevelOrder" placeholder="Customer Level">
                             </div>
                         </div>
                     </div>
