@@ -22,7 +22,7 @@ var inputData = [];
 
 checkItem();
 checkSupplier();
-saveItem();
+
 itemImageUploader();
 
 
@@ -71,69 +71,6 @@ showItem.click(function () {
     disableTxtField()
 
 });
-
-function  saveItem () {
-    // Send the data to the server
-    if ($(this).text().trim() === 'Save') {
-        // Collect input data
-        const inventoryData = {
-            itemCode: $('#itemCode').val(),
-            itemDesc: $('#itemDesc').val(),
-            itemPicture: base64String,
-            qty: parseInt($('#itemQty').val()),
-            category: $('#itemCategory').val(),
-            supplier: {
-                supplierCode: $('#supplierCodeItem').val()
-            },
-            supplierName: $('#supplierNameItem').val(),
-            salePrice: parseFloat($('#itemSellPrice').val()),
-            buyPrice: parseFloat($('#itemBuyPrice').val()),
-            expectedProfit: parseFloat($('#supplierContactNumber01Item').val()),
-            profitMargin: parseFloat($('#supplierContactNumber02Item').val()),
-            status: $('#supplierEmailItem').val(),
-            size: $('#itemSize').val()
-        };
-
-        console.log(inventoryData);
-        $.ajax({
-            url: "http://localhost:8080/api/v1/inventory",
-            method: "POST",
-            data: JSON.stringify(inventoryData),
-            contentType: "application/json",
-            success: function (resp) {
-                if (resp.state == 200) {
-                    console.log(resp);
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: "Item has been saved",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                    // getAllEmployeeData();
-                }
-            },
-            error: function (resp) {
-                console.log(resp)
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: resp.responseJSON.message,
-                    footer: '<a href="#"></a>'
-                });
-            }
-        })
-    } else {
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Password do not match",
-            footer: '<a href="#"></a>'
-        });
-    }
-
-
-        }
 
 
 
