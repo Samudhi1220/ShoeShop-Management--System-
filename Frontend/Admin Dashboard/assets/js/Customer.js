@@ -2,7 +2,7 @@ const addCustomer = $('#addCustomer'),
     updateCustomer = $('#updateCustomers'),
     deleteCustomers = $('#deleteCustomers'),
     showCustomerDetails = $('#showCustomerDetails')
-form_close = $('.from_close'),
+form_closeCustomer = $('.from_close'),
     cancelBtnCustomer = $('.cancelBtn'),
     home = $('.home');
 
@@ -419,7 +419,7 @@ function clickCustomerTblRow() {
 
 
 }
-form_close.click(function () {
+form_closeCustomer.click(function () {
     home.addClass('show')
 
 })

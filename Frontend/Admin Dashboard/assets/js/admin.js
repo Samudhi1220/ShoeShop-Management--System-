@@ -2,6 +2,7 @@ const dashboardBtn = $('#dashboardBtn');
 const employeeBtn = $('#employeeBtn');
 const supplierBtn = $('#supplierBtn');
 const inventoryBtn = $('#inventoryBtn');
+const customerBtn = $('#customerBtn');
 const userBtn = $('#userBtn'),
 
 
@@ -27,6 +28,7 @@ dashboardBtn.click(function () {
     supplierBtn.removeClass('active')
     userBtn.removeClass('active')
     inventoryBtn.removeClass('active')
+    customerBtn.removeClass('active')
 })
 
 employeeBtn.click(function () {
@@ -40,6 +42,7 @@ employeeBtn.click(function () {
     supplierBtn.removeClass('active')
     userBtn.removeClass('active')
     inventoryBtn.removeClass('active')
+    customerBtn.removeClass('active')
 })
 supplierBtn.click(function () {
     // $('#employee').css("display", "none");
@@ -51,6 +54,7 @@ supplierBtn.click(function () {
     employeeBtn.removeClass('active')
     supplierBtn.addClass('active')
     userBtn.removeClass('active')
+    customerBtn.removeClass('active')
     inventoryBtn.removeClass('active')
 
 })
@@ -64,6 +68,7 @@ inventoryBtn.click(function () {
     employeeBtn.removeClass('active')
     supplierBtn.removeClass('active')
     userBtn.removeClass('active')
+    customerBtn.removeClass('active')
     inventoryBtn.addClass('active')
 })
 
@@ -77,6 +82,7 @@ userBtn.click(function () {
     employeeBtn.removeClass('active')
     supplierBtn.removeClass('active')
     inventoryBtn.removeClass('active')
+    customerBtn.removeClass('active')
     userBtn.addClass('active')
 
 })
@@ -104,7 +110,19 @@ deleteUser.click(function () {
 });
 
 
-
+customerBtn.click(function () {
+    // $('#employee').css("display", "block");
+    // $('#dashboard').css("display", "none");
+    // $('#supplier').css("display", "none");
+    // $('#inventory').css("display", "none");
+    // $('#users').css("display", "none");
+    dashboardBtn.removeClass('active')
+    customerBtn.addClass('active')
+    supplierBtn.removeClass('active')
+    employeeBtn.removeClass('active')
+    userBtn.removeClass('active')
+    inventoryBtn.removeClass('active')
+})
 
 
 function disableTxtField() {
