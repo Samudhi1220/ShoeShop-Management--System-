@@ -815,6 +815,149 @@
         </div>
     </section>
     <section id="customer" class="mainSection">
+        <div class="customerDiv">
+            <div class="cardDiv">
+
+                <div class="card">
+                    <div class="card-header shadow-sm p-3 mb-5 bg-body-tertiary rounded ">
+                        <h2 class="d-flex float-start" >Customer Management</h2>
+                        <form class=" float-end d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchCustomer">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="btnGroup float-end">
+                            <button type="button" class="btn btn-outline-primary" id="addCustomer"><span
+                                    class="material-symbols-outlined">person_add</span> Add
+                            </button>
+                        </div>
+
+
+                        <div class="table-container">
+                            <table class="table" id="tblCustomer">
+                                <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Join Date</th>
+                                    <th scope="col">Total Points</th>
+                                    <th scope="col">Level</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--------------Add Employee Form---------------->
+        <div class="form-container">
+            <div class="from_close">
+                <span class="material-symbols-outlined">cancel_presentation</span>
+            </div>
+            <div class="form add-customer">
+                <form action="#">
+                    <h2 id="mainLabel">Add Customer</h2>
+
+                    <div class="mainInputDiv" id="customerMainInputDiv">
+
+
+                        <form class="row g-3">
+                            <div class="col-md-4">
+                                <label for="customerCode" class="form-label lbl">Customer Code</label>
+                                <input type="text" class="form-control txt" id="customerCode" required>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="customerName" class="form-label lbl">Customer Name</label>
+                                <input type="text" class="form-control txt" id="customerName" required>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="customerGender" class="form-label lbl">Select Gender</label>
+                                <select class="select form-select  opacity-75 txt"
+                                        aria-label="Default select example"
+                                        id="customerGender">
+                                    <option disabled value="null" selected></option>
+                                    <option value="MALE">Male</option>
+                                    <option value="FEMALE">Female</option>
+                                </select>
+                                <!--                                <input type="text" class="form-control dis" id="supplierCode" required>-->
+                            </div>
+                            <div class="col-md-4">
+                                <label for="customerDOB" class="form-label lbl">Date Of Birth</label>
+                                <input type="date" id="customerDOB" class="form-control txt" required>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="customerDOJ" class="form-label lbl">Date Of Join</label>
+                                <input type="date" id="customerDOJ" class="form-control txt" required>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="customerBuilding" class="form-label lbl">Building No.</label>
+                                <input type="text" class="form-control txt" id="customerBuilding">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="customerLane" class="form-label lbl">Lane</label>
+                                <input type="text" class="form-control txt" id="customerLane">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="customerCity" class="form-label lbl">City</label>
+                                <input type="text" class="form-control txt" id="customerCity">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="customerState" class="form-label lbl">State</label>
+                                <input type="text" class="form-control txt" id="customerState">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="customerPostalCode" class="form-label lbl">Postal Code</label>
+                                <input type="text" class="form-control txt" id="customerPostalCode">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="customerContactNo" class="form-label lbl">Contact Number</label>
+                                <input type="tel" class="form-control txt" id="customerContactNo">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="customerEmail" class="form-label lbl">Email</label>
+                                <input type="email" class="form-control txt" id="customerEmail">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="customerLevel" class="form-label lbl">Level</label>
+                                <input type="text" class="form-control txt" id="customerLevel" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="customerPoint" class="form-label lbl">Total Point</label>
+                                <input type="text" class="form-control txt" id="customerPoint" required>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="customerRecentPurchaseDate" class="form-label lbl">Recent
+                                    Purchase Date</label>
+                                <input type="date" id="customerRecentPurchaseDate" class="form-control txt" required>
+                            </div>
+
+                        </form>
+
+
+                    </div>
+
+                    <button class="button" id="addbtnCustomer">
+                        Save Now
+                    </button>
+                    <button class="cancelBtn" id="cancelBtnCustomer">Cancel</button>
+                </form>
+            </div>
+        </div>
 
     </section>
     <!--------------Users---------------->

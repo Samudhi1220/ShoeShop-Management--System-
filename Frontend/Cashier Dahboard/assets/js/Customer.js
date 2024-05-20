@@ -3,7 +3,7 @@ const addCustomer = $('#addCustomer'),
     deleteCustomers = $('#deleteCustomers'),
     showCustomerDetails = $('#showCustomerDetails')
 form_close = $('.from_close'),
-    cancelBtn = $('.cancelBtn'),
+    cancelBtnCustomer = $('.cancelBtn'),
     home = $('.home');
 
 saveCustomer();

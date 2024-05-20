@@ -31,24 +31,7 @@ public class InventoryServiceImpl implements InventoryService {
     }
     @Override
     public void saveInventory(InventoryDTO inventoryDTO) {
-        if (supplierRepository.existsById(inventoryDTO.getSupplier().getSupplierCode())) {
-            if (inventoryDTO.getQty() == 10 || inventoryDTO.getQty() < 10){
-                if (inventoryDTO.getSalePrice() > inventoryDTO.getBuyPrice()) {
 
-                    double profit = inventoryDTO.getSalePrice() - inventoryDTO.getBuyPrice();
-                    double profitPercentage = (profit / inventoryDTO.getSalePrice()) * 100;
-                    inventoryDTO.setExpectedProfit(profit);
-                    inventoryDTO.setProfitMargin(profitPercentage);
-
-                } else {
-                    throw new EntityExistsException("please Check Prices!");
-                }
-
-            }
-
-        }  else {
-        throw new EntityExistsException("Supplier Not Found!");
-    }
 
     }
 
