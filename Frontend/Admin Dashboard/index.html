@@ -660,7 +660,7 @@
         </div>
     </section>
     <!--------------Inventory---------------->
-    <section id="inventory" class="mainSection d-none ">
+    <section id="inventory" class="mainSection  ">
         <div class="supplierDiv">
             <div class="cardDiv">
 
@@ -740,7 +740,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class=" col " >
                             <div class="input_box">
                                 <input class="txt" type="text" id="itemQty" placeholder="Item Quantity">
                             </div>
@@ -751,20 +751,7 @@
                             <div class="input_box ">
                                 <input class="txt" type="text" id="supplierCodeItem" placeholder="Supplier Code">
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-
-                        <div class="col">
-                            <div class="input_box ">
-                                <input class="txt" type="text" readonly id="supplierNameItem"
-                                       placeholder="Supplier Name">
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="input_box">
-                                <input class="txt" type="text" id="itemDesc" placeholder="Item Description">
+                            <div class="valid-feedback d-block " readonly id="supplierNameItem">
                             </div>
                         </div>
                     </div>
@@ -778,40 +765,52 @@
 
                         <div class="col">
                             <div class="input_box">
-                                <input class="txt" type="number" id="itemBuyPrice" placeholder="Unit price - Sale">
+                                <input class="txt" type="number" id="itemSellPrice" placeholder="Unit price - Sale">
                             </div>
                         </div>
+
                     </div>
 
 
                     <div class="row">
                         <div class="col">
                             <div class="input_box">
-                                <input class="txt" type="number" id="itemSellPrice" placeholder="Unit price -Buy">
+                                <input class="txt" type="number" id=" itemBuyPrice" placeholder="Unit price -Buy">
                             </div>
                         </div>
-                        <div class="col">
+
+                        <div class="hidden col">
                             <div class="input_box">
-                                <input class="txt" type="number" readonly id="supplierContactNumber01Item"
+                                <input class="txt" type="number" readonly id="expectedProfit"
                                        placeholder="Expected Profit">
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col">
+                        <div class=" hidden col">
                             <div class="input_box">
-                                <input class="txt" type="tel" readonly id="supplierContactNumber02Item"
+                                <input class="txt" type="tel" readonly id="profitMargin"
                                        placeholder="Profit margin">
                             </div>
                         </div>
 
-                        <div class="col">
+                        <div class="hidden col">
                             <div class="input_box">
-                                <input class="txt" type="text" readonly id="supplierEmailItem" placeholder="Status">
+                                <input class="txt" type="text" readonly id="status" placeholder="Status">
                             </div>
                         </div>
+
                     </div>
+
+                    <div class="row">
+                    <div class="col">
+                        <div class="input_box">
+                            <input class="txt" type="text" id="itemDesc" placeholder="Item Description">
+                        </div>
+                    </div>
+                    </div>
+
                     <div class="row">
                         <div class="col d-flex align-items-center">
                             <div class="input_box">
@@ -828,6 +827,7 @@
                         </div>
                     </div>
 
+
                     <button class="button" id="saveItembtn">
                         Save Now
                     </button>
@@ -836,7 +836,7 @@
             </div>
         </div>
     </section>
-    <section id="customer" class="mainSection">
+    <section id="customer" class="mainSection d-none">
         <div class="customerDiv">
             <div class="cardDiv">
 

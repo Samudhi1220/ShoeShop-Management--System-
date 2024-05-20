@@ -2,18 +2,14 @@ addItem = $('#addInventory'),
     updateItem = $('#updateInventory'),
     deleteItem = $('#deleteInventory'),
     showItem = $('#showInventoryDetails')
-    btnCancel = $('.cancelBtn'),
+btnCancel = $('.cancelBtn'),
     imgUploader = $('#imgUploader'),
-itemCode = $('#itemCode').val(),
-    itemDesc= $('#itemDesc').val(),
-    category= $('#itemCategory').val(),
-salePrice= $('#itemSellPrice').val(),
-    buyPrice= $('#itemBuyPrice').val(),
-    supplierName= $('#supplierNameItem').text()
-
-
-// Base URL for the API
-const apiBaseUrl = "http://localhost:8080/api/v1/inventory";
+    itemCode = $('#itemCode').val(),
+    itemDesc = $('#itemDesc').val(),
+    category = $('#itemCategory').val(),
+    salePrice = $('#itemSellPrice').val(),
+    buyPrice = $('#itemBuyPrice').val(),
+    supplierName = $('#supplierNameItem').text()
 
 // Variable to store the base64 string of the uploaded image
 var base64String;
@@ -31,11 +27,15 @@ addItem.click(function () {
     home.addClass('show')
     $('#saveItembtn').text("Save")
 
+    $('.hidden').addClass('d-none')
+
+
 });
 updateItem.click(function () {
     $('#inventoryLabel').text('Update Item')
     home.addClass('show')
     $('#saveItembtn').text("Update")
+    $('.hidden').addClass('d-none')
 
 })
 deleteItem.click(function () {
@@ -65,7 +65,9 @@ showItem.click(function () {
     $('#saveItembtn').text("Close")
     $('#saveItembtn').click(function () {
         home.removeClass('show');
+
     })
+    $('.hidden').removeClass('d-none')
 
     home.addClass('show')
     disableTxtField()
@@ -73,24 +75,8 @@ showItem.click(function () {
 });
 
 
-
 // Function to reset the form
-function resetForm() {
-    $('#itemCode').val('');
-    $('#itemDesc').val('');
-    $('#itemQty').val('');
-    $('#itemCategory').val('');
-    $('#supplierCodeItem').val('');
-    $('#supplierNameItem').val('');
-    $('#itemSellPrice').val('');
-    $('#itemBuyPrice').val('');
-    $('#supplierContactNumber01Item').val('');
-    $('#supplierContactNumber02Item').val('');
-    $('#supplierEmailItem').val('');
-    $('#itemSize').val('');
-    $('#imgUploader').val('');
-    $('#imgViewer').attr('src', ''); // Reset image viewer
-}
+
 
 
 imgUploader.change(function () {
@@ -112,7 +98,9 @@ function enableTxtField() {
     $('.txt').removeAttr('readonly');
 }
 
+function saveItem() {
 
+}
 
 function checkSupplier() {
     $('#supplierCodeItem').keyup(function () {
@@ -156,6 +144,7 @@ function checkSupplier() {
         })
     })
 }
+
 function itemImageUploader() {
     const itemImageUploader = $('#itemImgUploader');
     const itemImageViewer = $('#itemImgViewer');
@@ -213,13 +202,13 @@ function checkItem() {
                                 inputBox.eq(index).find('input[id="itemColor"]').val(item.color);
                                 inputBox.eq(index).find('input[id="itemSize"]').val(item.size);
                                 inputBox.eq(index).find('input[id="itemQty"]').val(0);
-                                inputBox.eq(index).find('input[id="itemQty"]').on('focus', function(){
+                                inputBox.eq(index).find('input[id="itemQty"]').on('focus', function () {
                                     if ($(this).val() === '0') {
                                         $(this).val('');
                                     }
                                 });
 
-                                inputBox.eq(index).find('input[id="itemQty"]').on('blur', function(){
+                                inputBox.eq(index).find('input[id="itemQty"]').on('blur', function () {
                                     if ($(this).val() === '') {
                                         $(this).val('0');
                                     }
