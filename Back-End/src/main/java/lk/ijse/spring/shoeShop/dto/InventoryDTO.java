@@ -21,7 +21,6 @@ public class InventoryDTO {
     private String itemDesc;
     private String itemPicture;
     private int qty;
-    private int originalQty;
     private String category;
     private Supplier supplier;
     private String supplierName;

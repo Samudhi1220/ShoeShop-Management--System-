@@ -24,7 +24,6 @@ public class Inventory {
     @Column(columnDefinition = "LONGTEXT")
     private String itemPicture;
     private int qty;
-    private int originalQty;
     private String category;
     @ManyToOne
     @JoinColumn(name = "supplier_id", nullable = false)

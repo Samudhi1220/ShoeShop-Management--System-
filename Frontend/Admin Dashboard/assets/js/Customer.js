@@ -71,16 +71,7 @@ cancelBtn.click(function () {
     form_container.css('max-width','800px')
 
 })
-$(document).ready(function(){
-    $("#customerDOJ").datepicker({
-        dateFormat: 'yy-mm-dd',
-        maxDate: new Date()
-    });
-    $("#customerDOB").datepicker({
-        dateFormat: 'yy-mm-dd',
-        maxDate: new Date()
-    });
-});
+
 imgUploader.change(function () {
     var file = $(this)[0].files[0];
     if (file) {
@@ -177,8 +168,8 @@ function getAllCustomer(){
                               
                                 <td>${customer.customerId}</td>
                                 <td>${customer.customerName}</td>
-                                <td>${customer.address.buildNo + " " + customer.address.lane + " " + customer.address.state + " " + customer.address.city + " " + customer.address.postalCode}</td>
-                                <td>${customer.loyaltyDate}</td>
+                                <td>${customer.address.lane + " " + customer.address.state + " " + customer.address.city}</td>
+                                <td>${customer.joinDate}</td>
                                 <td>${customer.totalPoints}</td>
                                 <td>${customer.level}</td>
                                  <td>          <img src="assets/images/action-btn.png" id="updateCustomers" height="35" width="35"/>

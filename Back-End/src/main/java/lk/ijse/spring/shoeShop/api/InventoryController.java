@@ -35,6 +35,7 @@ public class InventoryController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveInventory(@RequestBody InventoryDTO inventoryDTO) {
+        System.out.println("error");
         inventoryService.saveInventory(inventoryDTO);
         return new ResponseUtil("200", "Successfully Saved!", null);
     }
@@ -46,6 +47,11 @@ public class InventoryController {
 
         return optionalImageEntity.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getItems() {
+        return new ResponseUtil("200", "Successfully Fetched Employees", inventoryService.getAllInventory());
     }
 
 }

@@ -6,6 +6,9 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface InventoryRepository extends JpaRepository<Inventory, String> {
     Inventory findByItemCode(String itemCode);
+    @Query("SELECT i.qty FROM Inventory i WHERE i.itemCode = :id")
+    int  getQtyById(String id);
+
     @Query("SELECT i.status FROM Inventory i WHERE i.itemCode = :id")
     String findStatusById(String id);
 

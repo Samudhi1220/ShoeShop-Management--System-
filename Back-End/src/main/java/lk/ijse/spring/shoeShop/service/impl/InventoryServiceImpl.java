@@ -1,6 +1,7 @@
 package lk.ijse.spring.shoeShop.service.impl;
 
 import jakarta.persistence.EntityExistsException;
+import lk.ijse.spring.shoeShop.dto.EmployeeDTO;
 import lk.ijse.spring.shoeShop.dto.InventoryDTO;
 import lk.ijse.spring.shoeShop.entity.Inventory;
 import lk.ijse.spring.shoeShop.repository.InventoryRepository;
@@ -8,6 +9,7 @@ import lk.ijse.spring.shoeShop.repository.InventoryRepository;
 import lk.ijse.spring.shoeShop.repository.SupplierRepository;
 import lk.ijse.spring.shoeShop.service.InventoryService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,17 +23,41 @@ public class InventoryServiceImpl implements InventoryService {
 
     ModelMapper modelMapper;
 
-    public InventoryServiceImpl(InventoryRepository inventoryRepository, ModelMapper modelMapper,   SupplierRepository supplierRepository
-                        ) {
+    public InventoryServiceImpl(InventoryRepository inventoryRepository, ModelMapper modelMapper, SupplierRepository supplierRepository
+    ) {
         this.inventoryRepository = inventoryRepository;
         this.modelMapper = modelMapper;
         this.supplierRepository = supplierRepository;
 
 
     }
+
     @Override
     public void saveInventory(InventoryDTO inventoryDTO) {
 
+        if (supplierRepository.existsById(inventoryDTO.getSupplier().getSupplierCode())) {
+
+            if (inventoryRepository.existsById(inventoryDTO.getItemCode())) {
+                int totalQty = inventoryDTO.getQty() + inventoryRepository.getQtyById(inventoryDTO.getItemCode());
+                inventoryDTO.setQty(totalQty);
+            }
+
+            if (inventoryDTO.getBuyPrice() <= inventoryDTO.getSalePrice()) {
+                double expectedProfit = inventoryDTO.getSalePrice() - inventoryDTO.getBuyPrice();
+                inventoryDTO.setExpectedProfit(expectedProfit);
+                double profitMargin = (expectedProfit / inventoryDTO.getSalePrice()) * 100;
+                inventoryDTO.setProfitMargin(profitMargin);
+
+            } else {
+                throw new RuntimeException("Please check prices");
+
+            }
+
+            inventoryRepository.save(modelMapper.map(inventoryDTO,Inventory.class));
+
+        } else {
+            throw new RuntimeException("supplier not found.");
+        }
 
     }
 
@@ -75,7 +101,8 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public List<InventoryDTO> getAllInventory() {
-        return null;
+        return modelMapper.map(inventoryRepository.findAll(), new TypeToken<List<InventoryDTO>>() {
+        }.getType());
     }
 
     @Override
