@@ -91,6 +91,36 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public void updateInventory(InventoryDTO inventoryDTO) {
+        if (inventoryDTO == null || inventoryDTO.getItemCode() == null) {
+            throw new IllegalArgumentException("InventoryDTO or ItemCode cannot be null.");
+        }
+
+        if (supplierRepository.existsById(inventoryDTO.getSupplier().getSupplierCode())) {
+            if (!inventoryRepository.existsById(inventoryDTO.getItemCode())) {
+                throw new RuntimeException("Item not found.");
+            }
+
+            Inventory existingInventory = inventoryRepository.findById(inventoryDTO.getItemCode()).orElseThrow(() -> new RuntimeException("Item not found."));
+            existingInventory.setItemDesc(inventoryDTO.getItemDesc());
+            existingInventory.setCategory(inventoryDTO.getCategory());
+            existingInventory.setQty(inventoryDTO.getQty());
+            existingInventory.setBuyPrice(inventoryDTO.getBuyPrice());
+            existingInventory.setSalePrice(inventoryDTO.getSalePrice());
+            existingInventory.setSize(inventoryDTO.getSize());
+
+            if (inventoryDTO.getBuyPrice() <= inventoryDTO.getSalePrice()) {
+                double expectedProfit = inventoryDTO.getSalePrice() - inventoryDTO.getBuyPrice();
+                existingInventory.setExpectedProfit(expectedProfit);
+                double profitMargin = (expectedProfit / inventoryDTO.getSalePrice()) * 100;
+                existingInventory.setProfitMargin(profitMargin);
+            } else {
+                throw new RuntimeException("Please check prices");
+            }
+
+            inventoryRepository.save(existingInventory);
+        } else {
+            throw new RuntimeException("Supplier not found.");
+        }
 
     }
 

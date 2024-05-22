@@ -12,7 +12,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Embeddable
-public class SaleDetailPK implements Serializable {
+public class
+SaleDetailPK implements Serializable {
     @Column(name = "order_no")
     private String orderNo;
     @Column(name = "item_code")
