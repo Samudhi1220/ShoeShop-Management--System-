@@ -112,7 +112,6 @@ function getAllItems() {
                                 <td>${item.size}</td>
                           
                                  <td>          <img src="assets/images/action-btn.png" id="updateItem" height="35" width="35"/>
-                                         <img src="assets/images/action-delete-btn.png" id="deleteItem"  height="35" width="35"/>
                                          <img src="assets/images/action-btn (1) (1).png" id="showItem" height="35" width="35"/>
                             </td>
                                 

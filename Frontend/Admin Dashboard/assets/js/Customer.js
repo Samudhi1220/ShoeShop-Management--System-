@@ -1,5 +1,4 @@
 const addCustomer = $('#addCustomer'),
-    updateCustomer = $('#updateCustomers'),
     deleteCustomers = $('#deleteCustomers'),
     showCustomerDetails = $('#showCustomerDetails')
 form_closeCustomer = $('.from_close'),
