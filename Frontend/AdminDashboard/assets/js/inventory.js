@@ -1,5 +1,6 @@
 addItem = $('#addInventory'),
 btnCancel = $('.cancelBtn'),
+    formCloseBtn = $('.from_close'),
     itemCode = $('#itemCode'),
     itemDesc = $('#itemDesc'),
     category = $('#itemCategory'),
@@ -21,7 +22,16 @@ getAllItems();
 clickItemTblRow();
 
 
+formCloseBtn.click(function () {
+    home.removeClass('show');
+    form_container.css('max-width', '800px')
 
+})
+btnCancel.click(function () {
+    home.removeClass('show');
+    form_container.css('max-width', '800px')
+
+})
 
 addItem.click(function () {
     $('#inventoryLabel').text('Add Item')
@@ -32,46 +42,6 @@ addItem.click(function () {
 
 
 });
-// deleteItem.click(function () {
-//     Swal.fire({
-//         title: "Are you sure?",
-//         text: "You won't be able to revert this!",
-//         icon: "warning",
-//         showCancelButton: true,
-//         confirmButtonColor: "#3085d6",
-//         cancelButtonColor: "#d33",
-//         confirmButtonText: "Yes, delete it!"
-//     }).then((result) => {
-//         if (result.isConfirmed) {
-//             Swal.fire({
-//                 title: "Deleted!",
-//                 text: "Your file has been deleted.",
-//                 icon: "success"
-//             });
-//         }
-//     });
-//     // $('#inventoryLabel').text('Delete Item')
-//     // $('#saveItembtn').text("Delete")
-//     // home.addClass('show')
-// });
-// showItem.click(function () {
-//     $('#inventoryLabel').text('All Item Details')
-//     $('#saveItembtn').text("Close")
-//     $('#saveItembtn').click(function () {
-//         home.removeClass('show');
-//
-//     })
-//     $('.hidden').removeClass('d-none')
-//
-//     home.addClass('show')
-//     disableTxtField()
-//
-// });
-
-
-// Function to reset the form
-
-
 
 
 

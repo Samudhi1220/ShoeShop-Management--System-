@@ -1,4 +1,6 @@
- const addSupplier = $('#addSupplier');
+ const addSupplier = $('#addSupplier'),
+     formCloseSupplier = $('.from_close'),
+     btnCancelSupplier = $('.cancelBtn')
 
 
  saveSupplier();
@@ -6,6 +8,19 @@
  updateSuppliers()
  getAllSuppliers()
  searchSupplier();
+
+
+
+ formCloseSupplier.click(function () {
+     home.removeClass('show');
+     form_container.css('max-width', '800px')
+
+ })
+ btnCancelSupplier.click(function () {
+     home.removeClass('show');
+     form_container.css('max-width', '800px')
+
+ })
  function generateNewSupplierId() {
      fetch("http://localhost:8080/api/v1/supplier/id")
          .then(response => {
@@ -30,15 +45,7 @@
     generateNewSupplierId();
      saveSupplier()
 
-
-
-
  });
-
- $('#showSupplierDetails').click(function () {
-     disableTxtField()
- })
-
 
  function getAllSuppliers() {
      $.ajax({
@@ -68,9 +75,6 @@
          }
      })
  }
-
-
-
 
  function setSupplierDataToTextField(response) {
      $('#supplierCode').val(response.supplierCode);
@@ -157,8 +161,6 @@
  }
 
 
-
-
  function updateSuppliers() {
      $('#saveSupplierbtn').click(function () {
          if ($(this).text().trim() === 'Update') {
@@ -221,11 +223,6 @@
      });
 
  }
-
-
-
-
-
 
  function deleteSuppliers(id) {
      $('#deleteSupplier').click(function () {
@@ -328,16 +325,6 @@
      form_container.css('max-width', '800px')
 
  })
- // $(document).ready(function(){
- //     $("#employeeDOJ").datepicker({
- //         dateFormat: 'yy-mm-dd',
- //         maxDate: new Date()
- //     });
- //     $("#employeeDOB").datepicker({
- //         dateFormat: 'yy-mm-dd',
- //         maxDate: new Date()
- //     });
- // });
 
 
 

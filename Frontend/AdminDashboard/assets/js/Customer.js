@@ -39,10 +39,7 @@ deleteCustomers.click(function () {
             });
         }
     });
-    // $('#mainLabel').text('Delete Employee')
-    // $('#addbtn').text("Delete")
-    //
-    // home.addClass('show')
+
 })
 showCustomerDetails.click(function () {
     $('#mainLabelCustomer').text('All Customer Details')

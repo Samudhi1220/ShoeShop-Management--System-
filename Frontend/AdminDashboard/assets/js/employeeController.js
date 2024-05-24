@@ -7,10 +7,10 @@ const addEmployee=$('#addEmployee')
     showDetails = $('#showDetails'),
     employeeDeleteBox = $('#employeeDeleteBox'),
     employeeMainInputDiv = $('#employeeMainInputDiv'),
-formClose = $('.from_close'),
+    formClose = $('.from_close'),
     btnCancel = $('.cancelBtn'),
-    userDelete = $('#deleteUser')
-imgUploader = $('#imgUploader');
+    userDelete = $('#deleteUser'),
+    imgUploader = $('#imgUploader');
 home = $('.home');
 
 var base64String;
@@ -408,16 +408,6 @@ btnCancel.click(function () {
     form_container.css('max-width', '800px')
 
 })
-// $(document).ready(function(){
-//     $("#employeeDOJ").datepicker({
-//         dateFormat: 'yy-mm-dd',
-//         maxDate: new Date()
-//     });
-//     $("#employeeDOB").datepicker({
-//         dateFormat: 'yy-mm-dd',
-//         maxDate: new Date()
-//     });
-// });
 imgUploader.change(function () {
     var file = $(this)[0].files[0];
     if (file) {
@@ -448,15 +438,6 @@ function generateNewId() {
 }
 
 
-addEmployee.click(function () {
-    $('#mainLabel').text('Add Employee')
-    home.addClass('show')
-    $('#addbtn').text("Save")
-    enableTxtField();
-    generateNewId();
-
-
-})
 
 showDetails.click(function () {
     $('#mainLabel').text('All Employee Details')
