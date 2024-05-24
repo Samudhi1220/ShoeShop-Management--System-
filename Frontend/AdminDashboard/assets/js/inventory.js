@@ -1,6 +1,6 @@
 addItem = $('#addInventory'),
-btnCancel = $('.cancelBtn'),
-    formCloseBtn = $('.from_close'),
+btnCancelInventory = $('.cancelBtn'),
+    formCloseBtnInventory = $('.from_close'),
     itemCode = $('#itemCode'),
     itemDesc = $('#itemDesc'),
     category = $('#itemCategory'),
@@ -22,12 +22,12 @@ getAllItems();
 clickItemTblRow();
 
 
-formCloseBtn.click(function () {
+formCloseBtnInventory.click(function () {
     home.removeClass('show');
     form_container.css('max-width', '800px')
 
 })
-btnCancel.click(function () {
+btnCancelInventory.click(function () {
     home.removeClass('show');
     form_container.css('max-width', '800px')
 
@@ -42,7 +42,6 @@ addItem.click(function () {
 
 
 });
-
 
 
 function disableTxtField() {

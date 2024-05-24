@@ -1,6 +1,5 @@
- const addSupplier = $('#addSupplier');
- form_closeSupplier = $('.from_close'),
-     cancelSupplierBtn = $('.cancelBtn'),
+ const form_closeSupplier = $('.from_close'),
+     cancelSupplierBtn = $('.cancelBtn');
 
 
 
@@ -8,39 +7,6 @@
  getAllSuppliers()
  clickTblRow();
  searchSupplier();
- function generateNewSupplierId() {
-     fetch("http://localhost:8080/api/v1/supplier/id")
-         .then(response => {
-             if (!response.ok) {
-                 throw new Error('Network response was not ok');
-             }
-             return response.json(); // Read response as text
-         })
-         .then(data => {
-             console.log(data);
-             $('#supplierCode').val(data.data); // Assuming data is a string
-         })
-         .catch(error => {
-             console.error('Error:', error);
-         });
- }
- addSupplier.click(function () {
-     $('#supplierLabel').text('Add Supplier')
-     home.addClass('show')
-     $('#saveSupplierbtn').text("Save")
-     enableTxtField()
-    generateNewSupplierId();
-     saveSupplier()
-
-
-
-
- });
-
- $('#showSupplierDetails').click(function () {
-     disableTxtField()
- })
-
 
  function getAllSuppliers() {
      $.ajax({
@@ -128,24 +94,12 @@
  }
 
 
-
-
-
-
-
-
-
-
-
-
  function disableTxtField() {
      $('.txt').attr('readonly', "");
 
  }
 
- function enableTxtField() {
-     $('.txt').removeAttr('readonly');
- }
+
 
 
  form_closeSupplier.click(function () {
@@ -158,21 +112,6 @@
      form_container.css('max-width', '800px')
 
  })
- // $(document).ready(function(){
- //     $("#employeeDOJ").datepicker({
- //         dateFormat: 'yy-mm-dd',
- //         maxDate: new Date()
- //     });
- //     $("#employeeDOB").datepicker({
- //         dateFormat: 'yy-mm-dd',
- //         maxDate: new Date()
- //     });
- // });
-
-
-
-
-
 
  function searchSupplier() {
      $('#searchSuppliers').keyup(function (event) {

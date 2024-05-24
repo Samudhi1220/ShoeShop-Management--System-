@@ -57,9 +57,9 @@ showCustomerDetails.click(function () {
 
 });
 
-cancelBtnCustomer .click(function () {
+cancelBtnCustomer.click(function () {
     home.removeClass('show');
-    form_container.css('max-width','800px')
+    form_container.css('max-width', '800px')
 
 })
 
@@ -90,6 +90,7 @@ function generateNewCustomerId() {
             console.error('Error:', error);
         });
 }
+
 function saveCustomer() {
     $('#addbtnCustomer').click(function () {
         if ($(this).text().trim() === 'Save') {
@@ -147,7 +148,7 @@ function saveCustomer() {
     })
 }
 
-function getAllCustomer(){
+function getAllCustomer() {
     $.ajax({
         url: "http://localhost:8080/api/v1/customer",
         method: "GET",
@@ -177,6 +178,7 @@ function getAllCustomer(){
         }
     })
 }
+
 function setCustomerDataToTextField(response) {
     $('#customerCode').val(response.customerId);
     $('#customerName').val(response.customerName);
@@ -236,13 +238,13 @@ function customerUpdate(response) {
                         });
                         $('#tblCustomer tr').each(function () {
 
-                                var row = $(this);
-                                row.find('td:eq(0)').text($('#customerCode').val());
-                                row.find('td:eq(1)').text($('#customerName').val());
-                                row.find('td:eq(2)').text($('#customerBuilding').val()+" "+
-                                    $('#customerLane').val()+" "+$('#customerState').val()+" "+$('#customerCity').val()
-                                    +" "+$('#customerPostalCode').val());
-                                row.find('td:eq(3)').text($('#customerDOJ').val());
+                            var row = $(this);
+                            row.find('td:eq(0)').text($('#customerCode').val());
+                            row.find('td:eq(1)').text($('#customerName').val());
+                            row.find('td:eq(2)').text($('#customerBuilding').val() + " " +
+                                $('#customerLane').val() + " " + $('#customerState').val() + " " + $('#customerCity').val()
+                                + " " + $('#customerPostalCode').val());
+                            row.find('td:eq(3)').text($('#customerDOJ').val());
 
                         });
                     }
@@ -405,6 +407,7 @@ function clickCustomerTblRow() {
 
 
 }
+
 form_closeCustomer.click(function () {
     home.addClass('show')
 

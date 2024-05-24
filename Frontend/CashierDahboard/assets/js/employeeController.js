@@ -1,25 +1,13 @@
-
-
-
-const addEmployee=$('#addEmployee')
-    updateEmployee = $('#updateEmployee'),
-    deleteEmployee = $('#deleteEmployee'),
-    showDetails = $('#showDetails'),
-    employeeDeleteBox = $('#employeeDeleteBox'),
-    employeeMainInputDiv = $('#employeeMainInputDiv'),
-formClose = $('.from_close'),
+const formClose = $('.from_close'),
     btnCancel = $('.cancelBtn'),
-    userDelete = $('#deleteUser')
-imgUploader = $('#imgUploader');
-home = $('.home');
+    imgUploader = $('#imgUploader'),
+    home = $('.home');
 
 var base64String;
 
 
-
 imageUploaderEmployee();
 clickTblRow();
-
 getAllEmployeeData()
 searchEmployee()
 
@@ -144,10 +132,7 @@ function clickTblRow() {
     });
 
 
-
 }
-
-
 
 
 function disableTxtField() {
@@ -160,7 +145,6 @@ function enableTxtField() {
 }
 
 
-
 formClose.click(function () {
     home.removeClass('show');
     form_container.css('max-width', '800px')
@@ -171,16 +155,7 @@ btnCancel.click(function () {
     form_container.css('max-width', '800px')
 
 })
-// $(document).ready(function(){
-//     $("#employeeDOJ").datepicker({
-//         dateFormat: 'yy-mm-dd',
-//         maxDate: new Date()
-//     });
-//     $("#employeeDOB").datepicker({
-//         dateFormat: 'yy-mm-dd',
-//         maxDate: new Date()
-//     });
-// });
+
 imgUploader.change(function () {
     var file = $(this)[0].files[0];
     if (file) {
@@ -190,27 +165,6 @@ imgUploader.change(function () {
         // $('#fileValue').text('No file selected');
     }
 });
-
-function generateNewId() {
-    fetch("http://localhost:8080/api/v1/employees/id")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json(); // Read response as text
-        })
-        .then(data => {
-            console.log(data);
-            $('#employeeCode').val(data.data); // Assuming data is a string
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-
-
-}
-
-
 
 
 showDetails.click(function () {
@@ -233,14 +187,14 @@ function searchEmployee() {
     $('#search_employee').keyup(function (event) {
         var idOrName = $(this).val();
 
-            $.ajax({
-                url: "http://localhost:8080/api/v1/employees?idOrName=" + idOrName+"&activeStatus=" + true,
-                type: "GET",
-                dataType: "json",
-                success: function (response) {
-                    $('#tblEmployee tbody').empty()
-                    for (const employee of response.data) {
-                        const row = `<tr>
+        $.ajax({
+            url: "http://localhost:8080/api/v1/employees?idOrName=" + idOrName + "&activeStatus=" + true,
+            type: "GET",
+            dataType: "json",
+            success: function (response) {
+                $('#tblEmployee tbody').empty()
+                for (const employee of response.data) {
+                    const row = `<tr>
                              
                                 <td>${employee.employeeId}</td>
                                 <td>${employee.employeeName}</td>
@@ -250,18 +204,18 @@ function searchEmployee() {
                                 <td>${employee.branch}</td>
                                 
                             </tr>`;
-                        $('#tblEmployee').append(row);
-                    }
-                },
-                error: function (resp) {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: resp.responseJSON.message,
-                        footer: '<a href="#"></a>'
-                    });
+                    $('#tblEmployee').append(row);
                 }
-            });
+            },
+            error: function (resp) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: resp.responseJSON.message,
+                    footer: '<a href="#"></a>'
+                });
+            }
+        });
 
 
     })

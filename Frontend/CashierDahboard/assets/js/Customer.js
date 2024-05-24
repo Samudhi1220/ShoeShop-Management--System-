@@ -1,7 +1,6 @@
 const addCustomer = $('#addCustomer'),
     deleteCustomers = $('#deleteCustomers'),
-    showCustomerDetails = $('#showCustomerDetails')
-form_closeCustomer = $('.from_close'),
+    form_closeCustomer = $('.from_close'),
     cancelBtnCustomer = $('.cancelBtn'),
     home = $('.home');
 
@@ -44,30 +43,13 @@ deleteCustomers.click(function () {
     //
     // home.addClass('show')
 })
-showCustomerDetails.click(function () {
-    $('#mainLabelCustomer').text('All Customer Details')
-    $('#addbtnCustomer').text("Close")
-    $('#addbtnCustomer').click(function () {
-        home.removeClass('show');
-    })
-
-    home.addClass('show')
-    $("#customerGender").prop('disabled', false);
-    $("#customerDOB").prop('disabled', false);
-    $("#customerDOJ").prop('disabled', false);
-    disableTxtField();
 
 
-});
-
-
-cancelBtn.click(function () {
+cancelBtnCustomer.click(function () {
     home.removeClass('show');
-    form_container.css('max-width','800px')
+    form_container.css('max-width', '800px')
 
 })
-
-
 
 
 function generateNewCustomerId() {
@@ -86,6 +68,7 @@ function generateNewCustomerId() {
             console.error('Error:', error);
         });
 }
+
 function saveCustomer() {
     $('#addbtnCustomer').click(function () {
         if ($(this).text().trim() === 'Save') {
@@ -143,7 +126,7 @@ function saveCustomer() {
     })
 }
 
-function getAllCustomer(){
+function getAllCustomer() {
     $.ajax({
         url: "http://localhost:8080/api/v1/customer",
         method: "GET",
@@ -173,6 +156,7 @@ function getAllCustomer(){
         }
     })
 }
+
 function setCustomerDataToTextField(response) {
     $('#customerCode').val(response.customerId);
     $('#customerName').val(response.customerName);
@@ -232,13 +216,13 @@ function customerUpdate(response) {
                         });
                         $('#tblCustomer tr').each(function () {
 
-                                var row = $(this);
-                                row.find('td:eq(0)').text($('#customerCode').val());
-                                row.find('td:eq(1)').text($('#customerName').val());
-                                row.find('td:eq(2)').text($('#customerBuilding').val()+" "+
-                                    $('#customerLane').val()+" "+$('#customerState').val()+" "+$('#customerCity').val()
-                                    +" "+$('#customerPostalCode').val());
-                                row.find('td:eq(3)').text($('#customerDOJ').val());
+                            var row = $(this);
+                            row.find('td:eq(0)').text($('#customerCode').val());
+                            row.find('td:eq(1)').text($('#customerName').val());
+                            row.find('td:eq(2)').text($('#customerBuilding').val() + " " +
+                                $('#customerLane').val() + " " + $('#customerState').val() + " " + $('#customerCity').val()
+                                + " " + $('#customerPostalCode').val());
+                            row.find('td:eq(3)').text($('#customerDOJ').val());
 
                         });
                     }
@@ -362,11 +346,16 @@ function clickCustomerTblRow() {
     $('#tblCustomer').on('click', '#showCustomerDetails', function (event) {
 
         $('#mainLabel').text('Customer Details')
+        $('#addbtnCustomer').click(function () {
+            home.removeClass('show');
+        })
         home.addClass('show')
         $('#addbtn').text("Details")
 
-        $("#customerDOB").prop('disabled', true);
-        $("#customerDOJ").prop('disabled', true);
+        $("#customerGender").prop('disabled', false);
+        $("#customerDOB").prop('disabled', false);
+        $("#customerDOJ").prop('disabled', false);
+        disableTxtField();
 
 
         disableTxtField();
@@ -401,6 +390,7 @@ function clickCustomerTblRow() {
 
 
 }
+
 form_closeCustomer.click(function () {
     home.addClass('show')
 

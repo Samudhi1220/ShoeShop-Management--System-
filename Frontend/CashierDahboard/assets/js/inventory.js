@@ -1,79 +1,30 @@
-
-btnCancel = $('.cancelBtn'),
-    itemCode = $('#itemCode'),
-    itemDesc = $('#itemDesc'),
-    category = $('#itemCategory'),
-    salePrice = $('#itemSellPrice'),
-    buyPrice = $('#itemBuyPrice'),
-    supplierName = $('#supplierNameItem')
+const form_closeInventory = $('.from_close');
+cancelBtnInventory = $('.cancelBtn');
 
 
 // Variable to store the base64 string of the uploaded image
 var base64String;
-var inputData = [];
-
-
-
 
 itemImageUploader();
-
 getAllItems();
 clickItemTblRow();
 
 
+form_closeInventory.click(function () {
+    home.removeClass('show');
+    form_container.css('max-width', '800px')
 
+})
+cancelBtnInventory.click(function () {
+    home.removeClass('show');
+    form_container.css('max-width', '800px')
 
-
-// deleteItem.click(function () {
-//     Swal.fire({
-//         title: "Are you sure?",
-//         text: "You won't be able to revert this!",
-//         icon: "warning",
-//         showCancelButton: true,
-//         confirmButtonColor: "#3085d6",
-//         cancelButtonColor: "#d33",
-//         confirmButtonText: "Yes, delete it!"
-//     }).then((result) => {
-//         if (result.isConfirmed) {
-//             Swal.fire({
-//                 title: "Deleted!",
-//                 text: "Your file has been deleted.",
-//                 icon: "success"
-//             });
-//         }
-//     });
-//     // $('#inventoryLabel').text('Delete Item')
-//     // $('#saveItembtn').text("Delete")
-//     // home.addClass('show')
-// });
-// showItem.click(function () {
-//     $('#inventoryLabel').text('All Item Details')
-//     $('#saveItembtn').text("Close")
-//     $('#saveItembtn').click(function () {
-//         home.removeClass('show');
-//
-//     })
-//     $('.hidden').removeClass('d-none')
-//
-//     home.addClass('show')
-//     disableTxtField()
-//
-// });
-
-
-// Function to reset the form
-
-
-
+})
 
 
 function disableTxtField() {
     $('.txt').attr('readonly', "");
 
-}
-
-function enableTxtField() {
-    $('.txt').removeAttr('readonly');
 }
 
 function getAllItems() {
@@ -107,8 +58,6 @@ function getAllItems() {
 }
 
 
-
-
 function itemImageUploader() {
     const itemImageUploader = $('#imgUploader');
     const itemImageViewer = $('#imgViewer');
@@ -133,8 +82,6 @@ function itemImageUploader() {
 }
 
 
-
-
 function clickItemTblRow() {
 
     $('#tblItem').on('click', 'tr', function (event) {
@@ -145,15 +92,15 @@ function clickItemTblRow() {
     $('#tblItem').on('click', '#showItem', function (event) {
 
         $('#inventoryLabel').text('All Item Details')
-    $('#saveItembtn').text("Close")
-    $('#saveItembtn').click(function () {
-        home.removeClass('show');
+        $('#saveItembtn').text("Close")
+        $('#saveItembtn').click(function () {
+            home.removeClass('show');
 
-    })
-    $('.hidden').removeClass('d-none')
+        })
+        $('.hidden').removeClass('d-none')
 
-    home.addClass('show')
-    disableTxtField()
+        home.addClass('show')
+        disableTxtField()
 
         var row = $(this).closest('tr');
         var id = row.find('td:eq(0)').text()
@@ -176,25 +123,21 @@ function clickItemTblRow() {
     });
 
 
-
-
 }
 
 function setItemDataToTextField(resp) {
 
-                $('#itemCode').val(resp.itemCode);
-                $('#itemDesc').val(resp.itemDesc);
-                $('#itemCategory').val(resp.category);
-                $('#itemQty').val(resp.qty);
-                $('#itemSellPrice').val(resp.salePrice);
-                $('#itemBuyPrice').val(resp.buyPrice);
-                $('#supplierNameItem').val(resp.supplier.supplierName);
-                $('#itemSize').val(resp.size);
+    $('#itemCode').val(resp.itemCode);
+    $('#itemDesc').val(resp.itemDesc);
+    $('#itemCategory').val(resp.category);
+    $('#itemQty').val(resp.qty);
+    $('#itemSellPrice').val(resp.salePrice);
+    $('#itemBuyPrice').val(resp.buyPrice);
+    $('#supplierNameItem').val(resp.supplier.supplierName);
+    $('#itemSize').val(resp.size);
     $('#supplierCodeItem').val(resp.supplier.supplierCode);
     $('#itemStatus').text(resp.status);
     base64String = resp.itemPicture;
-
-
 
 
 }

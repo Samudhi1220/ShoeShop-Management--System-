@@ -1,16 +1,13 @@
-
-
-
-const addEmployee=$('#addEmployee')
-    updateEmployee = $('#updateEmployee'),
+const addEmployee = $('#addEmployee')
+updateEmployee = $('#updateEmployee'),
     deleteEmployee = $('#deleteEmployee'),
     showDetails = $('#showDetails'),
     employeeDeleteBox = $('#employeeDeleteBox'),
     employeeMainInputDiv = $('#employeeMainInputDiv'),
-    formClose = $('.from_close'),
-    btnCancel = $('.cancelBtn'),
+    formCloseEmployee = $('.from_close'),
+    btnCancelEmployee = $('.cancelBtn'),
     userDelete = $('#deleteUser'),
-    imgUploader = $('#imgUploader');
+    imgUploaderEmployee = $('#imgUploader');
 home = $('.home');
 
 var base64String;
@@ -271,9 +268,7 @@ function updateEmployeeBtn() {
 
 function deleteEmployeeBtn(id) {
     $('#deleteEmployee').click(function () {
-        Swal.fire({
-
-        }).then((result) => {
+        Swal.fire({}).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire({
                     title: "Deleted!",
@@ -314,6 +309,7 @@ function deleteEmployeeBtn(id) {
         });
     })
 }
+
 function disableTxtField() {
     $('.txt').attr('readonly', "");
 
@@ -398,17 +394,18 @@ function saveEmployee() {
     })
 
 }
-formClose.click(function () {
+
+formCloseEmployee.click(function () {
     home.removeClass('show');
     form_container.css('max-width', '800px')
 
 })
-btnCancel.click(function () {
+btnCancelEmployee.click(function () {
     home.removeClass('show');
     form_container.css('max-width', '800px')
 
 })
-imgUploader.change(function () {
+imgUploaderEmployee.change(function () {
     var file = $(this)[0].files[0];
     if (file) {
         // $('#fileValue').text('Selected file: ' + file.name);
@@ -438,22 +435,6 @@ function generateNewId() {
 }
 
 
-
-showDetails.click(function () {
-    $('#mainLabel').text('All Employee Details')
-    $('#addbtn').text("Close")
-    $('#addbtn').click(function () {
-        home.removeClass('show');
-    })
-
-    home.addClass('show')
-    disableTxtField()
-    $("#employeeGender").prop('disabled', true);
-    $("#employeeDOB").prop('disabled', true);
-    $("#employeeDOJ").prop('disabled', true);
-    $("#employeeRole").prop('disabled', true);
-
-});
 addEmployee.click(function () {
     $('#mainLabel').text('Add Employee')
     home.addClass('show')
@@ -463,18 +444,19 @@ addEmployee.click(function () {
 
 
 })
+
 function searchEmployee() {
     $('#search_employee').keyup(function (event) {
         var idOrName = $(this).val();
 
-            $.ajax({
-                url: "http://localhost:8080/api/v1/employees?idOrName=" + idOrName+"&activeStatus=" + true,
-                type: "GET",
-                dataType: "json",
-                success: function (response) {
-                    $('#tblEmployee tbody').empty()
-                    for (const employee of response.data) {
-                        const row = `<tr>
+        $.ajax({
+            url: "http://localhost:8080/api/v1/employees?idOrName=" + idOrName + "&activeStatus=" + true,
+            type: "GET",
+            dataType: "json",
+            success: function (response) {
+                $('#tblEmployee tbody').empty()
+                for (const employee of response.data) {
+                    const row = `<tr>
                              
                                 <td>${employee.employeeId}</td>
                                 <td>${employee.employeeName}</td>
@@ -484,18 +466,18 @@ function searchEmployee() {
                                 <td>${employee.branch}</td>
                                 
                             </tr>`;
-                        $('#tblEmployee').append(row);
-                    }
-                },
-                error: function (resp) {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: resp.responseJSON.message,
-                        footer: '<a href="#"></a>'
-                    });
+                    $('#tblEmployee').append(row);
                 }
-            });
+            },
+            error: function (resp) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: resp.responseJSON.message,
+                    footer: '<a href="#"></a>'
+                });
+            }
+        });
 
 
     })

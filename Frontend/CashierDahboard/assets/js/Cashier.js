@@ -1,5 +1,3 @@
-
-
 const dashboardBtn = $('#dashboardBtn');
 const customerBtn = $('#customerBtn');
 const orderBtn = $('#orderBtn');
@@ -8,16 +6,9 @@ const employeeBtn = $('#employeeBtn');
 const supplierBtn = $('#supplierBtn');
 const userBtn = $('#userBtn');
 
-    showOrderDetails = $('#showOrderDetails'),
-        deleteOrder = $('#deleteCart')
-
 
 dashboardBtn.click(function () {
-    // $('#dashboard').css("display", "block");
-    // $('#employee').css("display", "none");
-    // $('#supplier').css("display", "none");
-    // $('#inventory').css("display", "none");
-    // $('#users').css("display", "none");
+
     dashboardBtn.addClass('active')
     customerBtn.removeClass('active')
     supplierBtn.removeClass('active')
@@ -27,11 +18,7 @@ dashboardBtn.click(function () {
 })
 
 customerBtn.click(function () {
-    // $('#employee').css("display", "block");
-    // $('#dashboard').css("display", "none");
-    // $('#supplier').css("display", "none");
-    // $('#inventory').css("display", "none");
-    // $('#users').css("display", "none");
+
     dashboardBtn.removeClass('active')
     customerBtn.addClass('active')
     supplierBtn.removeClass('active')
@@ -41,11 +28,7 @@ customerBtn.click(function () {
     inventoryBtn.removeClass('active')
 })
 orderBtn.click(function () {
-    // $('#employee').css("display", "none");
-    // $('#dashboard').css("display", "none");
-    // $('#supplier').css("display", "block");
-    // $('#inventory').css("display", "none");
-    // $('#users').css("display", "none");
+
     dashboardBtn.removeClass('active')
     customerBtn.removeClass('active')
     orderBtn.addClass('active')
@@ -53,19 +36,9 @@ orderBtn.click(function () {
     supplierBtn.removeClass('active')
     employeeBtn.removeClass('active')
 
-    // $('#employeSection').remove();
-    // $('#inventorySection').remove();
-    // $('#userSection').remove();
-    // $('#pages').load('supplier.html #supplierSection', function () {
-    //     pagination();
-    //     supplierFunction();
-     });
+});
 inventoryBtn.click(function () {
-    // $('#employee').css("display", "none");
-    // $('#dashboard').css("display", "none");
-    // $('#supplier').css("display", "none");
-    // $('#inventory').css("display", "block");
-    // $('#users').css("display", "none");
+
     dashboardBtn.removeClass('active')
     customerBtn.removeClass('active')
     supplierBtn.removeClass('active')
@@ -75,11 +48,7 @@ inventoryBtn.click(function () {
 })
 
 employeeBtn.click(function () {
-    // $('#employee').css("display", "none");
-    // $('#dashboard').css("display", "none");
-    // $('#supplier').css("display", "none");
-    // $('#inventory').css("display", "block");
-    // $('#users').css("display", "none");
+
     dashboardBtn.removeClass('active')
     customerBtn.removeClass('active')
     supplierBtn.removeClass('active')
@@ -89,11 +58,6 @@ employeeBtn.click(function () {
 })
 
 supplierBtn.click(function () {
-    // $('#employee').css("display", "none");
-    // $('#dashboard').css("display", "none");
-    // $('#supplier').css("display", "none");
-    // $('#inventory').css("display", "block");
-    // $('#users').css("display", "none");
     dashboardBtn.removeClass('active')
     customerBtn.removeClass('active')
     inventoryBtn.removeClass('active')
@@ -103,11 +67,7 @@ supplierBtn.click(function () {
 })
 
 userBtn.click(function () {
-    // $('#employee').css("display", "none");
-    // $('#dashboard').css("display", "none");
-    // $('#supplier').css("display", "none");
-    // $('#inventory').css("display", "none");
-    // $('#users').css("display", "block");
+
     dashboardBtn.removeClass('active')
     customerBtn.removeClass('active')
     supplierBtn.removeClass('active')

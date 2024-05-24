@@ -5,7 +5,7 @@ const inventoryBtn = $('#inventoryBtn');
 const customerBtn = $('#customerBtn');
 const userBtn = $('#userBtn'),
 
-home = $('.home');
+    home = $('.home');
 
 
 dashboardBtn.click(function () {
