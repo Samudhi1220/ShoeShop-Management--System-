@@ -41,6 +41,13 @@ public class InventoryController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
+    @PatchMapping
+    public ResponseUtil updateItem(@RequestBody InventoryDTO inventoryDTO) {
+        inventoryService.updateInventory(inventoryDTO);
+        return new ResponseUtil("200", "Successfully Updated!", null);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
     @GetMapping("/{id}")
     public ResponseEntity<InventoryDTO> getInventoryById(@PathVariable("id") String id) {
         Optional<InventoryDTO> optionalImageEntity = Optional.ofNullable(inventoryService.getInventory(id));

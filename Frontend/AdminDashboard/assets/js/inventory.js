@@ -1,6 +1,5 @@
 addItem = $('#addInventory'),
 btnCancel = $('.cancelBtn'),
-    imgUploader = $('#imgUploader'),
     itemCode = $('#itemCode'),
     itemDesc = $('#itemDesc'),
     category = $('#itemCategory'),
@@ -74,15 +73,7 @@ addItem.click(function () {
 
 
 
-imgUploader.change(function () {
-    var file = $(this)[0].files[0];
-    if (file) {
-        // $('#fileValue').text('Selected file: ' + file.name);
-        console.log(file.name)
-    } else {
-        // $('#fileValue').text('No file selected');
-    }
-});
+
 
 function disableTxtField() {
     $('.txt').attr('readonly', "");
@@ -186,6 +177,7 @@ function updateItem () {
                     supplierCode: $('#supplierCodeItem').val()
                 },
                 category: $('#itemCategory').val(),
+                itemPicture: base64String,
                 supplierName: $('#supplierNameItem').text(),
                 salePrice: $('#itemSellPrice').val(),
                 buyPrice: $('#itemBuyPrice').val(),
@@ -194,7 +186,7 @@ function updateItem () {
             console.log(data);
             $.ajax({
                 url: "http://localhost:8080/api/v1/inventory",
-                method: "PUT",
+                method: "PATCH",
                 data: JSON.stringify(data),
                 contentType: "application/json",
                 success: function (resp) {
@@ -266,8 +258,8 @@ function checkSupplier() {
 }
 
 function itemImageUploader() {
-    const itemImageUploader = $('#itemImgUploader');
-    const itemImageViewer = $('#itemImgViewer');
+    const itemImageUploader = $('#imgUploader');
+    const itemImageViewer = $('#imgViewer');
 
     itemImageUploader.change(function () {
 
@@ -307,7 +299,6 @@ function checkItem() {
                         $('#itemStatus').text(resp.data.status);
                         if (resp.data.status !== "No Item Found") {
 
-                            console.log(resp);
 
 
                             $('.inputBox').not(':first').remove();
@@ -345,6 +336,7 @@ function checkItem() {
                             $('#itemDesc').val('');
                             $('#supplierCodeItem').val('');
                             $('#itemCategory').val('');
+
                             $('#itemStatus').css('color', 'red');
                             $('#inputContainer .inputBox:not(:first)').remove();
                             $('#itemColor, #itemSize, #itemQty').val('');
@@ -449,6 +441,10 @@ function setItemDataToTextField(resp) {
                 $('#itemBuyPrice').val(resp.buyPrice);
                 $('#supplierNameItem').val(resp.supplier.supplierName);
                 $('#itemSize').val(resp.size);
+    $('#supplierCodeItem').val(resp.supplier.supplierCode);
+    $('#itemStatus').text(resp.status);
+    base64String = resp.itemPicture;
+
 
 
 

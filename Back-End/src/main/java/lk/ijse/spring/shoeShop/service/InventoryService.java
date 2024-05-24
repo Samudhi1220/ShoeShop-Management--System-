@@ -20,4 +20,6 @@ public interface InventoryService {
     List<InventoryDTO> getAllInventory();
 
     InventoryDTO getInventory(String id);
+
+    Object getItemDetailsForOrder(InventoryDTO inventoryDTO);
 }

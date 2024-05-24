@@ -1,8 +1,7 @@
 const addCustomer = $('#addCustomer'),
-    updateCustomer = $('#updateCustomers'),
     deleteCustomers = $('#deleteCustomers'),
     showCustomerDetails = $('#showCustomerDetails')
-form_close = $('.from_close'),
+form_closeCustomer = $('.from_close'),
     cancelBtnCustomer = $('.cancelBtn'),
     home = $('.home');
 
@@ -11,9 +10,9 @@ getAllCustomer();
 clickCustomerTblRow();
 searchCustomer();
 addCustomer.click(function () {
-    $('#mainLabel').text('Add Customer')
+    $('#mainLabelCustomer').text('Add Customer')
     home.addClass('show')
-    $('#addbtn').text("Save")
+    $('#addbtnCustomer').text("Save")
     $("#customerGender").prop('disabled', false);
     $("#customerDOB").prop('disabled', false);
     $("#customerDOJ").prop('disabled', false);
@@ -46,9 +45,9 @@ deleteCustomers.click(function () {
     // home.addClass('show')
 })
 showCustomerDetails.click(function () {
-    $('#mainLabel').text('All Customer Details')
-    $('#addbtn').text("Close")
-    $('#addbtn').click(function () {
+    $('#mainLabelCustomer').text('All Customer Details')
+    $('#addbtnCustomer').text("Close")
+    $('#addbtnCustomer').click(function () {
         home.removeClass('show');
     })
 
@@ -71,16 +70,7 @@ cancelBtn.click(function () {
     form_container.css('max-width','800px')
 
 })
-$(document).ready(function(){
-    $("#customerDOJ").datepicker({
-        dateFormat: 'yy-mm-dd',
-        maxDate: new Date()
-    });
-    $("#customerDOB").datepicker({
-        dateFormat: 'yy-mm-dd',
-        maxDate: new Date()
-    });
-});
+
 imgUploader.change(function () {
     var file = $(this)[0].files[0];
     if (file) {
@@ -109,7 +99,7 @@ function generateNewCustomerId() {
         });
 }
 function saveCustomer() {
-    $('#addbtn').click(function () {
+    $('#addbtnCustomer').click(function () {
         if ($(this).text().trim() === 'Save') {
             const postData = {
                 customerId: $('#customerCode').val(),
@@ -177,8 +167,8 @@ function getAllCustomer(){
                               
                                 <td>${customer.customerId}</td>
                                 <td>${customer.customerName}</td>
-                                <td>${customer.address.buildNo + " " + customer.address.lane + " " + customer.address.state + " " + customer.address.city + " " + customer.address.postalCode}</td>
-                                <td>${customer.loyaltyDate}</td>
+                                <td>${customer.address.lane + " " + customer.address.state + " " + customer.address.city}</td>
+                                <td>${customer.joinDate}</td>
                                 <td>${customer.totalPoints}</td>
                                 <td>${customer.level}</td>
                                  <td>          <img src="assets/images/action-btn.png" id="updateCustomers" height="35" width="35"/>
@@ -215,7 +205,7 @@ function setCustomerDataToTextField(response) {
 
 function customerUpdate(response) {
     console.log("updateCustomers");
-    $('#addbtn').click(function () {
+    $('#addbtnCustomer').click(function () {
         if ($(this).text().trim() === 'Update') {
             const postData = {
                 customerId: $('#customerCode').val(),
@@ -326,6 +316,10 @@ function searchCustomer() {
                                 <td>${customer.loyaltyDate}</td>
                                 <td>${customer.totalPoints}</td>
                                 <td>${customer.level}</td>
+                                 <td>          <img src="assets/images/action-btn.png" id="updateCustomers" height="35" width="35"/>
+                                         <img src="assets/images/action-delete-btn.png" id="deleteCustomers"  height="35" width="35"/>
+                                         <img src="assets/images/action-btn (1) (1).png" id="showCustomerDetails" height="35" width="35"/>
+                            </td>
                                 
                             </tr>`;
                     $('#tblCustomer').append(row);
@@ -351,9 +345,9 @@ function clickCustomerTblRow() {
     });
     $('#tblCustomer').on('click', '#updateCustomers', function (event) {
 
-        $('#mainLabel').text('Update Customer')
+        $('#mainLabelCustomer').text('Update Customer')
         home.addClass('show')
-        $('#addbtn').text("Update")
+        $('#addbtnCustomer').text("Update")
         $("#customerGender").prop('disabled', false);
         $("#customerDOB").prop('disabled', false);
         $("#customerDOJ").prop('disabled', false);
@@ -419,7 +413,7 @@ function clickCustomerTblRow() {
 
 
 }
-form_close.click(function () {
+form_closeCustomer.click(function () {
     home.addClass('show')
 
 })

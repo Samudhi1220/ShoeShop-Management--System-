@@ -139,4 +139,12 @@ public class InventoryServiceImpl implements InventoryService {
     public InventoryDTO getInventory(String id) {
         return modelMapper.map(inventoryRepository.findById(id), InventoryDTO.class);
     }
+    @Override
+    public Object getItemDetailsForOrder(InventoryDTO inventoryDTO) {
+        if (inventoryRepository.existsById(inventoryDTO.getItemCode())){
+            return modelMapper.map(inventoryRepository.findById(inventoryDTO.getItemCode()), Inventory.class);
+        }else {
+            return "Item Not Found!";
+        }
+    }
 }

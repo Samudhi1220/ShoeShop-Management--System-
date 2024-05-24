@@ -60,26 +60,14 @@ showCustomerDetails.click(function () {
 
 });
 
-form_close.click(function () {
-    home.removeClass('show');
-    form_container.css('max-width','800px')
 
-})
 cancelBtn.click(function () {
     home.removeClass('show');
     form_container.css('max-width','800px')
 
 })
 
-imgUploader.change(function () {
-    var file = $(this)[0].files[0];
-    if (file) {
-        // $('#fileValue').text('Selected file: ' + file.name);
-        console.log(file.name)
-    } else {
-        // $('#fileValue').text('No file selected');
-    }
-});
+
 
 
 function generateNewCustomerId() {
@@ -316,6 +304,10 @@ function searchCustomer() {
                                 <td>${customer.loyaltyDate}</td>
                                 <td>${customer.totalPoints}</td>
                                 <td>${customer.level}</td>
+                                 <td>          <img src="assets/images/action-btn.png" id="updateCustomers" height="35" width="35"/>
+                                         <img src="assets/images/action-delete-btn.png" id="deleteCustomers"  height="35" width="35"/>
+                                         <img src="assets/images/action-btn (1) (1).png" id="showCustomerDetails" height="35" width="35"/>
+                            </td>
                                 
                             </tr>`;
                     $('#tblCustomer').append(row);
