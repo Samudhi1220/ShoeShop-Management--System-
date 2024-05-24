@@ -1,5 +1,5 @@
-addItem = $('#addInventory'),
-btnCancelInventory = $('.cancelBtn'),
+const addItem = $('#addInventory'),
+    btnCancelInventory = $('.cancelBtn'),
     formCloseBtnInventory = $('.from_close'),
     itemCode = $('#itemCode'),
     itemDesc = $('#itemDesc'),
@@ -88,21 +88,21 @@ function getAllItems() {
 
 function saveItem() {
     $('#saveItembtn').click(function () {
-        if ($('#saveItembtn').text() ==='Save'){
+        if ($('#saveItembtn').text() === 'Save') {
             const data = {
-                itemCode:$('#itemCode').val(),
-                itemDesc:$('#itemDesc').val(),
-                qty:$('#itemQty').val(),
+                itemCode: $('#itemCode').val(),
+                itemDesc: $('#itemDesc').val(),
+                qty: $('#itemQty').val(),
 
-                supplier:{
+                supplier: {
                     supplierCode: $('#supplierCodeItem').val()
                 },
-                category:$('#itemCategory').val(),
+                category: $('#itemCategory').val(),
                 itemPicture: base64String,
-                supplierName:$('#supplierNameItem').text(),
-                salePrice:$('#itemSellPrice').val(),
-                buyPrice:$('#itemBuyPrice').val(),
-                size:$('#itemSize').val()
+                supplierName: $('#supplierNameItem').text(),
+                salePrice: $('#itemSellPrice').val(),
+                buyPrice: $('#itemBuyPrice').val(),
+                size: $('#itemSize').val()
             }
             console.log(data);
             $.ajax({
@@ -135,7 +135,7 @@ function saveItem() {
 
 }
 
-function updateItem () {
+function updateItem() {
     $('#saveItembtn').click(function () {
         if ($('#saveItembtn').text() === 'Update') {
             const data = {
@@ -269,7 +269,6 @@ function checkItem() {
                         if (resp.data.status !== "No Item Found") {
 
 
-
                             $('.inputBox').not(':first').remove();
 
                             inputData = resp.data.sizeList;
@@ -365,15 +364,15 @@ function clickItemTblRow() {
     $('#tblItem').on('click', '#showItem', function (event) {
 
         $('#inventoryLabel').text('All Item Details')
-    $('#saveItembtn').text("Close")
-    $('#saveItembtn').click(function () {
-        home.removeClass('show');
+        $('#saveItembtn').text("Close")
+        $('#saveItembtn').click(function () {
+            home.removeClass('show');
 
-    })
-    $('.hidden').removeClass('d-none')
+        })
+        $('.hidden').removeClass('d-none')
 
-    home.addClass('show')
-    disableTxtField()
+        home.addClass('show')
+        disableTxtField()
 
         var row = $(this).closest('tr');
         var id = row.find('td:eq(0)').text()
@@ -396,25 +395,21 @@ function clickItemTblRow() {
     });
 
 
-
-
 }
 
 function setItemDataToTextField(resp) {
 
-                $('#itemCode').val(resp.itemCode);
-                $('#itemDesc').val(resp.itemDesc);
-                $('#itemCategory').val(resp.category);
-                $('#itemQty').val(resp.qty);
-                $('#itemSellPrice').val(resp.salePrice);
-                $('#itemBuyPrice').val(resp.buyPrice);
-                $('#supplierNameItem').val(resp.supplier.supplierName);
-                $('#itemSize').val(resp.size);
+    $('#itemCode').val(resp.itemCode);
+    $('#itemDesc').val(resp.itemDesc);
+    $('#itemCategory').val(resp.category);
+    $('#itemQty').val(resp.qty);
+    $('#itemSellPrice').val(resp.salePrice);
+    $('#itemBuyPrice').val(resp.buyPrice);
+    $('#supplierNameItem').val(resp.supplier.supplierName);
+    $('#itemSize').val(resp.size);
     $('#supplierCodeItem').val(resp.supplier.supplierCode);
     $('#itemStatus').text(resp.status);
     base64String = resp.itemPicture;
-
-
 
 
 }

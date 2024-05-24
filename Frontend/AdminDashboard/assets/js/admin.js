@@ -4,7 +4,6 @@ const supplierBtn = $('#supplierBtn');
 const inventoryBtn = $('#inventoryBtn');
 const customerBtn = $('#customerBtn');
 const userBtn = $('#userBtn'),
-
     home = $('.home');
 
 

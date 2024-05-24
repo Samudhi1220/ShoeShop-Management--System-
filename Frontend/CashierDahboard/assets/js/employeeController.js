@@ -1,7 +1,7 @@
-const formClose = $('.from_close'),
+const formCloseEmployee = $('.from_close'),
     btnCancel = $('.cancelBtn'),
-    imgUploader = $('#imgUploader'),
-    home = $('.home');
+    imgUploader = $('#imgUploader')
+  const home = $('.home');
 
 var base64String;
 
@@ -145,7 +145,7 @@ function enableTxtField() {
 }
 
 
-formClose.click(function () {
+formCloseEmployee.click(function () {
     home.removeClass('show');
     form_container.css('max-width', '800px')
 

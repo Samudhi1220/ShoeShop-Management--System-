@@ -1,14 +1,9 @@
-const addEmployee = $('#addEmployee')
-updateEmployee = $('#updateEmployee'),
-    deleteEmployee = $('#deleteEmployee'),
+const addEmployee = $('#addEmployee'),
     showDetails = $('#showDetails'),
-    employeeDeleteBox = $('#employeeDeleteBox'),
-    employeeMainInputDiv = $('#employeeMainInputDiv'),
     formCloseEmployee = $('.from_close'),
     btnCancelEmployee = $('.cancelBtn'),
-    userDelete = $('#deleteUser'),
-    imgUploaderEmployee = $('#imgUploader');
-home = $('.home');
+    imgUploaderEmployee = $('#imgUploader'),
+    home = $('.home')
 
 var base64String;
 
@@ -20,6 +15,15 @@ updateEmployeeBtn()
 getAllEmployeeData()
 searchEmployee()
 
+addEmployee.click(function () {
+    $('#mainLabel').text('Add Employee')
+    home.addClass('show')
+    $('#addbtn').text("Save")
+    enableTxtField();
+    generateNewId();
+
+
+})
 
 function getAllEmployeeData() {
     $.ajax({
@@ -435,15 +439,6 @@ function generateNewId() {
 }
 
 
-addEmployee.click(function () {
-    $('#mainLabel').text('Add Employee')
-    home.addClass('show')
-    $('#addbtn').text("Save")
-    enableTxtField();
-    generateNewId();
-
-
-})
 
 function searchEmployee() {
     $('#search_employee').keyup(function (event) {

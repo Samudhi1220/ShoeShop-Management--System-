@@ -1,9 +1,9 @@
 const addCustomer = $('#addCustomer'),
     deleteCustomers = $('#deleteCustomers'),
-    showCustomerDetails = $('#showCustomerDetails')
+    showCustomerDetails = $('#showCustomerDetails'),
 form_closeCustomer = $('.from_close'),
     cancelBtnCustomer = $('.cancelBtn'),
-    home = $('.home');
+    home = $('.home')
 
 saveCustomer();
 getAllCustomer();

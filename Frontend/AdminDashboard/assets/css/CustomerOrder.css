@@ -1,0 +1,58 @@
+.home{
+    z-index: 1002;
+}
+
+.home.show .form-container {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.home::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease-out ;
+}
+.home.show::before{
+    opacity: 1;
+    pointer-events: auto;
+}
+.imgUploader{
+    padding-top: 11px;
+}
+
+.orderBox{
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.orderRow{
+    gap: 1rem;
+}
+.purchersBtn{
+    width: 120px;
+
+}
+.cardDivCustomerOrder{
+    border-radius: 15px;
+    width: 1050px;
+    height: 91.8%;
+    top: 4rem;
+    left: 19rem;
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+
+}
+.customerOrderDiv{
+    padding-left: 2rem;
+    padding-right: 3rem;
+}
