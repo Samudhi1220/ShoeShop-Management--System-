@@ -60,12 +60,7 @@ showCustomerDetails.click(function () {
 
 });
 
-form_close.click(function () {
-    home.removeClass('show');
-    form_container.css('max-width','800px')
-
-})
-cancelBtn.click(function () {
+cancelBtnCustomer .click(function () {
     home.removeClass('show');
     form_container.css('max-width','800px')
 

@@ -5,16 +5,7 @@ const inventoryBtn = $('#inventoryBtn');
 const customerBtn = $('#customerBtn');
 const userBtn = $('#userBtn'),
 
-
-    form_close = $('.from_close'),
-    cancelBtn = $('.cancelBtn'),
-    deleteUser = $('#deleteUser')
-    imgUploader = $('#imgUploader');
-    home = $('.home');
-
-
-
-
+home = $('.home');
 
 
 dashboardBtn.click(function () {
@@ -88,28 +79,6 @@ userBtn.click(function () {
 })
 
 
-
-deleteUser.click(function () {
-    Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success"
-            });
-        }
-    })
-});
-
-
 customerBtn.click(function () {
     // $('#employee').css("display", "block");
     // $('#dashboard').css("display", "none");
@@ -125,14 +94,8 @@ customerBtn.click(function () {
 })
 
 
-function disableTxtField() {
-    $('.txt').attr('readonly', "");
 
-}
 
-function enableTxtField() {
-    $('.txt').removeAttr('readonly');
-}
 
 
 
