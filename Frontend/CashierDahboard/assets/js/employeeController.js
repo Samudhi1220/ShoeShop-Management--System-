@@ -1,7 +1,7 @@
-const formCloseEmployee = $('.from_close'),
-    btnCancel = $('.cancelBtn'),
-    imgUploader = $('#imgUploader')
-  const home = $('.home');
+const formCloseEmployee = $('.from_close');
+  const  btnCancel = $('.cancelBtn');
+  const  imgUploader = $('#imgUploader');
+  const homeClass = $('.home');
 
 var base64String;
 
@@ -14,7 +14,7 @@ searchEmployee()
 
 function getAllEmployeeData() {
     $.ajax({
-        url: "http://localhost:8080/api/v1/employees",
+         url: "http://localhost:8080/api/v1/employees",
         method: "GET",
         success: function (resp) {
             console.log("Success: ", resp);
@@ -103,7 +103,7 @@ function clickTblRow() {
     $('#tblEmployee').on('click', '#showDetails', function (event) {
 
         $('#mainLabel').text('Employee Details')
-        home.addClass('show')
+        homeClass.addClass('show')
         $('#addbtn').text("Details")
         $("#employeeGender").prop('disabled', true);
         $("#employeeDOB").prop('disabled', true);
@@ -146,12 +146,11 @@ function enableTxtField() {
 
 
 formCloseEmployee.click(function () {
-    home.removeClass('show');
-    form_container.css('max-width', '800px')
-
+    homeClass.removeClass('show');
+    form_container.css('max-width', '800 ');
 })
 btnCancel.click(function () {
-    home.removeClass('show');
+    homeClass.removeClass('show');
     form_container.css('max-width', '800px')
 
 })
@@ -167,21 +166,7 @@ imgUploader.change(function () {
 });
 
 
-showDetails.click(function () {
-    $('#mainLabel').text('All Employee Details')
-    $('#addbtn').text("Close")
-    $('#addbtn').click(function () {
-        home.removeClass('show');
-    })
 
-    home.addClass('show')
-    disableTxtField()
-    $("#employeeGender").prop('disabled', true);
-    $("#employeeDOB").prop('disabled', true);
-    $("#employeeDOJ").prop('disabled', true);
-    $("#employeeRole").prop('disabled', true);
-
-});
 
 function searchEmployee() {
     $('#search_employee').keyup(function (event) {

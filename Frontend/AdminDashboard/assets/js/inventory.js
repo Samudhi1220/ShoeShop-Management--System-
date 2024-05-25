@@ -1,12 +1,7 @@
 const addItem = $('#addInventory'),
     btnCancelInventory = $('.cancelBtn'),
-    formCloseBtnInventory = $('.from_close'),
-    itemCode = $('#itemCode'),
-    itemDesc = $('#itemDesc'),
-    category = $('#itemCategory'),
-    salePrice = $('#itemSellPrice'),
-    buyPrice = $('#itemBuyPrice'),
-    supplierName = $('#supplierNameItem')
+    formCloseBtnInventory = $('.from_close')
+
 
 
 // Variable to store the base64 string of the uploaded image

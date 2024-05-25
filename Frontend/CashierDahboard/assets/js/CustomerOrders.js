@@ -9,8 +9,9 @@ if ($('#customerTyper').val() === "Loyalty") {
 
 
 function getItemDetails() {
-    console.log('wada')
-    $('#orderCustomerId').keyup(function () {
+
+    $('#OrderItemId').keyup(function () {
+        console.log('wada')
 
         OrderItemId = $(this).val();
         const code = {
@@ -32,11 +33,19 @@ function getItemDetails() {
                     if (response.data !== "Item Not Found!") {
                         $('#itemFoundStatus').addClass('d-none');
                     }else {
+
                         $('#itemFoundStatus').removeClass('d-none');
+                        console.log("hiiiii");
+                        $('#size').text(response.data.size);
+
+                        $('#desc').text(response.data.itemDesc);
+
                     }
 
                 }
                 console.log(response)
+                console.log($('#size').text());
+                console.log(response.data.itemDesc);
             },
             error: function (resp) {
                 // console.log(resp);
