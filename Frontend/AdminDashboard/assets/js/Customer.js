@@ -1,18 +1,17 @@
-const addCustomer = $('#addCustomer'),
-    deleteCustomers = $('#deleteCustomers'),
-    showCustomerDetails = $('#showCustomerDetails'),
-form_closeCustomer = $('.from_close'),
-    cancelBtnCustomer = $('.cancelBtn'),
-    home = $('.home')
+const deleteCustomers = $('#deleteCustomers'),
+    form_closeCustomer = $('.from_close'),
+    cancelBtnCustomer = $('.cancelBtn')
+
 
 saveCustomer();
-getAllCustomer();
 clickCustomerTblRow();
+getAllCustomer();
 searchCustomer();
-addCustomer.click(function () {
+$('#addCustomer').click(function () {
+
     $('#mainLabelCustomer').text('Add Customer')
-    home.addClass('show')
-    $('#addbtnCustomer').text("Save")
+    $('.home').addClass('show')
+    $('#addbtnCustomer').text("Save");
     $("#customerGender").prop('disabled', false);
     $("#customerDOB").prop('disabled', false);
     $("#customerDOJ").prop('disabled', false);
@@ -39,39 +38,18 @@ deleteCustomers.click(function () {
             });
         }
     });
-
+    // $('#mainLabel').text('Delete Employee')
+    // $('#addbtn').text("Delete")
+    //
+    // home.addClass('show')
 })
-showCustomerDetails.click(function () {
-    $('#mainLabelCustomer').text('All Customer Details')
-    $('#addbtnCustomer').text("Close")
-    $('#addbtnCustomer').click(function () {
-        home.removeClass('show');
-    })
 
-    home.addClass('show')
-    $("#customerGender").prop('disabled', false);
-    $("#customerDOB").prop('disabled', false);
-    $("#customerDOJ").prop('disabled', false);
-    disableTxtField();
-
-
-});
 
 cancelBtnCustomer.click(function () {
-    home.removeClass('show');
+    $('.home').removeClass('show');
     form_container.css('max-width', '800px')
 
 })
-
-imgUploader.change(function () {
-    var file = $(this)[0].files[0];
-    if (file) {
-        // $('#fileValue').text('Selected file: ' + file.name);
-        console.log(file.name)
-    } else {
-        // $('#fileValue').text('No file selected');
-    }
-});
 
 
 function generateNewCustomerId() {
@@ -335,12 +313,11 @@ function clickCustomerTblRow() {
 
     $('#tblCustomer').on('click', 'tr', function (event) {
 
-
     });
     $('#tblCustomer').on('click', '#updateCustomers', function (event) {
 
         $('#mainLabelCustomer').text('Update Customer')
-        home.addClass('show')
+        $('.home').addClass('show')
         $('#addbtnCustomer').text("Update")
         $("#customerGender").prop('disabled', false);
         $("#customerDOB").prop('disabled', false);
@@ -367,15 +344,18 @@ function clickCustomerTblRow() {
     });
     $('#tblCustomer').on('click', '#showCustomerDetails', function (event) {
 
-        $('#mainLabel').text('Customer Details')
-        home.addClass('show')
-        $('#addbtn').text("Details")
+        $('#mainLabelCustomer').text('Customer Details');
+        $('#addbtnCustomer').click(function () {
+            $('.home').removeClass('show');
+        })
+        $('.home').addClass('show')
+        $('#addbtnCustomer').text("Details")
 
-        $("#customerDOB").prop('disabled', true);
-        $("#customerDOJ").prop('disabled', true);
-
-
+        $("#customerGender").prop('disabled', false);
+        $("#customerDOB").prop('disabled', false);
+        $("#customerDOJ").prop('disabled', false);
         disableTxtField();
+
         var row = $(this).closest('tr');
         var id = row.find('td:eq(0)').text()
         $.ajax({
@@ -409,7 +389,7 @@ function clickCustomerTblRow() {
 }
 
 form_closeCustomer.click(function () {
-    home.addClass('show')
+    $('.home').addClass('show')
 
 })
 

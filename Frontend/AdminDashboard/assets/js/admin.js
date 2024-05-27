@@ -3,10 +3,19 @@ const employeeBtn = $('#employeeBtn');
 const supplierBtn = $('#supplierBtn');
 const inventoryBtn = $('#inventoryBtn');
 const customerBtn = $('#customerBtn');
-const userBtn = $('#userBtn'),
+const userBtn = $('#userBtn');
+const orderBtn = $('#orderBtn');
     home = $('.home');
 
 
+
+$('#dashboard').removeClass('d-none')
+$('#employee').addClass('d-none')
+$('#supplier').addClass('d-none')
+$('#inventory').addClass('d-none')
+$('#customer').addClass('d-none')
+$('#customerOrder').addClass('d-none')
+$('#users').addClass('d-none')
 dashboardBtn.click(function () {
 
     dashboardBtn.addClass('active')
@@ -15,6 +24,15 @@ dashboardBtn.click(function () {
     userBtn.removeClass('active')
     inventoryBtn.removeClass('active')
     customerBtn.removeClass('active')
+    orderBtn.removeClass('active')
+
+    $('#dashboard').removeClass('d-none')
+    $('#employee').addClass('d-none')
+    $('#supplier').addClass('d-none')
+    $('#inventory').addClass('d-none')
+    $('#customer').addClass('d-none')
+    $('#customerOrder').addClass('d-none')
+    $('#users').addClass('d-none')
 })
 
 employeeBtn.click(function () {
@@ -25,6 +43,15 @@ employeeBtn.click(function () {
     userBtn.removeClass('active')
     inventoryBtn.removeClass('active')
     customerBtn.removeClass('active')
+    orderBtn.removeClass('active')
+
+    $('#dashboard').addClass('d-none')
+    $('#employee').removeClass('d-none')
+    $('#supplier').addClass('d-none')
+    $('#inventory').addClass('d-none')
+    $('#customer').addClass('d-none')
+    $('#customerOrder').addClass('d-none')
+    $('#users').addClass('d-none')
 })
 supplierBtn.click(function () {
 
@@ -34,6 +61,16 @@ supplierBtn.click(function () {
     userBtn.removeClass('active')
     customerBtn.removeClass('active')
     inventoryBtn.removeClass('active')
+    orderBtn.removeClass('active')
+
+    $('#dashboard').addClass('d-none')
+    $('#employee').addClass('d-none')
+    $('#supplier').removeClass('d-none')
+    $('#inventory').addClass('d-none')
+    $('#customer').addClass('d-none')
+    $('#customerOrder').addClass('d-none')
+    $('#users').addClass('d-none')
+
 
 })
 inventoryBtn.click(function () {
@@ -44,6 +81,15 @@ inventoryBtn.click(function () {
     userBtn.removeClass('active')
     customerBtn.removeClass('active')
     inventoryBtn.addClass('active')
+    orderBtn.removeClass('active')
+
+    $('#dashboard').addClass('d-none')
+    $('#employee').addClass('d-none')
+    $('#supplier').addClass('d-none')
+    $('#inventory').removeClass('d-none')
+    $('#customer').addClass('d-none')
+    $('#customerOrder').addClass('d-none')
+    $('#users').addClass('d-none')
 })
 
 userBtn.click(function () {
@@ -54,7 +100,15 @@ userBtn.click(function () {
     inventoryBtn.removeClass('active')
     customerBtn.removeClass('active')
     userBtn.addClass('active')
+    orderBtn.removeClass('active')
 
+    $('#dashboard').addClass('d-none')
+    $('#employee').addClass('d-none')
+    $('#supplier').addClass('d-none')
+    $('#inventory').addClass('d-none')
+    $('#customer').addClass('d-none')
+    $('#customerOrder').addClass('d-none')
+    $('#users').removeClass('d-none')
 })
 
 
@@ -66,6 +120,34 @@ customerBtn.click(function () {
     employeeBtn.removeClass('active')
     userBtn.removeClass('active')
     inventoryBtn.removeClass('active')
+    orderBtn.removeClass('active')
+
+    $('#dashboard').addClass('d-none')
+    $('#employee').addClass('d-none')
+    $('#supplier').addClass('d-none')
+    $('#inventory').addClass('d-none')
+    $('#customer').removeClass('d-none')
+    $('#customerOrder').addClass('d-none')
+    $('#users').addClass('d-none')
+})
+
+orderBtn.click(function () {
+
+    dashboardBtn.removeClass('active')
+    orderBtn.addClass('active')
+    customerBtn.removeClass('active')
+    supplierBtn.removeClass('active')
+    employeeBtn.removeClass('active')
+    userBtn.removeClass('active')
+    inventoryBtn.removeClass('active')
+
+    $('#dashboard').addClass('d-none')
+    $('#employee').addClass('d-none')
+    $('#supplier').addClass('d-none')
+    $('#inventory').addClass('d-none')
+    $('#customer').addClass('d-none')
+    $('#customerOrder').removeClass('d-none')
+    $('#users').addClass('d-none')
 })
 
 

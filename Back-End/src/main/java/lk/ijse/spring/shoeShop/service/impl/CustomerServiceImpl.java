@@ -83,4 +83,13 @@ public class CustomerServiceImpl implements CustomerService {
         return modelMapper.map(customerRepository.findByCustomerIdStartingWithOrCustomerNameStartingWith(idOrName,idOrName),new TypeToken<List<CustomerDTO>>() {}.getType());
 
     }
+
+    @Override
+    public Object getCustomerDetailsForOrder(CustomerDTO customerDTO) {
+        if (customerRepository.existsById(customerDTO.getCustomerId())){
+            return modelMapper.map(customerRepository.findById(customerDTO.getCustomerId()),Customer.class);
+        }else {
+            return "Customer Not Found!";
+        }
+    }
 }

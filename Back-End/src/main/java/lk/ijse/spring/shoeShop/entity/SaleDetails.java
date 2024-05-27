@@ -29,4 +29,6 @@ public class SaleDetails {
     private Inventory inventory;
 
     private Double itmTotal;
+
+    private int size;
 }

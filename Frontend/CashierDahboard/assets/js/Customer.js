@@ -134,7 +134,8 @@ function getAllCustomer() {
             console.log("Success: ", resp);
             $('#tblCustomer tbody').empty()
             for (const customer of resp.data) {
-                const row = `<tr>
+                if (customer.customerId !== 'Nan') {
+                    const row = `<tr>
                               
                                 <td>${customer.customerId}</td>
                                 <td>${customer.customerName}</td>
@@ -148,7 +149,8 @@ function getAllCustomer() {
                             </td>
                                 
                             </tr>`;
-                $('#tblCustomer').append(row);
+                    $('#tblCustomer').append(row);
+                }
             }
         },
         error: function (error) {
@@ -345,20 +347,19 @@ function clickCustomerTblRow() {
     });
     $('#tblCustomer').on('click', '#showCustomerDetails', function (event) {
 
-        $('#mainLabel').text('Customer Details')
-        $('#addbtnCustomer').click(function () {
-            home.removeClass('show');
-        })
+        $('#mainLabelCustomer').text('Customer Details')
+
         home.addClass('show')
-        $('#addbtn').text("Details")
+        $('#addbtnCustomer').text("Details")
 
         $("#customerGender").prop('disabled', false);
         $("#customerDOB").prop('disabled', false);
         $("#customerDOJ").prop('disabled', false);
+        $('#addbtnCustomer').click(function () {
+            home.removeClass('show');
+        })
         disableTxtField();
 
-
-        disableTxtField();
         var row = $(this).closest('tr');
         var id = row.find('td:eq(0)').text()
         $.ajax({

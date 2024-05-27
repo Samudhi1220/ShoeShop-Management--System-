@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class SaleDTO {
 
     private String orderNo;
 
-    private LocalDateTime purchaseDate;
+    private LocalDate purchaseDate;
 
     private Double total;
 
@@ -29,7 +30,7 @@ public class SaleDTO {
 
     private String cashier;
 
-    private Customer customerName;
+    private CustomerDTO customerId;
 
-    private List<SaleDetails> saleDetails = new ArrayList<>();
+    private List<SaleDetailsDTO> saleDetails = new ArrayList<>();
 }

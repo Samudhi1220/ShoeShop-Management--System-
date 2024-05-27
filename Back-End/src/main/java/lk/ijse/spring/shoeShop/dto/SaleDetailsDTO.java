@@ -15,10 +15,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SaleDetailsDTO {
-
     private SaleDetailPK orderDetailPK;
     private int itmQTY;
     private Sales orderNo;
-    private Inventory inventory;
+    private InventoryDTO inventory;
     private Double itmTotal;
+    private int size;
 }

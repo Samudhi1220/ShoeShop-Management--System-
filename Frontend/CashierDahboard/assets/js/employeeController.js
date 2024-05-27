@@ -112,7 +112,7 @@ function clickTblRow() {
 
         disableTxtField();
         var row = $(this).closest('tr');
-        var id = row.find('td:eq(0)').text()
+        var id = row.find('td:eq(0)').text();
         $.ajax({
             url: "http://localhost:8080/api/v1/employees/" + id,
             type: "GET",

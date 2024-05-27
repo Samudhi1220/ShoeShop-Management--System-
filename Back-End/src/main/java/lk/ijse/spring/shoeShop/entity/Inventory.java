@@ -1,6 +1,7 @@
 package lk.ijse.spring.shoeShop.entity;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
@@ -36,6 +37,7 @@ public class Inventory {
     private String status;
     private String size;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "inventory")
+    @JsonIgnore
     private List<SaleDetails> saleDetails = new ArrayList<>();
 
 

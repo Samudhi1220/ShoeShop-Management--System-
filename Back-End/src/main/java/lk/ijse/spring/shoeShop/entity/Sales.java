@@ -3,6 +3,8 @@ package lk.ijse.spring.shoeShop.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,7 @@ public class Sales {
     private String orderNo;
 
     @CreationTimestamp
-    private LocalDateTime purchaseDate;
+    private LocalDate purchaseDate;
 
     private Double total;
 
@@ -29,8 +31,8 @@ public class Sales {
 
     private String cashier;
     @ManyToOne
-    @JoinColumn(name = "customer_name", nullable = false)
-    private Customer customerName;
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customerId;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "orderNo")
     private List<SaleDetails> saleDetails = new ArrayList<>();
