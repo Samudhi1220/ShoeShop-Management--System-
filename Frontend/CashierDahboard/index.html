@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="assets/css/Customer.css">
 
 
+
 </head>
 <body class="home">
 <header>
@@ -1138,9 +1139,9 @@
 <!--                                class="material-symbols-outlined">person_add</span> Return Orders-->
 <!--                        </button>-->
 
-<!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
-<!--                            Return Orders-->
-<!--                        </button>-->
+                        <button type="button" class="btn btn-sm btn-outline-danger float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Return Orders
+                        </button>
 
                         <div class="table-container">
                             <table class="table" id="tblCart">
@@ -1164,71 +1165,55 @@
 
             </div>
 
+
+
         </div>
 
-<!--        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--            <div class="modal-dialog">-->
-<!--                <div class="modal-content">-->
-<!--                    <div class="modal-header">-->
-<!--                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>-->
-<!--                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--                    </div>-->
-<!--                    <div class="modal-body">-->
-
-<!--                            <div class="col-md-6">-->
-<!--                                <label for="orderId" class="form-label lbl">Order Id</label>-->
-<!--                                <input type="text" class="form-control txt" id="orderId" required>-->
-<!--                            </div>-->
-<!--                            <div class="col-md-6">-->
-<!--                                <label for="orderType" class="form-label lbl">Select Order</label>-->
-<!--                                <select class="select form-select opacity-75 txt"-->
-<!--                                        aria-label="Default select example"-->
-<!--                                        id="orderType">-->
-<!--                                    <option value="Full Order">Full Order</option>-->
-<!--                                    <option value="One Item">One Item</option>-->
-<!--                                </select>-->
-<!--                            </div>-->
-
-<!--                            <div class="col-md-4 itemQTY d-none">-->
-<!--                                <label for="itemQTY" class="form-label lbl">Item Qty</label>-->
-<!--                                <input type="text" class="form-control txt" id="itemQuant">-->
-<!--                            </div>-->
-<!--                            <div class="col-md-4 itemColor d-none">-->
-<!--                                <label for="itemColor" class="form-label lbl">Item Color</label>-->
-<!--                                <input type="text" class="form-control txt" id="itemColor">-->
-<!--                            </div>-->
-<!--                    </div>-->
-<!--                    <div class="modal-footer">-->
-<!--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-<!--                        <button type="button" class="btn btn-primary">Save changes</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Launch demo modal
-        </button>
-
-        <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Return Orders</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        ...
+                    <div class="modal-body bg-white inputBody">
+                        <form class="row g-3">
+                            <div class="col-md-6">
+                                <label for="orderId" class="form-label lbl">Order Id</label>
+                                <input type="text" class="form-control txt" id="orderId" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="orderType" class="form-label lbl">Select Order</label>
+                                <select class="select form-select opacity-75 txt"
+                                        aria-label="Default select example"
+                                        id="orderType">
+                                    <option value="Full Order">Full Order</option>
+                                    <option value="One Item">One Item</option>
+                                </select>
+                            </div>
+
+                        <div class="col-md-6 itemId d-none ">
+                            <label for="itemId" class="form-label lbl">Item Code</label>
+                            <input type="text" class="form-control txt" id="itemId">
+                        </div>
+
+                            <div class="col-md-6 itemQtyOrders d-none ">
+                                <label for="itemQTY" class="form-label lbl">Item Qty</label>
+                                <input type="text" class="form-control txt" id="itemQtyOrders">
+                            </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary">Return</button>
                     </div>
                 </div>
             </div>
         </div>
+
+         Button trigger modal
+         Button trigger modal
+
 
 
 
@@ -1253,7 +1238,6 @@
                             <thead class="table-dark">
                             <tr>
                                 <th scope="col">Order Id</th>
-                                <th scope="col">Item Id</th>
                                 <th scope="col">Cashier Name</th>
                                 <th scope="col">Purchase Date</th>
                                 <th scope="col">Total Price</th>
@@ -1317,12 +1301,15 @@
 </body>
 <script src="../assest/js/code.jquery.com_jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="../assest/bootstrap/js/bootstrap.bundle.js"></script>
 <script src="assets/js/Cashier.js"></script>
 <script src="assets/js/Customer.js"></script>
 <script src="assets/js/employeeController.js"></script>
 <script src="assets/js/inventory.js"></script>
 <script src="assets/js/supplier.js"></script>
 <script src="assets/js/CustomerOrders.js"></script>
+<script src="assets/js/returnController.js"></script>
+<script src="assets/js/salesController.js"></script>
 
 
 </html>

@@ -1,5 +1,7 @@
 package lk.ijse.spring.shoeShop.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -36,5 +38,6 @@ public class Sales {
     private Customer customerId;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "orderNo")
+    @JsonManagedReference
     private List<SaleDetails> saleDetails = new ArrayList<>();
 }

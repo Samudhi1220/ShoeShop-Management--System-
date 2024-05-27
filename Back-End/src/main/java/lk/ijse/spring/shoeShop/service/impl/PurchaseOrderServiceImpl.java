@@ -13,10 +13,12 @@ import lk.ijse.spring.shoeShop.repository.PurchaseOrderRepository;
 import lk.ijse.spring.shoeShop.service.PurchaseOrderService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -68,6 +70,18 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         }
 
         purchaseOrderRepository.save(modelMapper.map(saleDTO, Sales.class));
+
+    }
+
+    @Override
+    public List<SaleDTO> getAllSales() {
+//        Object map = modelMapper.map(purchaseOrderRepository.findAll(), new TypeToken<List<SaleDTO>>() {
+//        }.getType());
+        List<Sales> all = purchaseOrderRepository.findAll();
+        for (Sales sales : all){
+            sales.setSaleDetails(null);
+        }
+        return modelMapper.map(all,new TypeToken<List<SaleDTO>>(){}.getType());
 
     }
 

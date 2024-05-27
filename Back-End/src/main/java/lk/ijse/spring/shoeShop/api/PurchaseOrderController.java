@@ -50,4 +50,11 @@ public class PurchaseOrderController {
         purchaseOrderService.purchaseOrder(saleDTO);
         return new ResponseUtil("200","Successfully Purchased",null);
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping("/allOrders")
+    public ResponseUtil getAllOrders() {
+        return new ResponseUtil("200", "Successfully Generated New Id",
+           purchaseOrderService.getAllSales()   );
+    }
 }

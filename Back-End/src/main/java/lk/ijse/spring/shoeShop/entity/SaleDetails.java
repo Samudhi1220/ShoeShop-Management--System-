@@ -1,5 +1,6 @@
 package lk.ijse.spring.shoeShop.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lk.ijse.spring.shoeShop.embedded.SaleDetailPK;
 import lombok.AllArgsConstructor;
@@ -22,6 +23,7 @@ public class SaleDetails {
 
     @ManyToOne
     @JoinColumn(name = "order_no",insertable=false, updatable=false)
+    @JsonBackReference
     private Sales orderNo;
 
     @ManyToOne
