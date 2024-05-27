@@ -31,6 +31,7 @@ public class SaleDTO {
     private String cashier;
 
     private CustomerDTO customerId;
+    private String status;
 
     private List<SaleDetailsDTO> saleDetails = new ArrayList<>();
 }

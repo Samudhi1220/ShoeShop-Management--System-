@@ -31,4 +31,6 @@ public class SaleDetails {
     private Double itmTotal;
 
     private int size;
+
+    private String status;
 }

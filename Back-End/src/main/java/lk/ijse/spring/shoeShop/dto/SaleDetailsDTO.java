@@ -21,4 +21,5 @@ public class SaleDetailsDTO {
     private InventoryDTO inventory;
     private Double itmTotal;
     private int size;
+    private String status;
 }
