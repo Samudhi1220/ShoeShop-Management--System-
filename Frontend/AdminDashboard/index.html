@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="assets/css/CustomerOrder.css">
 
 
+
 </head>
 <body class="home">
 <header>
@@ -90,6 +91,13 @@
                         inventory
                     </span>
         <h3 class="fs-6">Sale List</h3>
+    </a>
+
+    <a href="#" id="saleBtn">
+                    <span class="material-symbols-outlined">
+                        user_attributes
+                    </span>
+        <h3 class="fs-6">Sales</h3>
     </a>
 
 
@@ -1000,7 +1008,7 @@
         </div>
 
     </section>
-    <section id="customerOrder" class="mainSection ">
+    <section id="customerOrder" class="mainSection  ">
         <div class="customerOrderDiv">
             <section class="row orderRow mb-5 mt-4 justify-content-center">
                 <div class="col-xl-6 col-lg-12 col-xxl-4 orderBox">
@@ -1009,28 +1017,29 @@
                             <div class="input_box ">
                                 <select class="select form-select opacity-75 txt"
                                         aria-label="Default select example"
-                                        id="customerTyper">
-                                    <option selected>Select Customer</option>
-                                    <option value="1">Loyalty</option>
-                                    <option value="2">Other</option>
+                                        id="customerType">
+                                    <option selected disabled>Select Customer</option>
+                                    <option value="Loyalty">Loyalty</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col d-none orderCustomerId">
                             <div class="input_box">
                                 <input type="text" class="txt" id="orderCustomerId" placeholder="Customer Id">
-                                <label for="orderCustomerId" id="customerFoundStatus" class="form-label lbl d-none text-danger">Customer Not Found!</label>
+                                <label for="orderCustomerId" id="customerFoundStatus"
+                                       class="form-label lbl d-none text-danger">Customer Not Found!</label>
                             </div>
 
                         </div>
                     </div>
                     <div class="row ">
-                        <div class="col">
+                        <div class="col d-none customerNameOrder">
                             <div class="input_box">
                                 <input type="text" class="txt" id="customerNameOrder" placeholder="Customer Name">
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col d-none customerLevel">
                             <div class="input_box">
                                 <input type="text" class="txt" id="customerLevel" placeholder="Customer Level">
                             </div>
@@ -1040,7 +1049,8 @@
                         <div class="col">
                             <div class="input_box">
                                 <input type="text" class="txt" id="OrderItemId" placeholder="Item Id">
-                                <label for="OrderItemId" id="itemFoundStatus" class="form-label lbl d-none text-danger">Item Not Found!</label>
+                                <label for="OrderItemId" id="itemFoundStatus" class="form-label lbl d-none text-danger">Item
+                                    Not Found!</label>
                             </div>
                         </div>
                         <div class="col">
@@ -1051,7 +1061,8 @@
                     </div>
 
                     <div class="justify-content-end row align-items-center me-1">
-                        <button type="button" class="btn btn-primary purchersBtn mt-3">Add To Cart</button>
+                        <button type="button" id="addToCart" class="btn btn-primary purchersBtn mt-3">Add To Cart
+                        </button>
 
                     </div>
 
@@ -1063,32 +1074,42 @@
                                 <select class="select form-select opacity-75 txt"
                                         aria-label="Default select example"
                                         id="paymentMethod">
-                                    <option selected>Payment Method</option>
-                                    <option value="1">Cash Payment</option>
-                                    <option value="2">Card Paymen</option>
+                                    <option selected disabled>Payment Method</option>
+                                    <option value="Cash Payment">Cash Payment</option>
+                                    <option value="Card Payment">Card Payment</option>
                                 </select>
                             </div>
                         </div>
                     </div>
-                    <div class="row d-none">
+                    <div class="row d-none cashPay">
                         <div class="col">
                             <div class="input_box">
                                 <input type="text" class="txt " id="amountToPay" placeholder="Amount To pay">
                             </div>
                         </div>
+                    </div>
+
+
+                    <div class="row d-none cardPay">
                         <div class="col">
                             <div class="input_box">
-                                <input type="text" class="txt" id="discount" placeholder="Discount">
+                                <input type="text" class="txt " id="last4digit" placeholder="Last 4 Digit">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input_box">
+                                <input type="text" class="txt" id="bankName" placeholder="Bank Name">
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col d-flex justify-content-center mt-4">
                             <h1 class="fs-1 fw-bold">Total</h1>
                         </div>
                         <div class="col d-flex justify-content-center align-items-end mt-2">
                             <h2 class="fs-4 d-inline-block me-2">Rs</h2>
-                            <h1 class="fs-2 d-inline-block"> 5470.00</h1>
+                            <h1 class="fs-2 d-inline-block" id="total"> 00.00</h1>
                         </div>
                     </div>
 
@@ -1098,25 +1119,26 @@
                         </div>
                         <div class="col d-flex justify-content-center align-items-end mt-4">
                             <h2 class="fs-4 d-inline-block me-2">Rs</h2>
-                            <h1 class="fs-2 d-inline-block"> 1250.00</h1>
+                            <h1 class="fs-2 d-inline-block" id="balance"> 00.00</h1>
                         </div>
                     </div>
 
                     <div class="justify-content-end row align-items-center me-1">
-                        <button type="button" class="btn btn-success purchersBtn ">Purchers</button>
+                        <button type="button" id="purchaseOrderBtn" class="btn btn-success purchersBtn">Purchase
+                        </button>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-12 col-xxl-3 orderBox">
                     <div class="d-flex justify-content-center">
 
-                        <img src="../AdminDashboard/assets/images/shoe01.png" width="200" />
+                        <img id="viewItem" src="#" alt="" width="200"/>
                     </div>
                     <div class="row">
                         <div class="col mt-4 d-flex justify-content-center">
                             <h1>Size</h1>
                         </div>
                         <div class="col mt-4 d-flex justify-content-center">
-                            <h1 id="sizeInput"></h1>
+                            <h1 id="size"></h1>
                         </div>
                     </div>
                     <div class="row ">
@@ -1124,7 +1146,8 @@
                             <h1>Desc</h1>
                         </div>
                         <div class="col mt-4 d-flex justify-content-center">
-                            <h1 id="descInput"></h1>
+                            <h1 id="desc">
+                            </h1>
                         </div>
                     </div>
                 </div>
@@ -1133,7 +1156,7 @@
 
                 <div class="card">
                     <div class="card-header shadow-sm p-3 mb-5 bg-body-tertiary rounded ">
-                        <h2 class="d-flex float-start" >Order Management</h2>
+                        <h2 class="d-flex float-start">Order Management</h2>
                         <form class=" float-end d-flex" role="search">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success" type="submit">Search</button>
@@ -1142,60 +1165,29 @@
                     </div>
 
                     <div class="card-body">
-                        <div class="btnGroup float-end">
+                        <!--                        <button type="button"  class="btn btn-sm btn-outline-danger float-end mb-3"-->
+                        <!--                                id="ReturnOrders"><span-->
+                        <!--                                class="material-symbols-outlined">person_add</span> Return Orders-->
+                        <!--                        </button>-->
 
-                            <button type="button" class="btn btn-outline-warning" id="showOrderDetails"><span
-                                    class="material-symbols-outlined">manage_accounts</span>Show Orders
-                            </button>
-                            <button type="button" class="btn btn-outline-danger" id="deleteCart"><span
-                                    class="material-symbols-outlined">person_remove</span>Remove Cart
-                            </button>
-                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-danger float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Return Orders
+                        </button>
 
                         <div class="table-container">
-                            <table class="table">
+                            <table class="table" id="tblCart">
                                 <thead class="table-dark">
                                 <tr>
                                     <th scope="col">Order Id</th>
                                     <th scope="col">Item Id</th>
                                     <th scope="col">Item Qty</th>
-                                    <th scope="col">Item Color</th>
                                     <th scope="col">Size</th>
                                     <th scope="col">Price</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>O001</td>
-                                    <td>I001</td>
-                                    <td>5</td>
-                                    <td>Fomal Shoe</td>
-                                    <td>2370</td>
 
-                                </tr>
-                                <tr>
-                                    <td>O001</td>
-                                    <td>I001</td>
-                                    <td>5</td>
-                                    <td>Fomal Shoe</td>
-                                    <td>2370</td>
-
-                                </tr>
-                                <tr>
-                                    <td>O001</td>
-                                    <td>I001</td>
-                                    <td>5</td>
-                                    <td>Fomal Shoe</td>
-                                    <td>2370</td>
-                                </tr>
-                                <tr>
-
-                                    <td>O001</td>
-                                    <td>I001</td>
-                                    <td>5</td>
-                                    <td>Fomal Shoe</td>
-                                    <td>2370</td>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -1203,6 +1195,133 @@
                 </div>
 
             </div>
+
+
+
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Return Orders</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body bg-white inputBody">
+                        <form class="row g-3">
+                            <div class="col-md-6">
+                                <label for="orderId" class="form-label lbl">Order Id</label>
+                                <input type="text" class="form-control txt" id="orderId" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="orderType" class="form-label lbl">Select Order</label>
+                                <select class="select form-select opacity-75 txt"
+                                        aria-label="Default select example"
+                                        id="orderType">
+                                    <option value="Full Order">Full Order</option>
+                                    <option value="One Item">One Item</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 itemId d-none ">
+                                <label for="itemId" class="form-label lbl">Item Code</label>
+                                <input type="text" class="form-control txt" id="itemId">
+                            </div>
+
+                            <div class="col-md-6 itemQtyOrders d-none ">
+                                <label for="itemQTY" class="form-label lbl">Item Qty</label>
+                                <input type="text" class="form-control txt" id="itemQtyOrders">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Return</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        Button trigger modal
+        Button trigger modal
+
+
+
+
+    </section>
+    <section id="sales" class="mainSection  ">
+        <div class="customerOrderDiv">
+            <div class="card">
+                <div class="card-header shadow-sm p-3 mb-5 bg-body-tertiary rounded ">
+                    <h2 class="d-flex float-start">Sales</h2>
+                    <form class=" float-end d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+
+                </div>
+
+                <div class="card-body">
+
+
+                    <div class="table-container">
+                        <table class="table" id="tblSale">
+                            <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Order Id</th>
+                                <th scope="col">Cashier Name</th>
+                                <th scope="col">Purchase Date</th>
+                                <th scope="col">Total Price</th>
+                                <th scope="col">Status</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="card-header shadow-sm p-3 mb-5 bg-body-tertiary rounded ">
+                    <h2 class="d-flex float-start">Sale Details</h2>
+                    <form class=" float-end d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+
+                </div>
+
+                <div class="card-body">
+
+
+                    <div class="table-container">
+                        <table class="table" id="tblSaleDetails">
+                            <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Order Id</th>
+                                <th scope="col">Item Id</th>
+                                <th scope="col">Item Qty</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Return Qty</th>
+
+
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
         </div>
 
@@ -1282,4 +1401,7 @@
 <script src="assets/js/Customer.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="assets/js/CustomerOrders.js"></script>
+<script src="assets/js/returnController.js"></script>
+<script src="assets/js/salesController.js"></script>
+<script src="../assest/bootstrap/js/bootstrap.bundle.js"></script>
 </html>
