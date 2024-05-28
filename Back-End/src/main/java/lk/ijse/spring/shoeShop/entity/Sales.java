@@ -35,6 +35,7 @@ public class Sales {
     private String cashier;
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
+
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customerId;

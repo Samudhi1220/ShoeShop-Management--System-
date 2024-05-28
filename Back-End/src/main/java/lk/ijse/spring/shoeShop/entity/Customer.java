@@ -1,5 +1,6 @@
 package lk.ijse.spring.shoeShop.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lk.ijse.spring.shoeShop.embedded.Address;
 import lk.ijse.spring.shoeShop.embedded.Gender;
@@ -48,7 +49,7 @@ public class Customer {
     @Column(columnDefinition = "LONGTEXT")
     private String proPic;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "customerId")
-    private List<Sales> sales = new ArrayList<>();
+//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "customerId")
+//    private List<Sales> sales = new ArrayList<>();
 }
 

@@ -64,4 +64,19 @@ public class PurchaseOrderController {
         return new ResponseUtil("200", "Successfully Generated New Id",
                 purchaseOrderService.getSaleDetails()   );
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping("/{orderId}")
+    public ResponseUtil orderCanBeReturned(@PathVariable String orderId){
+        return new ResponseUtil("200","Successfully Fetch Can Be Returned",
+                purchaseOrderService.canBeReturned(orderId));
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/{returnOrderId}")
+    public ResponseUtil returnFullOrder(@PathVariable("returnOrderId") String orderId){
+        System.out.println(orderId);
+        purchaseOrderService.returnFullOrder(orderId);
+        return new ResponseUtil("200","Successfully Return Full Order",null);
+    }
 }

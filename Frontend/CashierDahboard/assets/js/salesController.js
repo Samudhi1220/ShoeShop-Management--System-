@@ -13,12 +13,13 @@ function getAllSaleDetails() {
                 console.log(resp.data)
                 const row = `<tr>
                            
-                                <td>${saleDetails.orderNo}</td>
-                                <td>${saleDetails.itemCode}</td>
+                                <td>${saleDetails.orderNo.orderNo}</td>
+                                <td>${saleDetails.inventory.itemCode}</td>
                                 <td>${saleDetails.itmQTY}</td>
                                 <td>${saleDetails.size}</td>
                                 <td>${saleDetails.itmTotal}</td>
                                 <td>${saleDetails.status}</td>
+                                <td>${saleDetails.return_qty}</td>
                       
                                
                             </tr>`;

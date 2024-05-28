@@ -23,4 +23,5 @@ public class SaleDetailsDTO {
     private Double itmTotal;
     private int size;
     private OrderStatus status;
+    private double return_qty;
 }

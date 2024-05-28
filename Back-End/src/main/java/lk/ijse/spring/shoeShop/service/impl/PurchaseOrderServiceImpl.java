@@ -35,7 +35,6 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     private final ModelMapper modelMapper;
 
 
-
     public PurchaseOrderServiceImpl(PurchaseOrderRepository purchaseOrderRepository, CustomerRepository customerRepository, InventoryRepository inventoryRepository, PurchaseOrderDetailsRepository purchaseOrderDetailsRepository, ModelMapper modelMapper) {
         this.purchaseOrderRepository = purchaseOrderRepository;
         this.customerRepository = customerRepository;
@@ -87,17 +86,67 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 //        Object map = modelMapper.map(purchaseOrderRepository.findAll(), new TypeToken<List<SaleDTO>>() {
 //        }.getType());
         List<Sales> all = purchaseOrderRepository.findAll();
-        for (Sales sales : all){
+        for (Sales sales : all) {
             sales.setSaleDetails(null);
         }
-        return modelMapper.map(all,new TypeToken<List<SaleDTO>>(){}.getType());
+        return modelMapper.map(all, new TypeToken<List<SaleDTO>>() {
+        }.getType());
 
     }
 
     @Override
     public List<SaleDetailsDTO> getSaleDetails() {
-        return modelMapper.map(purchaseOrderDetailsRepository.findAll(),new TypeToken<List<SaleDetailsDTO>>(){}.getType());
+        List<SaleDetails> all = purchaseOrderDetailsRepository.findAll();
+        for (SaleDetails saleDetails : all) {
+            saleDetails.getOrderNo().setSaleDetails(null);
+        }
+        return modelMapper.map(all, new TypeToken<List<SaleDetailsDTO>>() {
+        }.getType());
     }
+
+    @Override
+    public void returnFullOrder(String orderId) {
+        if (purchaseOrderRepository.existsById(orderId)) {
+            Sales byOrderNo = purchaseOrderRepository.findByOrderNo(orderId);
+            if (byOrderNo.getStatus() == OrderStatus.ACTIVE) {
+
+                byOrderNo.setStatus(OrderStatus.RETURNED);
+
+                List<SaleDetails> byOrderNo1 = purchaseOrderDetailsRepository.findByOrderNo(byOrderNo);
+
+                for (SaleDetails saleDetails : byOrderNo1) {
+                    int qty = saleDetails.getItmQTY();
+                    saleDetails.setReturn_qty(saleDetails.getReturn_qty() + qty);
+                    saleDetails.setItmQTY(0);
+                    Inventory byItemCode = inventoryRepository.findByItemCode(saleDetails.getInventory().getItemCode());
+                    byItemCode.setQty(byItemCode.getQty() + qty);
+                    saleDetails.setStatus(OrderStatus.RETURNED);
+                }
+            } else {
+                throw new RuntimeException("This order already returned!");
+            }
+        } else {
+            throw new RuntimeException("Order not found!");
+        }
+
+    }
+
+    @Override
+    public boolean canBeReturned(String orderNo) {
+        Sales sales = purchaseOrderRepository.findById(orderNo).orElse(null);
+        if (sales == null) {
+            return false;
+        }
+
+        LocalDate purchaseDate = sales.getPurchaseDate();
+
+        LocalDate threeDaysFromPurchase = purchaseDate.plusDays(3);
+
+        LocalDate currentDate = LocalDate.now();
+
+        return !currentDate.isAfter(threeDaysFromPurchase);
+    }
+
 
     private void updateCustomerLoyaltyLevel(Customer customer) {
         if (customer.getTotalPoints() >= 200) {
@@ -111,7 +160,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         }
     }
 
-    private void updateInventoryAndSizeQuantities (SaleDetailsDTO saleDetailsDTO){
+    private void updateInventoryAndSizeQuantities(SaleDetailsDTO saleDetailsDTO) {
         Inventory inventory = inventoryRepository.findByItemCode(saleDetailsDTO.getInventory().getItemCode());
 
         int newInventoryQty = inventory.getQty() - saleDetailsDTO.getItmQTY();

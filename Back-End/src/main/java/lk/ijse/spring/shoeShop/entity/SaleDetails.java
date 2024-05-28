@@ -33,6 +33,8 @@ public class SaleDetails {
 
     private Double itmTotal;
 
+    private double return_qty;
+
     private int size;
     @Enumerated(EnumType.STRING)
     private OrderStatus status;

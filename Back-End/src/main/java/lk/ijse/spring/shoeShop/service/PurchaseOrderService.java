@@ -13,4 +13,7 @@ public interface PurchaseOrderService {
     List<SaleDTO> getAllSales();
 
     List<SaleDetailsDTO> getSaleDetails();
+
+    void returnFullOrder(String orderId);
+    boolean canBeReturned(String orderNo);
 }
