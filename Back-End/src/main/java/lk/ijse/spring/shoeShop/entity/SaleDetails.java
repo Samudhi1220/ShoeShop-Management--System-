@@ -2,6 +2,7 @@ package lk.ijse.spring.shoeShop.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lk.ijse.spring.shoeShop.embedded.OrderStatus;
 import lk.ijse.spring.shoeShop.embedded.SaleDetailPK;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,6 +34,6 @@ public class SaleDetails {
     private Double itmTotal;
 
     private int size;
-
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
 }

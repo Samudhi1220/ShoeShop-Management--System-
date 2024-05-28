@@ -1,6 +1,7 @@
 package lk.ijse.spring.shoeShop.dto;
 
 import jakarta.persistence.*;
+import lk.ijse.spring.shoeShop.embedded.OrderStatus;
 import lk.ijse.spring.shoeShop.entity.Customer;
 import lk.ijse.spring.shoeShop.entity.SaleDetails;
 import lombok.AllArgsConstructor;
@@ -31,7 +32,7 @@ public class SaleDTO {
     private String cashier;
 
     private CustomerDTO customerId;
-    private String status;
+    private OrderStatus status;
 
     private List<SaleDetailsDTO> saleDetails = new ArrayList<>();
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lk.ijse.spring.shoeShop.embedded.OrderStatus;
 import lk.ijse.spring.shoeShop.embedded.SaleDetailPK;
 import lk.ijse.spring.shoeShop.entity.Inventory;
 import lk.ijse.spring.shoeShop.entity.Sales;
@@ -21,5 +22,5 @@ public class SaleDetailsDTO {
     private InventoryDTO inventory;
     private Double itmTotal;
     private int size;
-    private String status;
+    private OrderStatus status;
 }

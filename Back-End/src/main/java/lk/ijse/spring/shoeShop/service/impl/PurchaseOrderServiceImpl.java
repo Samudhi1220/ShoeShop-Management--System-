@@ -4,11 +4,14 @@ import lk.ijse.spring.shoeShop.dto.CustomerDTO;
 import lk.ijse.spring.shoeShop.dto.SaleDTO;
 import lk.ijse.spring.shoeShop.dto.SaleDetailsDTO;
 import lk.ijse.spring.shoeShop.embedded.LoyaltyLevel;
+import lk.ijse.spring.shoeShop.embedded.OrderStatus;
 import lk.ijse.spring.shoeShop.entity.Customer;
 import lk.ijse.spring.shoeShop.entity.Inventory;
+import lk.ijse.spring.shoeShop.entity.SaleDetails;
 import lk.ijse.spring.shoeShop.entity.Sales;
 import lk.ijse.spring.shoeShop.repository.CustomerRepository;
 import lk.ijse.spring.shoeShop.repository.InventoryRepository;
+import lk.ijse.spring.shoeShop.repository.PurchaseOrderDetailsRepository;
 import lk.ijse.spring.shoeShop.repository.PurchaseOrderRepository;
 import lk.ijse.spring.shoeShop.service.PurchaseOrderService;
 import lombok.RequiredArgsConstructor;
@@ -28,12 +31,16 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     private final PurchaseOrderRepository purchaseOrderRepository;
     private final CustomerRepository customerRepository;
     private final InventoryRepository inventoryRepository;
+    private final PurchaseOrderDetailsRepository purchaseOrderDetailsRepository;
     private final ModelMapper modelMapper;
 
-    public PurchaseOrderServiceImpl(PurchaseOrderRepository purchaseOrderRepository, CustomerRepository customerRepository, InventoryRepository inventoryRepository, ModelMapper modelMapper) {
+
+
+    public PurchaseOrderServiceImpl(PurchaseOrderRepository purchaseOrderRepository, CustomerRepository customerRepository, InventoryRepository inventoryRepository, PurchaseOrderDetailsRepository purchaseOrderDetailsRepository, ModelMapper modelMapper) {
         this.purchaseOrderRepository = purchaseOrderRepository;
         this.customerRepository = customerRepository;
         this.inventoryRepository = inventoryRepository;
+        this.purchaseOrderDetailsRepository = purchaseOrderDetailsRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -45,6 +52,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     @Override
     public void purchaseOrder(SaleDTO saleDTO) {
         saleDTO.setPurchaseDate(LocalDate.now());
+        saleDTO.setStatus(OrderStatus.ACTIVE);
 //        saleDTO.setStatus(Order_Status.ACTIVE);
 //        System.out.println(saleDTO.getCustomerId().getCustomerId());
 
@@ -65,6 +73,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
 
         for (SaleDetailsDTO saleDetailsDTO : saleDTO.getSaleDetails()) {
+            saleDetailsDTO.setStatus(OrderStatus.ACTIVE);
 
             updateInventoryAndSizeQuantities(saleDetailsDTO);
         }
@@ -83,6 +92,11 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         }
         return modelMapper.map(all,new TypeToken<List<SaleDTO>>(){}.getType());
 
+    }
+
+    @Override
+    public List<SaleDetailsDTO> getSaleDetails() {
+        return modelMapper.map(purchaseOrderDetailsRepository.findAll(),new TypeToken<List<SaleDetailsDTO>>(){}.getType());
     }
 
     private void updateCustomerLoyaltyLevel(Customer customer) {

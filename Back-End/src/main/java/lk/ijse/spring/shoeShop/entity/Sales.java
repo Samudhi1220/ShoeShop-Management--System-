@@ -3,6 +3,7 @@ package lk.ijse.spring.shoeShop.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lk.ijse.spring.shoeShop.embedded.OrderStatus;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -32,7 +33,8 @@ public class Sales {
     private Integer totalPoints;
 
     private String cashier;
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customerId;

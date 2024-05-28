@@ -57,4 +57,11 @@ public class PurchaseOrderController {
         return new ResponseUtil("200", "Successfully Generated New Id",
            purchaseOrderService.getAllSales()   );
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping("/allDetails")
+    public ResponseUtil getAllSaleDetails() {
+        return new ResponseUtil("200", "Successfully Generated New Id",
+                purchaseOrderService.getSaleDetails()   );
+    }
 }
