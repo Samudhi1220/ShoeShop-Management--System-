@@ -26,6 +26,7 @@ import java.util.List;
 
 @Service
 @Transactional
+
 public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
     private final PurchaseOrderRepository purchaseOrderRepository;
@@ -104,6 +105,10 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         }.getType());
     }
 
+
+
+
+
     @Override
     public void returnFullOrder(String orderId) {
         if (purchaseOrderRepository.existsById(orderId)) {
@@ -112,7 +117,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
                 byOrderNo.setStatus(OrderStatus.RETURNED);
 
-                List<SaleDetails> byOrderNo1 = purchaseOrderDetailsRepository.findByOrderNo(byOrderNo);
+                List<SaleDetails> byOrderNo1 = purchaseOrderDetailsRepository.findAllByOrderNo(byOrderNo);
 
                 for (SaleDetails saleDetails : byOrderNo1) {
                     int qty = saleDetails.getItmQTY();
@@ -128,6 +133,47 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         } else {
             throw new RuntimeException("Order not found!");
         }
+
+    }
+
+    @Override
+    public void returnOneItem(SaleDetailsDTO saleDetailsDTO) {
+       if (purchaseOrderDetailsRepository.existsByInventoryAndOrderNo(modelMapper.map(saleDetailsDTO.getInventory(),Inventory.class),modelMapper.map(saleDetailsDTO.getOrderNo(),Sales.class))) {
+           SaleDetails byOrderNoAndInventory = purchaseOrderDetailsRepository.findByOrderNoAndInventory(modelMapper.map(saleDetailsDTO.getOrderNo(), Sales.class), modelMapper.map(saleDetailsDTO.getInventory(), Inventory.class));
+
+           if (byOrderNoAndInventory.getStatus() == OrderStatus.ACTIVE){
+               if (byOrderNoAndInventory.getItmQTY()>= saleDetailsDTO.getItmQTY()) {
+
+                   int qty = byOrderNoAndInventory.getItmQTY();
+                   byOrderNoAndInventory.setItmQTY(byOrderNoAndInventory.getItmQTY()-saleDetailsDTO.getItmQTY());
+                   byOrderNoAndInventory.setReturn_qty(byOrderNoAndInventory.getReturn_qty()+saleDetailsDTO.getItmQTY());
+                   Inventory byItemCode = inventoryRepository.findByItemCode(saleDetailsDTO.getInventory().getItemCode());
+                   byItemCode.setQty(byItemCode.getQty()+saleDetailsDTO.getItmQTY());
+
+                   List<SaleDetails> allByOrderNo = purchaseOrderDetailsRepository.findAllByOrderNo(modelMapper.map(saleDetailsDTO.getOrderNo(), Sales.class));
+                   if (qty == saleDetailsDTO.getItmQTY()) {
+                       byOrderNoAndInventory.setStatus(OrderStatus.RETURNED);
+                       int count = 0;
+                       for (SaleDetails saleDetails : allByOrderNo) {
+                           if (saleDetails.getStatus() == OrderStatus.RETURNED) {
+                               count++;
+                           }
+                       }
+                       if (count == allByOrderNo.size()) {
+                           Sales byOrderNo = purchaseOrderRepository.findByOrderNo(saleDetailsDTO.getOrderNo().getOrderNo());
+                           byOrderNo.setStatus(OrderStatus.RETURNED);
+                       }
+                   }
+               }else {
+                   throw new RuntimeException("Sorry! The Qty you entered is too high. Please try again.");
+               }
+
+           }else {
+               throw new RuntimeException("Order id is already returned");
+           }
+       } else {
+           throw new RuntimeException("Order Not Found");
+       }
 
     }
 

@@ -3,6 +3,7 @@ package lk.ijse.spring.shoeShop.api;
 import lk.ijse.spring.shoeShop.dto.CustomerDTO;
 import lk.ijse.spring.shoeShop.dto.InventoryDTO;
 import lk.ijse.spring.shoeShop.dto.SaleDTO;
+import lk.ijse.spring.shoeShop.dto.SaleDetailsDTO;
 import lk.ijse.spring.shoeShop.service.CustomerService;
 import lk.ijse.spring.shoeShop.service.InventoryService;
 import lk.ijse.spring.shoeShop.service.PurchaseOrderService;
@@ -78,5 +79,12 @@ public class PurchaseOrderController {
         System.out.println(orderId);
         purchaseOrderService.returnFullOrder(orderId);
         return new ResponseUtil("200","Successfully Return Full Order",null);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/oneItem")
+    public ResponseUtil returnOneItemOrder(@RequestBody SaleDetailsDTO saleDetailsDTO){
+        purchaseOrderService.returnOneItem(saleDetailsDTO);
+        return new ResponseUtil("200","Successfully Return One Item Order",null);
     }
 }

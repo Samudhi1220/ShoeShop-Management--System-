@@ -22,7 +22,46 @@ function returnFullOrder(id) {
             type: "POST",
             contentType: "application/json",
             success: function (response) {
-                getAllOrders();
+
+                console.log(response.data);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Order has been Returned",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            },
+            error: function (resp) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: resp.responseJSON.message,
+                    footer: '<a href="#"></a>'
+                });
+            }
+        });
+    } else if ($('#orderType').val() === 'One Item') {
+        console.log("else if")
+        const itemId = $('#itemId').val();
+        const itemQty = $('#itemQtyOrders').val();
+
+        const data = {
+            inventory: {
+                itemCode: itemId,
+            },
+            orderNo: {
+                orderNo: id,
+            },
+            itmQTY: itemQty
+        }
+        $.ajax({
+            url: "http://localhost:8080/api/v1/orders/oneItem",
+            type: "POST",
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            success: function (response) {
+
                 console.log(response.data);
                 Swal.fire({
                     position: "top-end",
@@ -44,6 +83,8 @@ function returnFullOrder(id) {
     }
 
 }
+
+
 
 function checkCanBeReturnedOrder() {
     $('#returnFormBtn').click(function () {
