@@ -226,7 +226,7 @@ function addToCart() {
                                          <img src="action-delete-btn.png" id="removeCart" height="35" width="35"/>
                             </td>
                             </tr>`;
-                    $('#tblCart').append(row);
+                    $('#tblCart tbody').append(row);
                 }
 
                 let total = 0;

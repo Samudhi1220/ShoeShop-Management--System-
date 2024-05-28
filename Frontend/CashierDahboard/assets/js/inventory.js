@@ -44,10 +44,12 @@ function getAllItems() {
                                 <td>${item.category}</td>
                                 <td>${item.qty}</td>
                                 <td>${item.size}</td>
-                          
-                                 <img src="assets/images/action-btn (1) (1).png" id="showItem" height="35" width="35"/>
+                                    <td>     
+                                     <img src="assets/images/action-btn (1) (1).png" id="showItem" height="35" width="35"/>     
+                            </td>
+                                
                             </tr>`;
-                $('#tblItem').append(row);
+                $('#tblItem tbody').append(row);
             }
         },
         error: function (error) {

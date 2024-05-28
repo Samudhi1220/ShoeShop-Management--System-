@@ -221,12 +221,12 @@ function addToCart() {
                                 <td>${itemCartElement.size}</td>
                                 <td>${itemCartElement.itmTotal}</td>
                                     <td>    
-                                    
-                                      
-                                         <img src="action-delete-btn.png" id="removeCart" height="35" width="35"/>
+                                    action-delete-btn.png
+                                
+                                   <img src=  action-delete-btn.png" id="removeCart" height="35" width="35"/>
                             </td>
                             </tr>`;
-                    $('#tblCart').append(row);
+                    $('#tblCart tbody').append(row);
                 }
 
                 let total = 0;

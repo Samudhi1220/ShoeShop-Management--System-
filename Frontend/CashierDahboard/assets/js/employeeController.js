@@ -33,7 +33,7 @@ function getAllEmployeeData() {
                                          <img src="assets/images/action-btn (1) (1).png" id="showDetails" height="35" width="35"/>
                             </td>
                             </tr>`;
-                $('#tblEmployee').append(row);
+                $('#tblEmployee tbody').append(row);
             }
         },
         error: function (error) {
