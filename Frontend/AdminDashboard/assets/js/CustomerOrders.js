@@ -221,9 +221,8 @@ function addToCart() {
                                 <td>${itemCartElement.size}</td>
                                 <td>${itemCartElement.itmTotal}</td>
                                     <td>    
-                                    action-delete-btn.png
-                                
-                                   <img src=  action-delete-btn.png" id="removeCart" height="35" width="35"/>
+                                              <img src="assets/images/action-delete-btn.png" id="removeCart"  height="35" width="35"/>
+                                     
                             </td>
                             </tr>`;
                     $('#tblCart tbody').append(row);
@@ -311,6 +310,8 @@ function purchaseOrder() {
         let customerId;
         if ($('#orderCustomerId').val() === '') {
             customerId = null;
+        }else {
+            customerId = $('#orderCustomerId').val();
         }
         console.log(total);
         const data = {
