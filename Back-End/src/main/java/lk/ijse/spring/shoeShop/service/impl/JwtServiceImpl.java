@@ -23,10 +23,7 @@ import java.util.function.Function;
 public class JwtServiceImpl implements JwtService {
     @Value("${token.key}")
     String jwtKey;
-    @Autowired
-    UserRepository userRepo;
-    @Autowired
-    ModelMapper mapper;
+
     @Override
     public String extractUserName(String token) {
         return extractClaims(token, Claims::getSubject);
@@ -37,16 +34,15 @@ public class JwtServiceImpl implements JwtService {
         HashMap<String, Object> claims = new HashMap<>();
         claims.put("role",userDetails.getAuthorities());
         Date currentDate = new Date();
-        Date expiredDate = new Date(currentDate.getTime() + 10000 * 600);
-        String accessToken = Jwts.builder()
+        Date expiredDate = new Date(currentDate.getTime() + 1000* 100000);
+
+        return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(currentDate)
                 .setExpiration(expiredDate)
                 .signWith(getSignKey(), SignatureAlgorithm.HS256)
                 .compact();
-
-        return accessToken;
     }
 
     @Override

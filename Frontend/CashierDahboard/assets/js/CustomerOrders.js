@@ -222,7 +222,7 @@ function addToCart() {
                                 <td>${itemCartElement.itmTotal}</td>
                                     <td>    
                                     
-                                   
+                                      
                                          <img src="action-delete-btn.png" id="removeCart" height="35" width="35"/>
                             </td>
                             </tr>`;

@@ -145,10 +145,11 @@
     color: #fff;
     margin-top: 30px;
     width: 100%;
-    padding: 10px 0;
+    padding: 10px;
     border-radius: 10px;
     border-color: white;
 }
+
 
 .form-container .btn {
     /*background: #0a53be;*/
@@ -158,6 +159,7 @@
     border-color: black;
     border: 1px solid #ea868f;
 }
+
 
 .home{
     z-index: 1002;
