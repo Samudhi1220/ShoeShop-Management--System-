@@ -14,8 +14,9 @@
     <link rel="stylesheet" href="assets/css/cashier.css">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
     <link rel="stylesheet" href="assets/css/Customer.css">
-
 
 
 </head>
@@ -1125,21 +1126,19 @@
 
                 <div class="card">
                     <div class="card-header shadow-sm p-3 mb-5 bg-body-tertiary rounded ">
-                        <h2 class="d-flex float-start">Order Management</h2>
-                        <form class=" float-end d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
+                        <h2 class="d-flex float-start">Cart</h2>
 
                     </div>
 
                     <div class="card-body">
-<!--                        <button type="button"  class="btn btn-sm btn-outline-danger float-end mb-3"-->
-<!--                                id="ReturnOrders"><span-->
-<!--                                class="material-symbols-outlined">person_add</span> Return Orders-->
-<!--                        </button>-->
+                        <!--                        <button type="button"  class="btn btn-sm btn-outline-danger float-end mb-3"-->
+                        <!--                                id="ReturnOrders"><span-->
+                        <!--                                class="material-symbols-outlined">person_add</span> Return Orders-->
+                        <!--                        </button>-->
 
-                        <button type="button" id="returnPopupAddBtn" class="btn btn-sm btn-outline-danger float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" id="returnPopupAddBtn"
+                                class="btn btn-sm btn-outline-danger float-end mb-3" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
                             Return Orders
                         </button>
 
@@ -1164,7 +1163,6 @@
                 </div>
 
             </div>
-
 
 
         </div>
@@ -1192,10 +1190,10 @@
                                 </select>
                             </div>
 
-                        <div class="col-md-6 itemId d-none ">
-                            <label for="itemId" class="form-label lbl">Item Code</label>
-                            <input type="text" class="form-control txt" id="itemId">
-                        </div>
+                            <div class="col-md-6 itemId d-none ">
+                                <label for="itemId" class="form-label lbl">Item Code</label>
+                                <input type="text" class="form-control txt" id="itemId">
+                            </div>
 
                             <div class="col-md-6 itemQtyOrders d-none ">
                                 <label for="itemQTY" class="form-label lbl">Item Qty</label>
@@ -1204,7 +1202,8 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeBtn">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeBtn">Close
+                        </button>
                         <button type="button" class="btn btn-primary" id="returnFormBtn">Return</button>
                     </div>
                 </div>
@@ -1305,6 +1304,6 @@
 <script src="assets/js/CustomerOrders.js"></script>
 <script src="assets/js/returnController.js"></script>
 <script src="assets/js/salesController.js"></script>
-
+<script src="assets/js/DashboardController.js"></script>
 
 </html>

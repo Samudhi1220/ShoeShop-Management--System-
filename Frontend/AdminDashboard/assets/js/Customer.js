@@ -147,9 +147,11 @@ function getAllCustomer() {
         },
         success: function (resp) {
             console.log("Success: ", resp);
+
             $('#tblCustomer tbody').empty()
             for (const customer of resp.data) {
-                const row = `<tr>
+                if (customer.customerId !== "Nan") {
+                    const row = `<tr>
                               
                                 <td>${customer.customerId}</td>
                                 <td>${customer.customerName}</td>
@@ -163,7 +165,8 @@ function getAllCustomer() {
                             </td>
                                 
                             </tr>`;
-                $('#tblCustomer').append(row);
+                    $('#tblCustomer tbody').append(row);
+                }
             }
         },
         error: function (error) {

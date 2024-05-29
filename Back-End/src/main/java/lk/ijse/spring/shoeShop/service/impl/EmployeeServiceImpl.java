@@ -95,4 +95,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         return modelMapper.map(employeeRepository.findByEmployeeIdStartingWithOrEmployeeNameStartingWith(idOrName, idOrName), new TypeToken<List<EmployeeDTO>>() {
         }.getType());
     }
+
+    @Override
+    public EmployeeDTO getEmployeeByEmail(String email) {
+        return  modelMapper.map(employeeRepository.findByEmail(email),EmployeeDTO.class);
+    }
 }

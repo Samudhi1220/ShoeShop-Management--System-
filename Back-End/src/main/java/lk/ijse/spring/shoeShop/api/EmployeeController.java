@@ -79,6 +79,11 @@ public class EmployeeController {
         return new ResponseUtil("200", "Successfully Fetched Employees", employeeService.searchEmployeesById(idOrName));
 
     }
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping("byEmail/{id}")
+    public ResponseUtil getEmployeeByEmail(@PathVariable("id") String id) {
+        return new ResponseUtil("200", "Successfully Fetched!", employeeService.getEmployeeByEmail(id));
+    }
 
 
 }
