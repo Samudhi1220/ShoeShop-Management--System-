@@ -1,4 +1,5 @@
 signUp();
+signIn();
 imageUploaderEmployee();
 
 var base64String;
@@ -107,6 +108,72 @@ function signUp() {
         }
     })
 }
+
+function signIn() {
+
+    $('#loginNow').click(function () {
+        let value = {
+            email: $("#log-in-Username").val(),
+            password: $("#log-in-Password").val(),
+        }
+        console.log(value);
+        $.ajax({
+            url: "http://localhost:8080/api/v1/auth/signin",
+            method: "POST",
+            data: JSON.stringify(value),
+            contentType: "application/json",
+            success: function (res, textStatus, jsXH) {
+                localStorage.setItem('email', value.email);
+                localStorage.setItem('password', value.password);
+                localStorage.setItem('accessToken', res.token);
+                console.log("User SignIn Successfully " + res.token);
+
+                alert("wada wadaaa");
+                $.ajax({
+                    url: "http://localhost:8080/api/v1/auth/" + value.email,
+                    method: "GET",
+                    dataType: "json",
+                    success: function (res, textStatus, xhr) {
+                        localStorage.setItem('role', res.role);
+                        localStorage.setItem('cashier', value.email);
+                        if (res.role === "ADMIN") {
+                            console.log("Admin");
+                            window.location.href = '../AdminDashboard/index.html'
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: "Successfully Login!",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            $('#wrongPW').addClass('d-none')
+                        } else if (res.role === "USER") {
+                            console.log("User");
+                            window.location.href = '../CashierDashboard/index.html'
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: "Successfully Login!",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            $('#wrongPW').addClass('d-none')
+                        }
+                    },
+                    error: function (ob, textStatus, error) {
+
+                    }
+                });
+
+            },
+            error: function (ob, textStatus, error) {
+                $('#wrongPW').removeClass('d-none')
+            }
+        });
+    })
+}
+
+
 
 function imageUploaderEmployee() {
     const imgUploader = $('#imgUploaderEmployee');

@@ -7,7 +7,9 @@ let formOpenBtn = $('#loginBtn'),
     adminBtn = $('#adminBtn'),
     cashierBtn = $('#cashierBtn'),
     adminInputBox = $('.adminInputBox'),
-    cashierInputBox = $('.cashierInputBox');
+    cashierInputBox = $('.cashierInputBox'),
+    employeeRole = $('#employeeRole'),
+    employeePageUserCredentials = $('.employeePageUserCredentials');
 
 formOpenBtn.click(function () {
     home.addClass('show')
@@ -34,3 +36,16 @@ adminBtn.click(function () {
     adminInputBox.css("display", "block");
     cashierInputBox.css("display", "none");
 })
+
+employeeRole.change(function () {
+    console.log($(this).val());
+    $('#EmployeePageUserPasswword').val("")
+    $('#EmployeePageUserPasswword2').val("")
+    if ($(this).val() === 'ADMIN' || $(this).val() === 'USER') {
+        employeePageUserCredentials.removeClass('d-none');
+    } else {
+        employeePageUserCredentials.addClass('d-none');
+    }
+})
+
+$('#employeeCode').attr('readonly','')

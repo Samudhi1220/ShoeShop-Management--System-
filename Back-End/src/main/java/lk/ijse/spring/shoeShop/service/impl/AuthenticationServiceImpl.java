@@ -15,6 +15,7 @@ import lk.ijse.spring.shoeShop.service.AuthenticationService;
 import lk.ijse.spring.shoeShop.service.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -31,6 +32,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepo;
+
     private final ModelMapper mapper;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
@@ -40,6 +42,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public JwtAuthResponse signIn(SignInRequest signInRequest) {
+        System.out.println("singn in ekata enwa");
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInRequest.getEmail(), signInRequest.getPassword()));
         User user = userRepo.findByEmail(signInRequest.getEmail())
                 .orElseThrow(() -> new UsernameNotFoundException("user not found"));
