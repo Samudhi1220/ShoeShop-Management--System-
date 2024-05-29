@@ -26,9 +26,14 @@ addEmployee.click(function () {
 })
 
 function getAllEmployeeData() {
+    performAuthenticatedRequest();
+    const accessToken = localStorage.getItem('accessToken');
     $.ajax({
         url: "http://localhost:8080/api/v1/employees",
         method: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
         success: function (resp) {
             console.log("Success: ", resp);
             $('#tblEmployee tbody').empty();
@@ -121,9 +126,14 @@ function clickTblRow() {
         enableTxtField();
         var row = $(this).closest('tr');
         var id = row.find('td:eq(0)').text()
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/employees/" + id,
             type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             dataType: "json",
             success: function (response) {
 
@@ -150,9 +160,14 @@ function clickTblRow() {
         disableTxtField();
         var row = $(this).closest('tr');
         var id = row.find('td:eq(0)').text()
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/employees/" + id,
             type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             dataType: "json",
             success: function (response) {
 
@@ -217,10 +232,14 @@ function updateEmployeeBtn() {
                 emergencyContact: $('#employeeGuardianContact').val(),
             };
             console.log(base64String);
-
+            performAuthenticatedRequest();
+            const accessToken = localStorage.getItem('accessToken');
             $.ajax({
                 url: "http://localhost:8080/api/v1/employees",
                 method: "PATCH",
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
                 data: JSON.stringify(postData),
                 contentType: "application/json",
                 success: function (resp) {
@@ -281,9 +300,14 @@ function deleteEmployeeBtn(id) {
                 });
             }
         })
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/employees/" + id,
             type: "DELETE",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             success: function (response) {
 
                 Swal.fire({
@@ -360,10 +384,14 @@ function saveEmployee() {
                 emergencyContact: $('#employeeGuardianContact').val(),
             };
             console.log(base64String);
-
+            performAuthenticatedRequest();
+            const accessToken = localStorage.getItem('accessToken');
             $.ajax({
                 url: "http://localhost:8080/api/v1/employees",
                 method: "POST",
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
                 data: JSON.stringify(postData),
                 contentType: "application/json",
                 success: function (resp) {
@@ -420,7 +448,13 @@ imgUploaderEmployee.change(function () {
 });
 
 function generateNewId() {
-    fetch("http://localhost:8080/api/v1/employees/id")
+    performAuthenticatedRequest();
+    const accessToken = localStorage.getItem('accessToken');
+    fetch("http://localhost:8080/api/v1/employees/id",{
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
+    })
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -443,10 +477,14 @@ function generateNewId() {
 function searchEmployee() {
     $('#search_employee').keyup(function (event) {
         var idOrName = $(this).val();
-
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/employees?idOrName=" + idOrName + "&activeStatus=" + true,
             type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             dataType: "json",
             success: function (response) {
                 $('#tblEmployee tbody').empty()

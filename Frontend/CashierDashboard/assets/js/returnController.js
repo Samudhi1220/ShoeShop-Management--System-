@@ -17,9 +17,14 @@ $('#orderType').on('change', function () {
 
 function returnFullOrder(id) {
     if ($('#orderType').val() === 'Full Order') {
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/orders/" + id,
             type: "POST",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             contentType: "application/json",
             success: function (response) {
 
@@ -55,9 +60,14 @@ function returnFullOrder(id) {
             },
             itmQTY: itemQty
         }
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/orders/oneItem",
             type: "POST",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             data: JSON.stringify(data),
             contentType: "application/json",
             success: function (response) {
@@ -91,11 +101,14 @@ function checkCanBeReturnedOrder() {
 
         let id = $('#orderId').val()
         if ($('#orderId').val() !== '') {
-
+            performAuthenticatedRequest();
+            const accessToken = localStorage.getItem('accessToken');
             $.ajax({
                 url: "http://localhost:8080/api/v1/orders/" + id,
                 type: "GET",
-
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
                 dataType: "json",
                 success: function (response) {
                     if (response.data) {

@@ -22,7 +22,13 @@ btnCancelSupplier.click(function () {
 })
 
 function generateNewSupplierId() {
-    fetch("http://localhost:8080/api/v1/supplier/id")
+    performAuthenticatedRequest();
+    const accessToken = localStorage.getItem('accessToken');
+    fetch("http://localhost:8080/api/v1/supplier/id",{
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
+    })
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -49,9 +55,14 @@ addSupplier.click(function () {
 });
 
 function getAllSuppliers() {
+    performAuthenticatedRequest();
+    const accessToken = localStorage.getItem('accessToken');
     $.ajax({
         url: "http://localhost:8080/api/v1/supplier",
         method: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
         success: function (resp) {
             console.log("Success: ", resp);
             $('#tblSupplier tbody').empty()
@@ -107,9 +118,14 @@ function clickTblRow() {
         var row = $(this).closest('tr');
         var id = row.find('td:eq(0)').text()
         console.log("supplier id: " + id)
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/supplier/" + id,
             type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             dataType: "json",
             success: function (response) {
                 setSupplierDataToTextField(response);
@@ -129,10 +145,14 @@ function clickTblRow() {
         $('#saveSupplierbtn').text("Details")
         var row = $(this).closest('tr');
         var id = row.find('td:eq(0)').text()
-
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/supplier/" + id,
             type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             dataType: "json",
             success: function (response) {
 
@@ -181,10 +201,14 @@ function updateSuppliers() {
                 mobileNo: $('#supplierContactNumber01').val(),
                 landNo: $('#supplierContactNumber02').val(),
             };
-
+            performAuthenticatedRequest();
+            const accessToken = localStorage.getItem('accessToken');
             $.ajax({
                 url: "http://localhost:8080/api/v1/supplier",
                 method: "PATCH",
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
                 data: JSON.stringify(postData),
                 contentType: "application/json",
                 success: function (resp) {
@@ -227,9 +251,14 @@ function updateSuppliers() {
 
 function deleteSuppliers(id) {
     $('#deleteSupplier').click(function () {
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/supplier/" + id,
             type: "DELETE",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             success: function (response) {
                 getAllSuppliers();
                 Swal.fire({
@@ -278,10 +307,14 @@ function saveSupplier() {
                 mobileNo: $('#supplierContactNumber01').val(),
                 landNo: $('#supplierContactNumber02').val(),
             }
-
+            performAuthenticatedRequest();
+            const accessToken = localStorage.getItem('accessToken');
             $.ajax({
                 url: "http://localhost:8080/api/v1/supplier",
                 method: "POST",
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
                 data: JSON.stringify(postData),
                 contentType: "application/json",
                 success: function (resp) {
@@ -317,11 +350,15 @@ function saveSupplier() {
 
 function searchSupplier() {
     $('#searchSuppliers').keyup(function (event) {
-
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         var idOrName = $(this).val();
         $.ajax({
             url: "http://localhost:8080/api/v1/supplier?idOrName=" + idOrName,
             type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             dataType: "json",
             success: function (response) {
                 $('#tblSupplier tbody').empty()

@@ -192,7 +192,35 @@ saleBtn.click(function () {
     $('#sales').removeClass('d-none')
 
 })
+function isTokenExpired(token) {
+    const jwtPayload = JSON.parse(atob(token.split('.')[1]));
+    const expiryTime = jwtPayload.exp * 1000;
+    return Date.now() >= expiryTime;
+}
 
+function performAuthenticatedRequest() {
+    const accessToken = localStorage.getItem('accessToken');
+    if (!accessToken || isTokenExpired(accessToken)) {
+        $.ajax({
+            url: "http://localhost:8080/api/v1/auth/signin",
+            method: "POST",
+            data: JSON.stringify({
+                email: localStorage.getItem('email'),
+                password: localStorage.getItem('password'),
+            }),
+            contentType: "application/json",
+            success: function (res, textStatus, jsXH) {
+                localStorage.setItem('accessToken', res.token);
+                console.log("sign in Successfully " + res.token);
+            },
+            error: function (ob, textStatus, error) {
+                console.log("token renew sign in error " + accessToken);
+            }
+        });
+    } else {
+
+    }
+}
 
 
 

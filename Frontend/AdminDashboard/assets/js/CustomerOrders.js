@@ -52,9 +52,15 @@ function getItemDetails() {
             itemCode: $(this).val(),
         }
         console.log($(this).val())
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
+
         $.ajax({
             url: "http://localhost:8080/api/v1/orders/item",
             method: "POST",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             data: JSON.stringify(code),
             contentType: "application/json",
             success: function (response) {
@@ -104,9 +110,14 @@ function getCustomerDetails() {
         const code = {
             customerId: customerId
         }
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/orders/customer",
             method: "POST",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             data: JSON.stringify(code),
             contentType: "application/json",
             success: function (response) {
@@ -135,8 +146,15 @@ function getCustomerDetails() {
 }
 
 function generateNewOrderId() {
-    fetch("http://localhost:8080/api/v1/orders/id")
+    performAuthenticatedRequest();
+    const accessToken = localStorage.getItem('accessToken');
+    fetch("http://localhost:8080/api/v1/orders/id",{
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
+    })
         .then(response => {
+
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -328,10 +346,14 @@ function purchaseOrder() {
         }
 
         console.log(data);
-
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/orders",
             method: "POST",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             data: JSON.stringify(data),
             // headers: {
             //     'Authorization': 'Bearer ' + accessToken

@@ -13,9 +13,14 @@ searchEmployee()
 
 
 function getAllEmployeeData() {
+    performAuthenticatedRequest();
+    const accessToken = localStorage.getItem('accessToken');
     $.ajax({
          url: "http://localhost:8080/api/v1/employees",
         method: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
         success: function (resp) {
             console.log("Success: ", resp);
             $('#tblEmployee tbody').empty();
@@ -113,9 +118,14 @@ function clickTblRow() {
         disableTxtField();
         var row = $(this).closest('tr');
         var id = row.find('td:eq(0)').text();
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/employees/" + id,
             type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             dataType: "json",
             success: function (response) {
 
@@ -171,10 +181,14 @@ imgUploader.change(function () {
 function searchEmployee() {
     $('#search_employee').keyup(function (event) {
         var idOrName = $(this).val();
-
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/employees?idOrName=" + idOrName + "&activeStatus=" + true,
             type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             dataType: "json",
             success: function (response) {
                 $('#tblEmployee tbody').empty()

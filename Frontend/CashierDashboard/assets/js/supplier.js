@@ -9,9 +9,14 @@
  searchSupplier();
 
  function getAllSuppliers() {
+     performAuthenticatedRequest();
+     const accessToken = localStorage.getItem('accessToken');
      $.ajax({
          url: "http://localhost:8080/api/v1/supplier",
          method: "GET",
+         headers: {
+             'Authorization': 'Bearer ' + accessToken
+         },
          success: function (resp) {
              console.log("Success: ", resp);
              $('#tblSupplier tbody').empty()
@@ -68,10 +73,14 @@
          $('#saveSupplierbtn').text("Details")
          var row = $(this).closest('tr');
          var id = row.find('td:eq(0)').text()
-
+         performAuthenticatedRequest();
+         const accessToken = localStorage.getItem('accessToken');
          $.ajax({
              url: "http://localhost:8080/api/v1/supplier/" + id,
              type: "GET",
+             headers: {
+                 'Authorization': 'Bearer ' + accessToken
+             },
              dataType: "json",
              success: function (response) {
 
@@ -117,9 +126,14 @@
      $('#searchSuppliers').keyup(function (event) {
 
          var idOrName = $(this).val();
+         performAuthenticatedRequest();
+         const accessToken = localStorage.getItem('accessToken');
          $.ajax({
              url: "http://localhost:8080/api/v1/supplier?idOrName=" + idOrName,
              type: "GET",
+             headers: {
+                 'Authorization': 'Bearer ' + accessToken
+             },
              dataType: "json",
              success: function (response) {
                  $('#tblSupplier tbody').empty()

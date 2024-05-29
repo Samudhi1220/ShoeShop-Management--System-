@@ -2,9 +2,14 @@ getAllOrders();
 
 getAllSaleDetails();
 function getAllSaleDetails() {
+    performAuthenticatedRequest();
+    const accessToken = localStorage.getItem('accessToken');
     $.ajax({
         url: "http://localhost:8080/api/v1/orders/allDetails",
         method: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
         success: function (resp) {
             console.log('wada karanwa')
             console.log("Success: ", resp);
@@ -33,10 +38,14 @@ function getAllSaleDetails() {
 }
 
 function getAllOrders() {
-
+    performAuthenticatedRequest();
+    const accessToken = localStorage.getItem('accessToken');
     $.ajax({
         url: "http://localhost:8080/api/v1/orders/allOrders",
         method: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
         success: function (resp) {
             console.log('wada karanwa')
             console.log("Success: ", resp);

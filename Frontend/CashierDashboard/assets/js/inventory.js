@@ -28,9 +28,14 @@ function disableTxtField() {
 }
 
 function getAllItems() {
+    performAuthenticatedRequest();
+    const accessToken = localStorage.getItem('accessToken');
     $.ajax({
         url: "http://localhost:8080/api/v1/inventory",
         method: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
         success: function (resp) {
             console.log("Success: ", resp);
             $('#tblItem tbody').empty()
@@ -106,9 +111,14 @@ function clickItemTblRow() {
 
         var row = $(this).closest('tr');
         var id = row.find('td:eq(0)').text()
+        performAuthenticatedRequest();
+        const accessToken = localStorage.getItem('accessToken');
         $.ajax({
             url: "http://localhost:8080/api/v1/inventory/" + id,
             type: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            },
             dataType: "json",
             success: function (response) {
 
