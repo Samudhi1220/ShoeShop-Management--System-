@@ -706,7 +706,7 @@
                 <span class="material-symbols-outlined">cancel_presentation</span>
             </div>
             <div class="form ">
-                <form action="#">
+                <form action="#" id="inventoryInputForm">
                     <h2 id="inventoryLabel">Add Item</h2>
 
                     <div class="row">
@@ -719,14 +719,14 @@
                         </div>
                         <div class="col">
                             <div class="input_box">
-                                <input class="txt" type="text" id="itemCategory" placeholder="Category">
+                                <input class="txt" type="text" id="itemCategory" placeholder="Category" data-validate="required letters" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class=" col ">
                             <div class="input_box">
-                                <input class="txt" type="text" id="itemQty" placeholder="Item Quantity">
+                                <input class="txt" type="text" id="itemQty" placeholder="Item Quantity" data-validate="required letters" required>
                             </div>
                         </div>
 
@@ -743,13 +743,13 @@
                     <div class="row">
                         <div class="col">
                             <div class="input_box">
-                                <input class="txt" type="number" id="itemSize" placeholder="Size">
+                                <input class="txt" type="number" id="itemSize" placeholder="Size" data-validate="required letters" required>
                             </div>
                         </div>
 
                         <div class="col">
                             <div class="input_box">
-                                <input class="txt" type="number" id="itemSellPrice" placeholder="Unit price - Sale">
+                                <input class="txt" type="number" id="itemSellPrice" placeholder="Unit price - Sale" data-validate="required price" required>
                             </div>
                         </div>
 
@@ -759,7 +759,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="input_box">
-                                <input class="txt" type="number" id="itemBuyPrice" placeholder="Unit price-Buy">
+                                <input class="txt" type="number" id="itemBuyPrice" placeholder="Unit price-Buy" data-validate="required price" required>
                             </div>
                         </div>
 
@@ -790,7 +790,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="input_box">
-                                <input class="txt" type="text" id="itemDesc" placeholder="Item Description">
+                                <input class="txt" type="text" id="itemDesc" placeholder="Item Description" data-validate="required price" required>
                             </div>
                         </div>
                     </div>

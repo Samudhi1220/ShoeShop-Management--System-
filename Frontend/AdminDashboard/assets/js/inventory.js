@@ -89,6 +89,11 @@ function getAllItems() {
 function saveItem() {
     $('#saveItembtn').click(function () {
         if ($('#saveItembtn').text() === 'Save') {
+
+            const form = $('#inventoryInputForm');
+            if (!validateForm(form)) {
+                return;
+            }
             const data = {
                 itemCode: $('#itemCode').val(),
                 itemDesc: $('#itemDesc').val(),
@@ -143,6 +148,10 @@ function saveItem() {
 function updateItem() {
     $('#saveItembtn').click(function () {
         if ($('#saveItembtn').text() === 'Update') {
+            const form = $('#inventoryInputForm');
+            if (!validateForm(form)) {
+                return;
+            }
             const data = {
                 itemCode: $('#itemCode').val(),
                 itemDesc: $('#itemDesc').val(),
