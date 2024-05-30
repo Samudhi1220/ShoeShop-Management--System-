@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="assets/css/Customer.css">
     <link rel="stylesheet" href="assets/css/CustomerOrder.css">
     <link rel="stylesheet" href="assets/css/all.css">
+    <script src="assets/js/validation.js"></script>
 
 
 </head>
@@ -549,7 +550,7 @@
             <div class="from_close">
                 <span class="material-symbols-outlined">cancel_presentation</span>
             </div>
-            <div class="form ">
+            <div class="form " id="supplierInputForm">
                 <form action="#">
                     <h2 id="supplierLabel">Add Supplier</h2>
 
@@ -563,7 +564,7 @@
                         <div class="col">
                             <div class="input_box">
                                 <label class="lblinput ">Supplier Name</label>
-                                <input type="text" id="supplierName" >
+                                <input type="text" id="supplierName" data-validate="required letters">
                             </div>
                         </div>
                     </div>
@@ -572,10 +573,18 @@
                     <div class="row">
 
                         <div class="col">
-                            <div class="input_box">
-                                <label class="lblinput ">Category</label>
-                                <input type="text" id="supplierCategory" >
-                            </div>
+                            <label for="supplierCategory" class="form-label lbl">Select Category</label>
+                            <select class="select form-select opacity-75 txt" type="text"
+                                    aria-label="Default select example"
+                                    id="supplierCategory" data-validate="required">
+                                <option disabled  value="null" selected></option>
+                                <option value="INTERNATIONAL">International</option>
+                                <option value="LOCAL">Local</option>
+                            </select>
+<!--                            <div class="input_box">-->
+<!--                                <label class="lblinput ">Category</label>-->
+<!--                                <input type="text" id="supplierCategory" >-->
+<!--                            </div>-->
                         </div>
 
                         <div class="col">
@@ -1379,7 +1388,7 @@
 <script src="assets/js/salesController.js"></script>
 <script src="../assest/bootstrap/js/bootstrap.bundle.js"></script>
 <script src="assets/js/DashboardController.js"></script>
-
+<script src="assets/js/validation.js"></script>
 
 
 
