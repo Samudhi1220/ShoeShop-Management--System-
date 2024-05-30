@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+
+.sideBar a:hover span {
+    margin-left: 0.6rem;
+}
+
+.sideBar h3 {
+    padding-top: 10.5px;
+}
+
+main {
+    width: 100%;
+    display: grid;
+}
+
+.mainSection {
+    margin-left: 18rem;
+    margin-top: 6rem;
+}
+
+.data {
+    padding-left: 2rem;
+    padding-right: 3rem;
+}
+
+.data .analyse {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+}
+
+main .analyse > div {
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+main .analyse > div:hover {
+    box-shadow: none;
+}
+
+/*main .analyse > div .status {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: space-between;*/
+/*}*/
+
+main .analyse h3 {
+    margin-left: 0.6rem;
+    font-size: 1rem;
+}
+
+main .analyse .progresss {
+    position: relative;
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+}
+
+main .analyse svg {
+    width: 7rem;
+    height: 7rem;
+}
+
+main .analyse svg circle {
+    fill: none;
+    stroke-width: 10;
+    stroke-linecap: round;
+    transform: translate(5px, 5px);
+}
+
+
+main .analyse .progresss .percentage {
+    position: absolute;
+    top: -3px;
+    left: -1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.downMainDiv {
+    margin-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 3rem;
+}
+
+.mostSaleItem {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+}
+
+.mostSaleItem .col {
+    /*width: 50%;*/
+    background-color: var(--color-white);
+    border: solid 1px rgba(246, 175, 182, 0.8);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+}
+
+.mostSaleItem h1 {
+    font-weight: 550;
+    font-size: 25px;
+    margin-top: 5px;
+}
+
+
+.mostSaleItem p {
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.qty .qtyStatus {
+    display: flex;
+    /*align-items: flex-start;*/
+    justify-content: space-around;
+
+}
+
+.qty h3 {
+    margin-left: 0.6rem;
+    font-size: 1.5rem;
+    opacity: 70%;
+}
+
+.qty .qtyProgresses {
+    position: relative;
+    display: flex;
+    justify-content: end;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    /*background-color: #0a58ca;*/
+}
+
+/*.qty svg {*/
+/*    width: 12rem;*/
+/*    height: 12rem;*/
+/*    !*background-color: black;*!*/
+/*}*/
+
+/*.qty svg circle {*/
+/*    fill: none;*/
+/*    stroke-width: 10;*/
+/*    stroke-linecap: round;*/
+/*    transform: translate(25px, 25px);*/
+/*}*/
+
+/*.qty svg circle {*/
+/*    stroke: var(--color-success);*/
+/*    stroke-dashoffset: -70;*/
+/*    stroke-dasharray: 350;*/
+/*}*/
+
+/*.qtyProgresses .qtyPercentage {*/
+/*    position: absolute;*/
+/*    top: 10px;*/
+/*    left: 10px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    height: 100%;*/
+/*    width: 100%;*/
+/*}*/
+
+.qty h1 {
+    text-align: center;
+    font-size: 75px;
+    opacity: 80%;
+}
+
+.itemDiv h1 {
+    font-size: 2rem;
+}
+
+@media all and (min-width: 1261px) and (max-width: 1548px) {
+    .lastDiv {
+        margin-right: 45.5rem;
+    }
+}
+
+.datepicker {
+    width: 200px;
+    border: solid 2px rgba(246, 175, 182, 0.8);
+    text-align: center;
+}
+
+.saleDetailBox {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border: solid 2px rgba(246, 175, 182, 0.8);
+    align-items: center;
+
+}
+
+.progress-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    /*background: conic-gradient(#28a745 calc(75 * 1%), #e9ecef 0);*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.progress-circle::before {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.progress-value {
+    position: relative;
+    font-size: 24px;
+    color: #28a745;
+}

@@ -1148,8 +1148,9 @@
                         <!--                                class="material-symbols-outlined">person_add</span> Return Orders-->
                         <!--                        </button>-->
 
-                        <button type="button" class="btn btn-sm btn-outline-danger float-end mb-3"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" id="returnPopupAddBtn"
+                                class="btn btn-sm btn-outline-danger float-end mb-3" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
                             Return Orders
                         </button>
 
@@ -1213,8 +1214,9 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Return</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeBtn">Close
+                        </button>
+                        <button type="button" class="btn btn-primary" id="returnFormBtn">Return</button>
                     </div>
                 </div>
             </div>
