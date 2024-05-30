@@ -47,7 +47,7 @@ deleteCustomers.click(function () {
 
 cancelBtnCustomer.click(function () {
     home.removeClass('show');
-    form_container.css('max-width', '800px')
+    $('.form-container').css('max-width', '800px')
 
 })
 
@@ -264,7 +264,7 @@ function customerUpdate(response) {
 }
 
 function deleteCustomer(id) {
-    $('#deleteCustomers').click(function () {
+
         performAuthenticatedRequest();
         const accessToken = localStorage.getItem('accessToken');
         $.ajax({
@@ -292,7 +292,7 @@ function deleteCustomer(id) {
                 });
             }
         });
-    })
+
 }
 
 function searchCustomer() {
@@ -432,7 +432,8 @@ function clickCustomerTblRow() {
 }
 
 form_closeCustomer.click(function () {
-    home.addClass('show')
+    $('.home').removeClass('show');
+    $('.form-container').css('max-width', '800px')
 
 })
 

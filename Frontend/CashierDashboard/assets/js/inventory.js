@@ -1,5 +1,6 @@
 const form_closeInventory = $('.from_close'),
     cancelBtnInventory = $('.cancelBtn');
+home=$('')
 
 
 // Variable to store the base64 string of the uploaded image
@@ -11,13 +12,13 @@ clickItemTblRow();
 
 
 form_closeInventory.click(function () {
-    home.removeClass('show');
-    form_container.css('max-width', '800px')
+    $('.home').removeClass('show');
+    $('.form-container').css('max-width', '800px')
 
 })
 cancelBtnInventory.click(function () {
-    home.removeClass('show');
-    form_container.css('max-width', '800px')
+    $('.home').removeClass('show');
+    $('.form-container').css('max-width', '800px')
 
 })
 

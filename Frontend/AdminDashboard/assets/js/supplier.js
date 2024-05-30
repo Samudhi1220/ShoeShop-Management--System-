@@ -11,13 +11,14 @@ searchSupplier();
 
 
 formCloseSupplier.click(function () {
-    home.removeClass('show');
-    form_container.css('max-width', '800px')
+    $('.home').removeClass('show');
+    $('.form-container').css('max-width', '800px')
+
 
 })
 btnCancelSupplier.click(function () {
-    home.removeClass('show');
-    form_container.css('max-width', '800px')
+    $('.home').removeClass('show');
+    $('.form-container').css('max-width', '800px')
 
 })
 
@@ -49,7 +50,11 @@ addSupplier.click(function () {
     home.addClass('show')
     $('#saveSupplierbtn').text("Save")
     enableTxtField()
-    generateNewSupplierId();
+    $('.txt').val("")
+    $('#supplierCategory').val($('#supplierCategory option:first').val());
+    $('#supplierCode').attr('readonly', "");
+    console.log("supplierFunction");
+    generateNewSupplierId()
     saveSupplier()
 
 });
@@ -250,7 +255,7 @@ function updateSuppliers() {
 }
 
 function deleteSuppliers(id) {
-    $('#deleteSupplier').click(function () {
+
         performAuthenticatedRequest();
         const accessToken = localStorage.getItem('accessToken');
         $.ajax({
@@ -278,7 +283,7 @@ function deleteSuppliers(id) {
                 });
             }
         });
-    })
+
 }
 
 function disableTxtField() {
@@ -327,6 +332,9 @@ function saveSupplier() {
                             showConfirmButton: false,
                             timer: 1500
                         });
+                        $('.cancelBtn').click(
+                            home.removeClass('show')
+                        );
 
                     }
                     // $('#supplierFormContainer').modal('hide');

@@ -19,7 +19,16 @@ addEmployee.click(function () {
     $('#mainLabel').text('Add Employee')
     home.addClass('show')
     $('#addbtn').text("Save")
-    enableTxtField();
+    $("#employeeGender").prop('disabled', false);
+    $("#employeeDOB").prop('disabled', false);
+    $("#employeeDOJ").prop('disabled', false);
+    $("#employeeRole").prop('disabled', false);
+    enableTxtField()
+    $('#employeeCode').attr('readonly', "");
+    $('.txt').val("")
+    $('#employeeGender').val($('#employeeGender option:first').val());
+    $('#employeeRole').val($('#employeeRole option:first').val());
+    $('#imgViewer').attr('src', '#')
     generateNewId();
 
 
@@ -123,7 +132,8 @@ function clickTblRow() {
         $('#mainLabel').text('Update Employee')
         home.addClass('show')
         $('#addbtn').text("Update")
-        enableTxtField();
+        enableTxtField()
+
         var row = $(this).closest('tr');
         var id = row.find('td:eq(0)').text()
         performAuthenticatedRequest();
@@ -184,8 +194,6 @@ function clickTblRow() {
     });
 
     $('#tblEmployee').on('click', '#deleteEmployee', function (event) {
-
-
         var row = $(this).closest('tr');
         var id = row.find('td:eq(0)').text()
         deleteEmployeeBtn(id)
@@ -290,16 +298,7 @@ function updateEmployeeBtn() {
 }
 
 function deleteEmployeeBtn(id) {
-    $('#deleteEmployee').click(function () {
-        Swal.fire({}).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
-                });
-            }
-        })
+
         performAuthenticatedRequest();
         const accessToken = localStorage.getItem('accessToken');
         $.ajax({
@@ -335,7 +334,7 @@ function deleteEmployeeBtn(id) {
                 });
             }
         });
-    })
+
 }
 
 function disableTxtField() {
@@ -429,12 +428,11 @@ function saveEmployee() {
 
 formCloseEmployee.click(function () {
     home.removeClass('show');
-    form_container.css('max-width', '800px')
-
+    $('.form-container').css('max-width', '800px')
 })
 btnCancelEmployee.click(function () {
     home.removeClass('show');
-    form_container.css('max-width', '800px')
+    $('.form-container').css('max-width', '800px')
 
 })
 imgUploaderEmployee.change(function () {

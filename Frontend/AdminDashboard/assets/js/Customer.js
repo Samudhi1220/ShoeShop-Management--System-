@@ -12,42 +12,22 @@ $('#addCustomer').click(function () {
     $('#mainLabelCustomer').text('Add Customer')
     $('.home').addClass('show')
     $('#addbtnCustomer').text("Save");
-    $("#customerGender").prop('disabled', false);
-    $("#customerDOB").prop('disabled', false);
-    $("#customerDOJ").prop('disabled', false);
-
+    enableTxtField()
+    $('.txt').val("")
+    $('#customerGender').val($('#customerGender option:first').val());
+    $('#supplierCode').attr('readonly', "");
+    $("#customerGender,#customerDOB,#customerDOJ").prop('disabled', false);
+    $('.hideTxt').addClass('d-none');
     generateNewCustomerId();
 
 })
 
-deleteCustomers.click(function () {
-    Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success"
-            });
-        }
-    });
-    // $('#mainLabel').text('Delete Employee')
-    // $('#addbtn').text("Delete")
-    //
-    // home.addClass('show')
-})
+
 
 
 cancelBtnCustomer.click(function () {
     $('.home').removeClass('show');
-    form_container.css('max-width', '800px')
+    $('.form-container').css('max-width', '800px')
 
 })
 
@@ -265,7 +245,6 @@ function customerUpdate(response) {
 }
 
 function deleteCustomer(id) {
-    $('#deleteCustomers').click(function () {
         performAuthenticatedRequest();
         const accessToken = localStorage.getItem('accessToken');
         $.ajax({
@@ -293,7 +272,6 @@ function deleteCustomer(id) {
                 });
             }
         });
-    })
 }
 
 function searchCustomer() {
@@ -420,7 +398,6 @@ function clickCustomerTblRow() {
 
     $('#tblCustomer').on('click', '#deleteCustomers', function (event) {
 
-
         var row = $(this).closest('tr');
         var id = row.find('td:eq(0)').text()
         deleteCustomer(id)
@@ -431,7 +408,8 @@ function clickCustomerTblRow() {
 }
 
 form_closeCustomer.click(function () {
-    $('.home').addClass('show')
+    $('.home').removeClass('show');
+    $('.form-container').css('max-width', '800px')
 
 })
 

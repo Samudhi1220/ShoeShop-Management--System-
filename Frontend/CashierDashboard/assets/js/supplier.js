@@ -112,13 +112,12 @@
 
 
  form_closeSupplier.click(function () {
-     home.removeClass('show');
-     form_container.css('max-width', '800px')
-
+     $('.home').removeClass('show');
+     $('.form-container').css('max-width', '800px')
  })
  cancelSupplierBtn.click(function () {
-     home.removeClass('show');
-     form_container.css('max-width', '800px')
+     $('.home').removeClass('show');
+     $('.form-container').css('max-width', '800px')
 
  })
 

@@ -157,11 +157,11 @@ function enableTxtField() {
 
 formCloseEmployee.click(function () {
     homeClass.removeClass('show');
-    form_container.css('max-width', '800 ');
+    $('.form-container').css('max-width', '800px')
 })
 btnCancel.click(function () {
     homeClass.removeClass('show');
-    form_container.css('max-width', '800px')
+    $('.form-container').css('max-width', '800px')
 
 })
 
