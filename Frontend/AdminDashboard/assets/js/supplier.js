@@ -189,7 +189,13 @@ function clickTblRow() {
 
 function updateSuppliers() {
     $('#saveSupplierbtn').click(function () {
+
         if ($(this).text().trim() === 'Update') {
+
+            const form = $('#supplierInputForm');
+            if (!validateForm(form)) {
+                return;
+            }
             const postData = {
                 supplierCode: $('#supplierCode').val(),
                 supplierName: $('#supplierName').val(),
@@ -296,6 +302,10 @@ function enableTxtField() {
 function saveSupplier() {
     $('#saveSupplierbtn').click(function () {
         if ($(this).text().trim() === 'Save') {
+            const form = $('#supplierInputForm');
+            if (!validateForm(form)) {
+                return;
+            }
             const postData = {
                 supplierCode: $('#supplierCode').val(),
                 supplierName: $('#supplierName').val(),

@@ -205,5 +205,8 @@ input[type="date"]::before {
     opacity: 2;
     color: #9a9a9a;
 }
-
-
+.error {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+}

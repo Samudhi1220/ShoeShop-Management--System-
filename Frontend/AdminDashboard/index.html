@@ -325,7 +325,7 @@
                 <span class="material-symbols-outlined">cancel_presentation</span>
             </div>
             <div class="form add-employee">
-                <form action="#">
+                <form action="#" id="employeeInputForm">
                     <h2 id="mainLabel">Add Employee</h2>
 
                     <div class="mainInputDiv" id="employeeMainInputDiv">
@@ -338,14 +338,14 @@
 
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input class="txt" type="text" id="employeeName" placeholder="Employee Name">
+                                    <input class="txt" type="text" id="employeeName" placeholder="Employee Name" data-validate="required letters" required>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input_box adminInputBox ">
 
                                     <select class="form-select  border-black" aria-label="Default select example"
-                                            id="employeeGender"
+                                            id="employeeGender" data-validate="required"
                                             required>
                                         <option disabled value="null" selected>Select Gender</option>
                                         <option value="MALE">Male</option>
@@ -358,18 +358,18 @@
                         <div class="row">
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input class="txt" type="text" id="employeeStatus" placeholder="Employee Status">
+                                    <input class="txt" type="text" id="employeeStatus" placeholder="Employee Status" data-validate="required letters" >
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input_box adminInputBox">
                                     <input class="txt" type="text" id="employeeDesignation"
-                                           placeholder="Employee Designation">
+                                           placeholder="Employee Designation" data-validate="required letters" required>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input class="txt" type="date" id="employeeDOB" placeholder="Date Of Birth">
+                                    <input class="txt" type="date" id="employeeDOB" placeholder="Date Of Birth" data-validate="required" required>
                                 </div>
                             </div>
                         </div>
@@ -378,12 +378,12 @@
 
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input class="txt" type="date" id="employeeDOJ" placeholder="Date Of Join">
+                                    <input class="txt" type="date" id="employeeDOJ" placeholder="Date Of Join" data-validate="required" required>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input class="txt" type="text" id="employeeBranch" placeholder="Branch">
+                                    <input class="txt" type="text" id="employeeBranch" placeholder="Branch" data-validate="required letters">
                                 </div>
                             </div>
 
@@ -403,30 +403,30 @@
                             </div>
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input class="txt" type="text" id="employeeCity" placeholder="City">
+                                    <input class="txt" type="text" id="employeeCity" placeholder="City" data-validate="required letters">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input class="txt" type="text" id="employeeState" placeholder="State">
+                                    <input class="txt" type="text" id="employeeState" placeholder="State" data-validate="required letters">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input class="txt" type="text" id="employeePostalCode" placeholder="Postal Code">
+                                    <input class="txt" type="text" id="employeePostalCode" placeholder="Postal Code" data-validate="required numeric">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input_box adminInputBox">
                                     <input class="txt" type="tel" id="employeeContactNumber"
-                                           placeholder="Contact Number">
+                                           placeholder="Contact Number" data-validate="required mobile-number">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input class="txt" type="email" id="employeeEmail" placeholder="email">
+                                    <input class="txt" type="email" id="employeeEmail" placeholder="email"  data-validate="email">
                                 </div>
                             </div>
                         </div>
@@ -435,7 +435,7 @@
                             <div class="col">
                                 <div class="input_box adminInputBox  ">
                                     <select class="form-select  border-black" aria-label="Default select example"
-                                            id="employeeRole"
+                                            id="employeeRole" data-validate="required"
                                             required>
                                         <option value="null" disabled selected>Role</option>
                                         <option value="ADMIN">Admin</option>
@@ -446,26 +446,13 @@
                             </div>
                             <div class="col">
                                 <div class="input_box adminInputBox">
-                                    <input class="txt" type="text" id="employeeGuardian" placeholder="Name of Guardian">
+                                    <input class="txt" type="text" id="employeeGuardian" placeholder="Name of Guardian" data-validate="required letters">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input_box adminInputBox">
                                     <input class="txt" type="tel" id="employeeGuardianContact"
-                                           placeholder="guardian Contact Details">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row  employeePageUserCredentials">
-                            <div class="col">
-                                <div class="input_box">
-                                    <input class="txt"  type="email" id="EmployeePageUserUserName" placeholder="User Name Or Email">
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="input_box">
-                                    <input class="txt"  type="password" id="EmployeePageUserPasswword"
-                                           placeholder="Passwword">
+                                           placeholder="guardian Contact Details"  data-validate="required mobile-number">
                                 </div>
                             </div>
                         </div>
@@ -550,8 +537,8 @@
             <div class="from_close">
                 <span class="material-symbols-outlined">cancel_presentation</span>
             </div>
-            <div class="form " id="supplierInputForm">
-                <form action="#">
+            <div class="form " >
+                <form action="#" id="supplierInputForm">
                     <h2 id="supplierLabel">Add Supplier</h2>
 
                     <div class="row">
@@ -573,8 +560,9 @@
                     <div class="row">
 
                         <div class="col">
-                            <label for="supplierCategory" class="form-label lbl">Select Category</label>
-                            <select class="select form-select opacity-75 txt" type="text"
+                            <div class="input_box">
+                            <label for="supplierCategory" class="form-label lbl"> Select Category</label>
+                            <select class="select form-select txt" type="text"
                                     aria-label="Default select example"
                                     id="supplierCategory" data-validate="required">
                                 <option disabled  value="null" selected></option>
@@ -585,6 +573,7 @@
 <!--                                <label class="lblinput ">Category</label>-->
 <!--                                <input type="text" id="supplierCategory" >-->
 <!--                            </div>-->
+                        </div>
                         </div>
 
                         <div class="col">
@@ -606,7 +595,7 @@
                         <div class="col">
                             <div class="input_box">
                                 <label class="lblinput ">City</label>
-                                <input type="text" id="supplierCity">
+                                <input type="text" id="supplierCity"  data-validate="required letters">
                             </div>
                         </div>
                     </div>
@@ -614,14 +603,14 @@
                         <div class="col">
                             <div class="input_box">
                                 <label class="lblinput ">State</label>
-                                <input type="text" id="supplierState">
+                                <input type="text" id="supplierState" data-validate="required letters">
                             </div>
                         </div>
 
                         <div class="col">
                             <div class="input_box">
                                 <label class="lblinput ">Postal Code</label>
-                                <input type="text" id="supplierPostalCode" >
+                                <input type="text" id="supplierPostalCode" data-validate="required numeric" >
                             </div>
                         </div>
 
@@ -630,13 +619,13 @@
                         <div class="col">
                             <div class="input_box">
                                 <label class="lblinput ">Country</label>
-                                <input type="text" id="supplierCountry" >
+                                <input type="text" id="supplierCountry" data-validate="required letters">
                             </div>
                         </div>
                         <div class="col">
                             <div class="input_box">
                                 <label class="lblinput ">Contact No.1</label>
-                                <input type="tel" id="supplierContactNumber01" >
+                                <input type="tel" id="supplierContactNumber01" data-validate="required mobile-number">
                             </div>
                         </div>
                     </div>
@@ -644,14 +633,14 @@
                         <div class="col">
                             <div class="input_box">
                                 <label class="lblinput ">Contact No.2</label>
-                                <input type="tel" id="supplierContactNumber02" >
+                                <input type="tel" id="supplierContactNumber02" data-validate="required land-number">
                             </div>
                         </div>
 
                         <div class="col">
                             <div class="input_box">
                                 <label class="lblinput ">Email</label>
-                                <input type="email" id="supplierEmail" >
+                                <input type="email" id="supplierEmail" data-validate="email"  >
                             </div>
                         </div>
                     </div>
