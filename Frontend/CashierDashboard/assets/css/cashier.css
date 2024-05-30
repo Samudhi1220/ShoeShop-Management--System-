@@ -229,4 +229,8 @@ input[type="date"]::before {
 .card{
     margin-bottom: 17px;
 }
-
+.error {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+}

@@ -506,10 +506,10 @@
                             <tr>
                                 <th scope="col">Id</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Address</th>
                                 <th scope="col">Category</th>
                                 <th scope="col">Contact</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -849,7 +849,7 @@
                 <span class="material-symbols-outlined">cancel_presentation</span>
             </div>
             <div class="form add-customer">
-                <form action="#">
+                <form action="#" id="customerInputForm">
                     <h2 id="mainLabelCustomer">Add Customer</h2>
 
                     <div class="mainInputDiv" id="customerMainInputDiv">
@@ -861,7 +861,7 @@
                             </div>
                             <div class="col">
                                 <div class="input_box">
-                                    <input type="text" class="txt" id="customerName" placeholder="Customer Name">
+                                    <input type="text" class="txt" id="customerName" placeholder="Customer Name" data-validate="required letters" required>
                                 </div>
                             </div>
 
@@ -869,7 +869,7 @@
                                 <div class="input_box">
                                     <select class="select form-select opacity-75  txt"
                                             aria-label="Default select example"
-                                            id="customerGender">
+                                            id="customerGender" data-validate="required" required>
                                         <option disabled selected>Select Gender</option>
                                         <option value="MALE">Male</option>
                                         <option value="FEMALE">Female</option>
@@ -882,13 +882,13 @@
                             <div class="col">
                                 <div class="input_box">
                                     <input type="date" id="customerDOB" class="form-control txt"
-                                           placeholder="Date Of Birth">
+                                           placeholder="Date Of Birth" data-validate="required" required>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input_box">
                                     <input type="date" id="customerDOJ" class="form-control txt"
-                                           placeholder="Date Of Join">
+                                           placeholder="Date Of Join" data-validate="required" required>
                                 </div>
                             </div>
                             <div class="col">
@@ -906,30 +906,30 @@
                             </div>
                             <div class="col">
                                 <div class="input_box">
-                                    <input type="text" class="txt" id="customerCity" placeholder="City">
+                                    <input type="text" class="txt" id="customerCity" placeholder="City" data-validate="required letters" required>
                                 </div>
                             </div>
 
                             <div class="col">
                                 <div class="input_box">
-                                    <input type="text" class="txt" id="customerState" placeholder="State">
+                                    <input type="text" class="txt" id="customerState" placeholder="State" data-validate="required letters" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="input_box">
-                                    <input type="text" class="txt" id="customerPostalCode" placeholder="Postal Code">
+                                    <input type="text" class="txt" id="customerPostalCode" placeholder="Postal Code" data-validate="required numeric">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input_box">
-                                    <input type="text" class="txt" id="customerContactNo" placeholder="Contact Number">
+                                    <input type="text" class="txt" id="customerContactNo" placeholder="Contact Number"  data-validate="required mobile-number">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input_box">
-                                    <input type="text" class="txt" id="customerEmail" placeholder="Email">
+                                    <input type="text" class="txt" id="customerEmail" placeholder="Email" data-validate="email">
                                 </div>
                             </div>
 
@@ -970,121 +970,124 @@
         <div class="customerOrderDiv">
             <section class="row orderRow mb-5 mt-4 justify-content-center">
                 <div class="col-xl-6 col-lg-12 col-xxl-4 orderBox">
-                    <div class="row">
-                        <div class="col">
-                            <div class="input_box ">
-                                <select class="select form-select opacity-75 txt"
-                                        aria-label="Default select example"
-                                        id="customerType">
-                                    <option selected disabled>Select Customer</option>
-                                    <option value="Loyalty">Loyalty</option>
-                                    <option value="Other">Other</option>
-                                </select>
+                    <form id="itemDetailsForm">
+                        <div class="row">
+                            <div class="col">
+                                <div class="input_box ">
+                                    <select class="select form-select opacity-75 txt"
+                                            aria-label="Default select example"
+                                            id="customerType" data-validate="required">
+                                        <option selected disabled>Select Customer</option>
+                                        <option value="Loyalty">Loyalty</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col d-none orderCustomerId">
+                                <div class="input_box">
+                                    <input type="text" class="txt" id="orderCustomerId" placeholder="Customer Id">
+                                    <label for="orderCustomerId" id="customerFoundStatus"
+                                           class="form-label lbl d-none text-danger">Customer Not Found!</label>
+                                </div>
+
                             </div>
                         </div>
-                        <div class="col d-none orderCustomerId">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="orderCustomerId" placeholder="Customer Id">
-                                <label for="orderCustomerId" id="customerFoundStatus"
-                                       class="form-label lbl d-none text-danger">Customer Not Found!</label>
+                        <div class="row ">
+                            <div class="col d-none customerNameOrder">
+                                <div class="input_box">
+                                    <input type="text" class="txt" id="customerNameOrder" placeholder="Customer Name">
+                                </div>
                             </div>
+                            <div class="col d-none customerLevel">
+                                <div class="input_box">
+                                    <input type="text" class="txt" id="customerLevel" placeholder="Customer Level">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <div class="input_box">
+                                    <input type="text" class="txt" id="OrderItemId" placeholder="Item Id" data-validate="required">
+                                    <label for="OrderItemId" id="itemFoundStatus" class="form-label lbl d-none text-danger">Item
+                                        Not Found!</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input_box">
+                                    <input type="text" class="txt" id="itemQtyOrder" placeholder="Item QTY" data-validate="required">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="justify-content-end row align-items-center me-1">
+                            <button type="button" id="addToCart" class="btn btn-primary purchersBtn mt-3">Add To Cart
+                            </button>
 
                         </div>
-                    </div>
-                    <div class="row ">
-                        <div class="col d-none customerNameOrder">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="customerNameOrder" placeholder="Customer Name">
-                            </div>
-                        </div>
-                        <div class="col d-none customerLevel">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="customerLevel" placeholder="Customer Level">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-4">
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="OrderItemId" placeholder="Item Id">
-                                <label for="OrderItemId" id="itemFoundStatus" class="form-label lbl d-none text-danger">Item
-                                    Not Found!</label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="itemQtyOrder" placeholder="Item QTY">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="justify-content-end row align-items-center me-1">
-                        <button type="button" id="addToCart" class="btn btn-primary purchersBtn mt-3">Add To Cart
-                        </button>
-
-                    </div>
-
+                    </form>
                 </div>
                 <div class="col-xl-5 col-lg-12 col-xxl-4 orderBox">
-                    <div class="row">
-                        <div class="col">
-                            <div class="input_box ">
-                                <select class="select form-select opacity-75 txt"
-                                        aria-label="Default select example"
-                                        id="paymentMethod">
-                                    <option selected disabled>Payment Method</option>
-                                    <option value="Cash Payment">Cash Payment</option>
-                                    <option value="Card Payment">Card Payment</option>
-                                </select>
+                    <form id="paymentForm">
+                        <div class="row">
+                            <div class="col">
+                                <div class="input_box ">
+                                    <select class="select form-select opacity-75 txt"
+                                            aria-label="Default select example"
+                                            id="paymentMethod" data-validate="required">
+                                        <option selected disabled>Payment Method</option>
+                                        <option value="Cash Payment">Cash Payment</option>
+                                        <option value="Card Payment">Card Payment</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row d-none cashPay">
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt " id="amountToPay" placeholder="Amount To pay">
+                        <div class="row d-none cashPay">
+                            <div class="col">
+                                <div class="input_box">
+                                    <input type="text" class="txt " id="amountToPay" placeholder="Amount To pay">
+                                </div>
                             </div>
                         </div>
-                    </div>
 
 
-                    <div class="row d-none cardPay">
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt " id="last4digit" placeholder="Last 4 Digit">
+                        <div class="row d-none cardPay">
+                            <div class="col">
+                                <div class="input_box">
+                                    <input type="text" class="txt " id="last4digit" placeholder="Last 4 Digit">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input_box">
+                                    <input type="text" class="txt" id="bankName" placeholder="Bank Name">
+                                </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="input_box">
-                                <input type="text" class="txt" id="bankName" placeholder="Bank Name">
+
+                        <div class="row">
+                            <div class="col d-flex justify-content-center mt-4">
+                                <h1 class="fs-1 fw-bold">Total</h1>
+                            </div>
+                            <div class="col d-flex justify-content-center align-items-end mt-2">
+                                <h2 class="fs-4 d-inline-block me-2">Rs</h2>
+                                <h1 class="fs-2 d-inline-block" id="total"> 00.00</h1>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col d-flex justify-content-center mt-4">
-                            <h1 class="fs-1 fw-bold">Total</h1>
+                        <div class="row mb-3">
+                            <div class="col  d-flex justify-content-center mt-4">
+                                <h1 class="fs-1 fw-bold ">Balance</h1>
+                            </div>
+                            <div class="col d-flex justify-content-center align-items-end mt-4">
+                                <h2 class="fs-4 d-inline-block me-2">Rs</h2>
+                                <h1 class="fs-2 d-inline-block" id="balance"> 00.00</h1>
+                            </div>
                         </div>
-                        <div class="col d-flex justify-content-center align-items-end mt-2">
-                            <h2 class="fs-4 d-inline-block me-2">Rs</h2>
-                            <h1 class="fs-2 d-inline-block" id="total"> 00.00</h1>
-                        </div>
-                    </div>
 
-                    <div class="row mb-3">
-                        <div class="col  d-flex justify-content-center mt-4">
-                            <h1 class="fs-1 fw-bold ">Balance</h1>
+                        <div class="justify-content-end row align-items-center me-1">
+                            <button type="button" id="purchaseOrderBtn" class="btn btn-success purchersBtn">Purchase
+                            </button>
                         </div>
-                        <div class="col d-flex justify-content-center align-items-end mt-4">
-                            <h2 class="fs-4 d-inline-block me-2">Rs</h2>
-                            <h1 class="fs-2 d-inline-block" id="balance"> 00.00</h1>
-                        </div>
-                    </div>
-
-                    <div class="justify-content-end row align-items-center me-1">
-                        <button type="button" id="purchaseOrderBtn" class="btn btn-success purchersBtn">Purchase
-                        </button>
-                    </div>
+                    </form>
                 </div>
                 <div class="col-xl-6 col-lg-12 col-xxl-3 orderBox">
                     <div class="d-flex justify-content-center">

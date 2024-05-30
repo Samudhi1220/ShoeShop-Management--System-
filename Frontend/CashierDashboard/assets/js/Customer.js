@@ -78,6 +78,10 @@ function generateNewCustomerId() {
 function saveCustomer() {
     $('#addbtnCustomer').click(function () {
         if ($(this).text().trim() === 'Save') {
+            const form = $('#customerInputForm');
+            if (!validateForm(form)) {
+                return;
+            }
             const postData = {
                 customerId: $('#customerCode').val(),
                 customerName: $('#customerName').val(),
@@ -196,6 +200,10 @@ function customerUpdate(response) {
     console.log("updateCustomers");
     $('#addbtnCustomer').click(function () {
         if ($(this).text().trim() === 'Update') {
+            const form = $('#customerInputForm');
+            if (!validateForm(form)) {
+                return;
+            }
             const postData = {
                 customerId: $('#customerCode').val(),
                 customerName: $('#customerName').val(),
