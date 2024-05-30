@@ -1,6 +1,6 @@
 function addError(element, message) {
     element.next('.error').remove();
-    element.before('<span class="error">' + message + '</span>');
+    element.after('<span class="error">' + message + '</span>');
     element.css('border', '1px solid red');
 }
 

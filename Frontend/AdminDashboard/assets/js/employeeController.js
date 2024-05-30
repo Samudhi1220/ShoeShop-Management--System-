@@ -206,6 +206,10 @@ function clickTblRow() {
 function updateEmployeeBtn() {
     $('#addbtn').click(function () {
         if ($(this).text().trim() === 'Update') {
+            const form = $('#employeeInputForm');
+            if (!validateForm(form)) {
+                return;
+            }
             var role;
             var gender;
             if ('none' !== $('#employeeRole').val()) {
@@ -350,7 +354,10 @@ function enableTxtField() {
 function saveEmployee() {
     $('#addbtn').click(function () {
         if ($('#addbtn').text().trim() === 'Save') {
-
+            const form = $('#employeeInputForm');
+            if (!validateForm(form)) {
+                return;
+            }
 
             if ($('#employeeRole').val() === "Admin" || $('#employeeRole').val() === "User") {
                 var role = $('#employeeRole').val().toUpperCase();
