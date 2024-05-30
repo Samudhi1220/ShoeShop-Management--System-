@@ -201,7 +201,7 @@ function mostSaleItemOfASelectedDate() {
                     $('#mostSaleItemCode').text('No Orders');
                 }
                 getMostSaleItemDetails(response.data.itemCode)
-                
+
             },
             error: function (xhr, status, error) {
                 console.error('Failed to fetch image:', error);
@@ -268,7 +268,7 @@ function getMostSaleItemDetails(itemId) {
 
         $('.progress-circle').each(function () {
             let cssValue = 'conic-gradient(red ' + (0 * 3.6) + 'deg, #e9ecef 0deg)';
-                $(this).find('.progress-value').css('color', 'black');
+            $(this).find('.progress-value').css('color', 'black');
             $(this).css('background', cssValue);
             $(this).find('.progress-value').text(0 + '%');
         });

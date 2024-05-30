@@ -1,6 +1,6 @@
 const form_closeInventory = $('.from_close'),
     cancelBtnInventory = $('.cancelBtn');
-home=$('')
+
 
 
 // Variable to store the base64 string of the uploaded image

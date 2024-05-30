@@ -113,16 +113,16 @@
                     <!--                    <h2>100 <p>Employee Attendance</p></h2>-->
                     <div class="sales">
                         <div class="status">
-                            <div class="info">
-                                <h3>Total Sales</h3>
-                                <h1>$65,024</h1>
-                            </div>
-                            <div class="progresss">
-                                <svg>
-                                    <circle cx="38" cy="38" r="36"></circle>
-                                </svg>
-                                <div class="percentage">
-                                    <p>+81%</p>
+                            <div class="saleDetailBox d-flex justify-content-center">
+                                <div class="container">
+                                    <div class="input-group date">
+                                        <input type="text" class="form-control datepicker" id="totalSaleDate"
+                                               placeholder="Select Date">
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center flex-column">
+                                    <h3 class="fs-3 text-muted">Total Sales</h3>
+                                    <h1 id="totalSale" class="text-muted"></h1>
                                 </div>
                             </div>
                         </div>
@@ -133,16 +133,17 @@
                     <!--                    <h2>100 <p>Employee Attendance</p></h2>-->
                     <div class="sales">
                         <div class="status">
-                            <div class="info">
-                                <h3>Total Sales</h3>
-                                <h1>$65,024</h1>
-                            </div>
-                            <div class="progresss">
-                                <svg>
-                                    <circle cx="38" cy="38" r="36"></circle>
-                                </svg>
-                                <div class="percentage">
-                                    <p>+81%</p>
+                            <div class="saleDetailBox">
+                                <div class="container">
+                                    <div class="input-group date">
+                                        <input type="text" id="totalProfitDate" class="form-control datepicker"
+                                               placeholder="Select Date">
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center flex-column">
+                                    <h3 class="fs-3 text-muted">Total Profit</h3>
+                                    <h1 class="text-muted fs-4">Rs <b id="totalProfit"
+                                                                      class="text-muted fs-1 fw-normal"></b></h1>
                                 </div>
                             </div>
                         </div>
@@ -153,16 +154,15 @@
                     <!--                    <h2>100 <p>Employee Attendance</p></h2>-->
                     <div class="visits">
                         <div class="status">
-                            <div class="info">
-                                <h3>Site Visit</h3>
-                                <h1>24,981</h1>
-                            </div>
-                            <div class="progresss">
-                                <svg>
-                                    <circle cx="38" cy="38" r="36"></circle>
-                                </svg>
-                                <div class="percentage">
-                                    <p>-48%</p>
+                            <div class="saleDetailBox">
+                                <div class="container">
+                                    <div class="input-group date">
+                                        <input type="text" id="mostSaleItemStatusDate" class="form-control datepicker" placeholder="Select Date">
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center flex-column">
+                                    <h3 class="fs-4 text-muted">Most Sale Item Status</h3>
+                                    <h1 id="mostSaleItemStatus" class=" fs-1 fw-normal"></h1>
                                 </div>
                             </div>
                         </div>
@@ -171,18 +171,25 @@
                 <div class="shadow-lg col lastDiv">
                     <div class="searches">
                         <div class="status">
-                            <div class="info">
-                                <h3>Searches</h3>
-                                <h1>14,147</h1>
-                            </div>
-                            <div class="progresss">
-                                <svg>
-                                    <circle cx="38" cy="38" r="36"></circle>
-                                </svg>
-                                <div class="percentage">
-                                    <p>+21%</p>
+                            <div class="saleDetailBox">
+                                <div class="container">
+                                    <div class="input-group date">
+                                        <input type="text" id="totalItemsSoldDate" class="form-control datepicker" placeholder="Select Date">
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center flex-column">
+                                    <h3 class="fs-3 text-muted">Sold Item</h3>
+                                    <h1 id="totalItemsSold" class="text-muted"></h1>
                                 </div>
                             </div>
+                            <!--                            <div class="progresss">-->
+                            <!--                                <svg>-->
+                            <!--                                    <circle cx="38" cy="38" r="36"></circle>-->
+                            <!--                                </svg>-->
+                            <!--                                <div class="percentage">-->
+                            <!--                                    <p>+21%</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -198,34 +205,14 @@
                             <thead>
                             <tr>
                                 <th scope="col">Order Id</th>
-                                <th scope="col">Item Code</th>
-                                <th scope="col">Customer Id</th>
-                                <th scope="col">Customer Name</th>
+                                <th scope="col">Purchase Date</th>
+                                <th scope="col">Cashier Name</th>
                                 <th scope="col">Total Price</th>
+                                <th scope="col">Status</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td>O001</td>
-                                <td>I001</td>
-                                <td>C001</td>
-                                <td>Sithum Perera</td>
-                                <td>2500</td>
-                            </tr>
-                            <tr>
-                                <td>O002</td>
-                                <td>I002</td>
-                                <td>C002</td>
-                                <td>Imesh Perera</td>
-                                <td>3500</td>
-                            </tr>
-                            <tr>
-                                <td>O003</td>
-                                <td>I003</td>
-                                <td>C003</td>
-                                <td>Sithum Imesh</td>
-                                <td>5500</td>
-                            </tr>
+                            <tbody id="orders-body">
+
                             </tbody>
                         </table>
                     </div>
@@ -235,20 +222,16 @@
                 <h1>Most Sale Item</h1>
                 <div class="col shadow-lg ">
                     <div class="text-center">
-                        <img class="me-5" src="../AdminDashboard/assets/images/shoe01.png" width="260" alt="">
+                        <img class="me-5" id="mostSaleItemPic" src="#" width="260" alt="">
                     </div>
                     <div class="text-center ">
                         <div class="d-inline-block itemDiv me-5 mt-3">
-                            <h6 class="text-center fs-6">Item Id</h6>
-                            <h1 class="text-center ">I001</h1>
+                            <h6 class="text-center fs-6">Item Code</h6>
+                            <h1 class="text-center " id="mostSaleItemCode"></h1>
                         </div>
                         <div class="d-inline-block itemDiv me-5 mt-3">
                             <h6 class="text-center fs-6">Sold Qty</h6>
-                            <h1 class="text-center ">67</h1>
-                        </div>
-                        <div class="d-inline-block itemDiv mt-3">
-                            <h6 class="text-center">Shoe Size</h6>
-                            <h1 class="text-center ">08</h1>
+                            <h1 class="text-center " id="soldQty"></h1>
                         </div>
                     </div>
 
@@ -258,16 +241,14 @@
                         <div class="qtyStatus">
                             <div class="qtyInfo">
                                 <h3>Quantity On Hand</h3>
-                                <h1 class="ms-2">254</h1>
+                                <h1 class="ms-2" id="qtyOnHand"></h1>
                             </div>
-                            <div class="qtyProgresses">
-                                <svg>
-                                    <circle cx="78" cy="78" r="76"></circle>
-                                </svg>
-                                <div class="qtyPercentage">
-                                    <p class="fs-2">+81%</p>
-                                </div>
-                            </div>
+
+                        </div>
+
+                        <div class="d-inline-block itemDiv mt-3 d-flex justify-content-center flex-column d-none" id="mostSaleItemNameDiv">
+                            <h1 class="text-center fs-4 fw-medium">Item Name</h1>
+                            <h1 class="text-center text-success" id="mostSaleItemName"></h1>
                         </div>
                     </div>
                 </div>
@@ -842,6 +823,7 @@
                                     <th scope="col">Join Date</th>
                                     <th scope="col">Total Points</th>
                                     <th scope="col">Level</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>

@@ -54,7 +54,6 @@ function getItemDetails() {
         console.log($(this).val())
         performAuthenticatedRequest();
         const accessToken = localStorage.getItem('accessToken');
-
         $.ajax({
             url: "http://localhost:8080/api/v1/orders/item",
             method: "POST",
@@ -154,7 +153,6 @@ function generateNewOrderId() {
         },
     })
         .then(response => {
-
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -239,9 +237,9 @@ function addToCart() {
                                 <td>${itemCartElement.size}</td>
                                 <td>${itemCartElement.itmTotal}</td>
                                     <td>    
-                                    action-delete-btn.png
-                                
-                                   <img src=  action-delete-btn.png" id="removeCart" height="35" width="35"/>
+                                    
+                                      
+                                         <img src="../assets/images/action-delete-btn.png" id="removeCart" height="35" width="35"/>
                             </td>
                             </tr>`;
                     $('#tblCart tbody').append(row);
@@ -329,6 +327,8 @@ function purchaseOrder() {
         let customerId;
         if ($('#orderCustomerId').val() === '') {
             customerId = null;
+        }else {
+            customerId = $('#orderCustomerId').val();
         }
         console.log(total);
         const data = {
