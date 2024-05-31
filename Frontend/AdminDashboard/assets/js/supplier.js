@@ -25,7 +25,7 @@ btnCancelSupplier.click(function () {
 function generateNewSupplierId() {
     performAuthenticatedRequest();
     const accessToken = localStorage.getItem('accessToken');
-    fetch("http://localhost:8080/api/v1/supplier/id",{
+    fetch("http://localhost:8080/api/v1/supplier/id", {
         headers: {
             'Authorization': 'Bearer ' + accessToken
         },
@@ -148,6 +148,7 @@ function clickTblRow() {
         $('#supplierLabel').text('Supplier Details')
         home.addClass('show')
         $('#saveSupplierbtn').text("Details")
+        disableTxtField()
         var row = $(this).closest('tr');
         var id = row.find('td:eq(0)').text()
         performAuthenticatedRequest();
@@ -163,7 +164,7 @@ function clickTblRow() {
 
                 console.log(response);
                 setSupplierDataToTextField(response)
-                disableTxtField()
+
                 getAllSuppliers();
 
             },
@@ -262,33 +263,33 @@ function updateSuppliers() {
 
 function deleteSuppliers(id) {
 
-        performAuthenticatedRequest();
-        const accessToken = localStorage.getItem('accessToken');
-        $.ajax({
-            url: "http://localhost:8080/api/v1/supplier/" + id,
-            type: "DELETE",
-            headers: {
-                'Authorization': 'Bearer ' + accessToken
-            },
-            success: function (response) {
-                getAllSuppliers();
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Supplier has been Deleted",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            },
-            error: function (resp) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: resp.responseJSON.message,
-                    footer: '<a href="#"></a>'
-                });
-            }
-        });
+    performAuthenticatedRequest();
+    const accessToken = localStorage.getItem('accessToken');
+    $.ajax({
+        url: "http://localhost:8080/api/v1/supplier/" + id,
+        type: "DELETE",
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        },
+        success: function (response) {
+            getAllSuppliers();
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Supplier has been Deleted",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        },
+        error: function (resp) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: resp.responseJSON.message,
+                footer: '<a href="#"></a>'
+            });
+        }
+    });
 
 }
 
@@ -296,9 +297,11 @@ function disableTxtField() {
     $('.txt').attr('readonly', "");
 
 }
+
 function enableTxtField() {
     $('.txt').removeAttr('readonly');
 }
+
 function saveSupplier() {
     $('#saveSupplierbtn').click(function () {
         if ($(this).text().trim() === 'Save') {
