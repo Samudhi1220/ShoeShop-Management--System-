@@ -30,6 +30,7 @@
                                 <td>${supplier.email}</td>
                                     <td>      
                                          <img src="assets/images/action-btn (1) (1).png" id="showSupplierDetails" height="35" width="35"/>
+                                         
                             </td>
                             </tr>`;
                  $('#tblSupplier').append(row);
@@ -71,6 +72,7 @@
          $('#supplierLabel').text('Supplier Details')
          home.addClass('show')
          $('#saveSupplierbtn').text("Details")
+         disableTxtField();
          var row = $(this).closest('tr');
          var id = row.find('td:eq(0)').text()
          performAuthenticatedRequest();
@@ -86,7 +88,6 @@
 
                  console.log(response);
                  setSupplierDataToTextField(response)
-                 disableTxtField()
                  getAllSuppliers();
 
              },
