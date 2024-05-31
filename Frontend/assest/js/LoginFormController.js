@@ -27,6 +27,10 @@ function generateNewId() {
 }
 function signUp() {
     $('#saveBtn').click(function () {
+        const form = $('#signUpInputForm');
+        if (!validateForm(form)) {
+            return;
+        }
         if ($('#employeeRole').val() === 'ADMIN' || $('#employeeRole').val() === 'USER') {
             if ($('#EmployeePageUserPasswword').val() === $('#EmployeePageUserPasswword2').val()) {
                 if ($('#imgUploader').val() === ''){
@@ -112,6 +116,10 @@ function signUp() {
 function signIn() {
 
     $('#loginNow').click(function () {
+        const form = $('#loginInputForm');
+        if (!validateForm(form)) {
+            return;
+        }
         let value = {
             email: $("#log-in-Username").val(),
             password: $("#log-in-Password").val(),

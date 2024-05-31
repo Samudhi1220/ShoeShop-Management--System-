@@ -54,7 +54,7 @@
         <div class="form-container">
             <i class="uil uil-times from_close"></i>
             <div class="form login-form">
-                <form action="#">
+                <form action="#" id="loginInputForm">
                     <h2>Login</h2>
                     <!--------------admin---------------->
                     <div class="d-flex justify-content-center d-none" id="wrongPW">
@@ -63,12 +63,13 @@
                         </div>
                     </div>
                     <div class="input_box adminInputBox">
-                        <input type="email" id="log-in-Username" placeholder="Enter Your Email" >
+                        <input type="email" id="log-in-Username" placeholder="Enter Your Email" data-validate="email">
                         <i class="uil uil-envelope-alt email"></i>
                     </div>
 
                     <div class="input_box adminInputBox">
-                        <input type="password" id="log-in-Password" placeholder="Enter Your Password" >
+                        <input type="password" id="log-in-Password" placeholder="Enter Your Password"
+                               data-validate="required password">
                         <i class="uil uil-lock password"></i>
                         <i class="uil uil-eye-slash pw_hide"></i>
                     </div>
@@ -90,7 +91,7 @@
                     </div>
                     <div class="modal-body bg-white inputBody">
 
-                        <form class="row g-3">
+                        <form class="row g-3" id="signUpInputForm">
                             <div class="col-md-4">
                                 <label for="employeeCode" class="form-label lbl">Code</label>
                                 <input type="text" class="form-control txt" id="employeeCode" required>
@@ -98,7 +99,7 @@
                             <div class="col-md-4">
                                 <label for="employeeGender" class="form-label lbl">Select Gender</label>
                                 <select class="select form-select  opacity-75 txt"
-                                        aria-label="Default select example"
+                                        aria-label="Default select example" data-validate="required"
                                         id="employeeGender">
                                     <option disabled value="null" selected></option>
                                     <option value="MALE">Male</option>
@@ -108,27 +109,33 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeName" class="form-label lbl">Name</label>
-                                <input type="text" class="form-control txt" id="employeeName" required>
+                                <input type="text" class="form-control txt" id="employeeName" required
+                                       data-validate="required letters">
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeStatus" class="form-label lbl">Status</label>
-                                <input type="text" class="form-control txt" id="employeeStatus" required>
+                                <input type="text" class="form-control txt" id="employeeStatus"
+                                       data-validate="required letters" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeDesignation" class="form-label lbl">Designation</label>
-                                <input type="text" class="form-control txt" id="employeeDesignation" required>
+                                <input type="text" class="form-control txt" id="employeeDesignation"
+                                       data-validate="required letters" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeDOB" class="form-label lbl">Date Of Birth</label>
-                                <input type="date" id="employeeDOB" class="form-control txt" required>
+                                <input type="date" id="employeeDOB" class="form-control txt" data-validate="required"
+                                       required>
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeDOJ" class="form-label lbl">Date Of Join</label>
-                                <input type="date" id="employeeDOJ" class="form-control txt" required>
+                                <input type="date" id="employeeDOJ" class="form-control txt" data-validate="required"
+                                       required>
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeBranch" class="form-label lbl">Branch</label>
-                                <input type="text" class="form-control txt" id="employeeBranch">
+                                <input type="text" class="form-control txt" id="employeeBranch"
+                                       data-validate="required letters">
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeBuilding" class="form-label lbl">Building No.</label>
@@ -140,40 +147,46 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeCity" class="form-label lbl">City</label>
-                                <input type="text" class="form-control txt" id="employeeCity">
+                                <input type="text" class="form-control txt" id="employeeCity"
+                                       data-validate="required letters">
                             </div>
 
                             <div class="col-md-4">
                                 <label for="employeeState" class="form-label lbl">State</label>
-                                <input type="text" class="form-control txt" id="employeeState">
+                                <input type="text" class="form-control txt" id="employeeState"
+                                       data-validate="required letters">
                             </div>
 
                             <div class="col-md-4">
                                 <label for="employeePostalCode" class="form-label lbl">Postal Code</label>
-                                <input type="text" class="form-control txt" id="employeePostalCode">
+                                <input type="text" class="form-control txt" id="employeePostalCode"
+                                       data-validate="required numeric">
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeContactNumber" class="form-label lbl">Contact Number</label>
-                                <input type="tel" class="form-control txt" id="employeeContactNumber">
+                                <input type="tel" class="form-control txt" id="employeeContactNumber"
+                                       data-validate="required mobile-number">
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeEmail" class="form-label lbl">Email</label>
-                                <input type="email" class="form-control txt" id="employeeEmail">
+                                <input type="email" class="form-control txt" id="employeeEmail" data-validate="email">
                             </div>
                             <div class="col-md-4">
                                 <label for="employeeGuardian" class="form-label lbl">Name of Guardian</label>
-                                <input type="text" class="form-control txt" id="employeeGuardian">
+                                <input type="text" class="form-control txt" id="employeeGuardian"
+                                       data-validate="required">
                             </div>
 
                             <div class="col-md-4">
                                 <label for="employeeGuardianContact" class="form-label lbl">Emergency Contact</label>
-                                <input type="tel" class="form-control txt" id="employeeGuardianContact">
+                                <input type="tel" class="form-control txt" id="employeeGuardianContact"
+                                       data-validate="required mobile-number">
                             </div>
 
                             <div class="col-md-4">
                                 <label for="employeeRole" class="form-label lbl">Select Role</label>
                                 <select class="form-select opacity-75 txt" aria-label="Default select example"
-                                        id="employeeRole">
+                                        id="employeeRole" data-validate="required">
                                     <option value="null" disabled selected></option>
                                     <option value="ADMIN">Admin</option>
                                     <option value="USER">User</option>
@@ -183,12 +196,14 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <label for="employeeGuardianContact" class="form-label lbl">New Password</label>
-                                        <input type="password" class="form-control txt" id="EmployeePageUserPasswword">
+                                        <input type="password" class="form-control txt" id="EmployeePageUserPasswword"
+                                               data-validate="required password">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="employeeGuardianContact" class="form-label lbl">Confirm
                                             Password</label>
-                                        <input type="password" class="form-control txt" id="EmployeePageUserPasswword2">
+                                        <input type="password" class="form-control txt" id="EmployeePageUserPasswword2"
+                                               data-validate="required password">
                                     </div>
                                 </div>
                             </div>
@@ -196,7 +211,8 @@
                             <div class="row">
                                 <div class="col d-flex align-items-center mb-4">
                                     <div class="input_box">
-                                        <label for="imgUploaderEmployee" class="file-label ms-1 mb-2 opacity-50">Select a
+                                        <label for="imgUploaderEmployee" class="file-label ms-1 mb-2 opacity-50">Select
+                                            a
                                             image...</label>
                                         <input class="form-control imgUploader" type="file" id="imgUploaderEmployee"
                                                placeholder="Select Employee Image" multiple/>
@@ -237,7 +253,7 @@
 <script src="assest/js/scrypt.js"></script>
 <script src="assest/bootstrap/js/bootstrap.bundle.js"></script>
 <script src="assest/js/LoginFormController.js"></script>
-
+<script src="assest/js/validation.js"></script>
 </body>
 
 </html>
