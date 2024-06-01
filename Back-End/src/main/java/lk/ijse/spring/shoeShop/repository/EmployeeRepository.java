@@ -4,6 +4,7 @@ import lk.ijse.spring.shoeShop.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.Date;
 import java.util.List;
 
 public interface EmployeeRepository extends JpaRepository<Employee, String> {
@@ -14,6 +15,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, String> {
     boolean existsByEmergencyContact(String emergencyContact);
 
 
+    List<Employee> findAllByEmployeeDob(Date date);
 
     List<Employee> findByEmployeeIdStartingWithOrEmployeeNameStartingWith(String employeeIdStart, String employeeNameStart);
     Employee findByEmail(String email);
